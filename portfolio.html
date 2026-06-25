@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Denver Arrojo • Creative Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #07070c;
+            --panel-glass: rgba(13, 13, 25, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.07);
+            --accent-1: #d444f1; /* Vivid Amethyst */
+            --accent-2: #00f5d4; /* Cyber Teal */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 100%, rgba(212, 68, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 245, 212, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 80%);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Abstract Organic Shapes for Artistic Depth */
+        .art-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+            animation: float 14s infinite alternate ease-in-out;
+        }
+        .blob-1 { top: -10%; right: 10%; width: 500px; height: 500px; background: var(--accent-2); }
+        .blob-2 { bottom: -10%; left: 5%; width: 550px; height: 550px; background: var(--accent-1); animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1) rotate(0deg); }
+            100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Base Glassmorphism styling */
+        .glass-panel {
+            background: var(--panel-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Typography upgrades */
+        h1, h3, .node-title {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.25);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #bffff6;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 62px;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* TOPBAR NAVIGATION */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 4px 0;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-count {
+            color: var(--text-muted);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        /* WORK PROJECTS WRAPPER */
+        .grid-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* GLASS LIQUID ROW COMPONENTS */
+        .glass-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 35px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .glass-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: skewX(-25deg);
+            transition: 0.75s;
+        }
+
+        .glass-btn:hover::before {
+            left: 125%;
+        }
+
+        .glass-btn:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* EMBLEM DECORATION */
+        .btn-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 24px;
+            color: var(--accent-2);
+            flex-shrink: 0;
+            transition: 0.4s;
+        }
+
+        .glass-btn:hover .btn-icon {
+            background: rgba(212, 68, 241, 0.1);
+            border-color: rgba(212, 68, 241, 0.3);
+            color: var(--accent-1);
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        /* TEXT INSIDE LIST ROW */
+        .btn-content {
+            flex: 1;
+        }
+
+        .btn-content .category {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            transition: 0.3s;
+        }
+
+        .glass-btn:hover .category {
+            border-color: rgba(0, 245, 212, 0.3);
+            color: var(--accent-2);
+        }
+
+        .btn-content h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .btn-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 15px;
+            max-width: 680px;
+        }
+
+        /* CHEVRON INTERACTION INDICATOR */
+        .btn-arrow {
+            font-size: 28px;
+            color: var(--text-muted);
+            opacity: 0.5;
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .glass-btn:hover .btn-arrow {
+            opacity: 1;
+            color: var(--accent-2);
+            transform: translateX(8px);
+        }
+
+        /* FOOTER STRUCTURE */
+        .footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border-glass);
+            margin-top: 28px;
+        }
+
+        /* RESPONSIVE DESIGN BREAKPOINTS */
+        @media(max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 42px; }
+            .glass-btn { padding: 25px; flex-direction: column; align-items: flex-start; gap: 18px; }
+            .btn-arrow { display: none; }
+            .topbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ambient Grid Visual Shaders -->
+    <div class="art-blob blob-1"></div>
+    <div class="art-blob blob-2"></div>
+
+    <div class="container">
+
+        <!-- HERO SECTION Component -->
+        <section class="glass-panel hero">
+            <div class="hero-badge">✦ Premium Creative Showcase</div>
+            <h1>Creative <span>Portfolio</span></h1>
+            <p>
+                A deliberate curation of human-centric UX models, minimalist design architectures, modern brand identifiers, and technical 3D digital visualization assets.
+            </p>
+        </section>
+
+        <!-- NAVIGATION CONTROL BAR -->
+        <div class="topbar">
+            <a href="index.html" class="back-btn">
+                ← Back to Resume
+            </a>
+            <div class="portfolio-count">
+                Selected Creative Works
+            </div>
+        </div>
+
+        <!-- PORTFOLIO INTERACTION DIRECTORY -->
+        <div class="grid-buttons">
+
+            <!-- UX ROW MODULE -->
+            <a href="ux.html" class="glass-panel glass-btn">
+                <div class="btn-icon">◉</div>
+                <div class="btn-content">
+                    <div class="category">UI / UX Architecture</div>
+                    <h3>UX Design</h3>
+                    <p>Clean, interactive, and structural high-fidelity software visual mockups inspired by minimal premium design guidelines.</p>
+                </div>
+                <div class="btn-arrow">→</div>
+            </a>
+
+            <!-- GRAPHIC DESIGN ROW MODULE -->
+            <a href="gd.html" class="glass-panel glass-btn">
+                <div class="btn-icon">✎</div>
+                <div class="btn-content">
+                    <div class="category">Graphic Systems</div>
+                    <h3>Creative Graphics</h3>
+                    <p>High-conversion visual content, identity design layouts, commercial posters, and balanced social branding aesthetics.</p>
+                </div>
+                <div class="btn-arrow">→</div>
+            </a>
+
+            <!-- 3D MODELING ROW MODULE -->
+            <a href="3d.html" class="glass-panel glass-btn">
+                <div class="btn-icon">⬢</div>
+                <div class="btn-content">
+                    <div class="category">Spatial Spaces</div>
+                    <h3>3D Modeling</h3>
+                    <p>Vray & Real-time rendering modules, geometric environmental design spaces, and clean programmatic concept visualizations.</p>
+                </div>
+                <div class="btn-arrow">→</div>
+            </a>
+
+        </div>
+
+        <!-- STRUCTURAL FOOTER -->
+        <footer class="footer">
+            © 2026 John Denver Arrojo • Built to Stand Out
+        </footer>
+
+    </div>
+
+</body>
+</html>

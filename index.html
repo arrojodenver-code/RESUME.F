@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Denver Arrojo • Portfolio Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #07070c;
+            --panel-glass: rgba(13, 13, 25, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.07);
+            --accent-1: #d444f1; /* Vivid Amethyst */
+            --accent-2: #00f5d4; /* Cyber Teal */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.5) 0px, transparent 80%);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Abstract Organic Shapes for Artistic Depth */
+        .art-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.3;
+            mix-blend-mode: screen;
+            animation: float 12s infinite alternate ease-in-out;
+        }
+        .blob-1 { top: 20%; left: -10%; width: 500px; height: 500px; background: var(--accent-1); }
+        .blob-2 { bottom: 10%; right: -10%; width: 600px; height: 600px; background: var(--accent-2); animation-delay: -4s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(40px) scale(1.1); }
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Base Glassmorphism styling */
+        .glass-panel {
+            background: var(--panel-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: skewX(-25deg);
+            transition: 0.75s;
+        }
+        .glass-panel:hover::before { left: 125%; }
+
+        /* Typography upgrades */
+        h1, h2, h3, .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.03em;
+        }
+
+        /* HERO SECTION */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr;
+            gap: 40px;
+        }
+
+        .hero-main {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: rgba(212, 68, 241, 0.15);
+            border: 1px solid rgba(212, 68, 241, 0.3);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #f4bfff;
+            margin-bottom: 24px;
+        }
+
+        .hero-main h1 {
+            font-size: 68px;
+            line-height: 1.05;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .hero-main h1 span {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-main p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 36px;
+            max-width: 600px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            background: var(--accent-2);
+            box-shadow: 0 15px 30px rgba(0, 245, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        /* HERO CARD (AVATAR & QUICK STATS) */
+        .hero-card {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(212, 68, 241, 0.1), rgba(0, 245, 212, 0.1));
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '✦';
+            font-size: 28px;
+            color: var(--accent-1);
+            opacity: 0.5;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            background: linear-gradient(90deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-sub {
+            color: var(--accent-2);
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 30px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .stat-box {
+            padding: 20px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: rgba(212, 68, 241, 0.3);
+            background: rgba(212, 68, 241, 0.04);
+        }
+
+        .stat-box h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .stat-box p {
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* INNER CONTENT LAYOUT */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 40px;
+        }
+
+        .asymmetrical-column {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-padding {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 8px;
+            height: 24px;
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2));
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* ABOUT */
+        .about-text {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #cbd5e1;
+        }
+
+        /* QUICK INFO CARDS */
+        .info-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 24px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: rgba(0, 245, 212, 0.3);
+            background: rgba(0, 245, 212, 0.02);
+            transform: translateX(5px);
+        }
+
+        .info-card label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .info-card span {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* SKILLS (ARTISTIC STYLING) */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .skill-track {
+            height: 6px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+            border-radius: 20px;
+            position: absolute;
+            left: 0; top: 0;
+        }
+
+        /* TIMELINE/EXPERIENCE STYLING */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 8px; top: 0; width: 1px; height: 100%;
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2), transparent);
+        }
+
+        .timeline-node {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: 4px; top: 8px; width: 9px; height: 9px;
+            border-radius: 50%;
+            background: var(--accent-2);
+            box-shadow: 0 0 10px var(--accent-2);
+            z-index: 2;
+        }
+
+        .node-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .node-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .node-date {
+            font-size: 13px;
+            color: var(--text-muted);
+            background: rgba(255,255,255,0.05);
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .node-sub {
+            color: var(--accent-1);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-node ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .timeline-node li {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 15px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .timeline-node li::before {
+            content: '→';
+            position: absolute;
+            left: 0; color: var(--accent-2);
+        }
+
+        /* EDUCATION CARDS */
+        .edu-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .edu-node {
+            padding: 30px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: 0.3s;
+        }
+
+        .edu-node:hover {
+            border-color: rgba(212, 68, 241, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
+
+        .edu-node h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .edu-node p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .edu-meta {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--accent-2);
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border-glass);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media(max-width: 1024px) {
+            .hero-grid, .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .hero-main {
+                padding: 40px;
+            }
+            .hero-main h1 {
+                font-size: 52px;
+            }
+        }
+
+        @media(max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero-main { padding: 30px 20px; }
+            .hero-main h1 { font-size: 40px; }
+            .section-padding { padding: 30px 20px; }
+            .node-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Dynamic Art Blobs for Unique Atmospheric Visuals -->
+    <div class="art-blob blob-1"></div>
+    <div class="art-blob blob-2"></div>
+
+    <div class="resume-container">
+
+        <!-- HERO COMPONENT -->
+        <header class="glass-panel hero-grid">
+            <div class="hero-main">
+                <div class="hero-badge">✦ Creative IT Professional</div>
+                <h1>John Denver <br><span>Arrojo</span></h1>
+                <p>
+                    Information Technology student specializing in graphic design, UI/UX experiences, branding, and digital creativity. Passionate about building modern visuals with premium aesthetics, smooth interactions, and strong visual storytelling.
+                </p>
+                <div class="cta-group">
+                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" class="btn btn-primary">Facebook Profile</a>
+                    <a href="portfolio.html" class="btn btn-secondary">View Creative Portfolio</a>
+                </div>
+            </div>
+            
+            <div class="hero-card">
+                <!-- Image Container with Artistic Default Gradient -->
+                <div class="image-placeholder">
+                    <!-- Base standard profile path can still be injected seamlessly here -->
+                    <!-- <img src="your-image.jpg" alt="Profile Image" style="width:100%; height:100%; object-fit:cover; border-radius:18px;"> -->
+                </div>
+                <div>
+                    <div class="card-title">UI/UX • Designer</div>
+                    <div class="card-sub">Creative Technologist</div>
+                </div>
+                <div class="stat-grid">
+                    <div class="stat-box">
+                        <h3>4+</h3>
+                        <p>Years Exp</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>50+</h3>
+                        <p>Projects</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN LAYOUT GRID -->
+        <main class="main-layout">
+            
+            <!-- LEFT COLUMN: EXPERIENCE & EDUCATION -->
+            <div class="asymmetrical-column">
+                
+                <!-- WORK EXPERIENCE -->
+                <section class="glass-panel section-padding">
+                    <h2 class="section-title">Work Experience</h2>
+                    <div class="timeline-container">
+                        
+                        <div class="timeline-node">
+                            <div class="node-header">
+                                <div class="node-title">Tecno</div>
+                                <div class="node-date">March 2025 – Nov 2025</div>
+                            </div>
+                            <div class="node-sub">Tech Mobile Promoter</div>
+                            <ul>
+                                <li>Promoted and demonstrated smartphones to customers, improving product awareness and sales conversion.</li>
+                                <li>Assisted customers in selecting devices based on preferences, budget, and technical needs.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-node">
+                            <div class="node-header">
+                                <div class="node-title">Café de Meli</div>
+                            </div>
+                            <div class="node-sub">Graphic Designer</div>
+                            <ul>
+                                <li>Designed menus, posters, and social media graphics for stronger brand visibility.</li>
+                                <li>Maintained consistent visual identity and branding schemas.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-node">
+                            <div class="node-header">
+                                <div class="node-title">Kuya's Hotpot KTV Bar</div>
+                            </div>
+                            <div class="node-sub">Co-HR & Graphic Designer</div>
+                            <ul>
+                                <li>Assisted in staff coordination and proactive HR metrics management.</li>
+                                <li>Created promotional layouts, structural key visuals, and event marketing collateral.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- EDUCATION -->
+                <section class="glass-panel section-padding">
+                    <h2 class="section-title">Education</h2>
+                    <div class="edu-stack">
+                        
+                        <div class="edu-node">
+                            <h3>STI College Caloocan</h3>
+                            <p>Bachelor of Science in Information Technology</p>
+                            <div class="edu-meta">2022 – 2026</div>
+                        </div>
+
+                        <div class="edu-node">
+                            <h3>University of the East Caloocan</h3>
+                            <p>Senior High School – Visual Arts Track</p>
+                            <div class="edu-meta">2019 – 2022</div>
+                        </div>
+
+                        <div class="edu-node">
+                            <h3>Probex Inc.</h3>
+                            <p>Junior High School Curriculum</p>
+                            <div class="edu-meta">2015 – 2019</div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN: ABOUT, SKILLS & CONTACT INFO -->
+            <div class="asymmetrical-column">
+                
+                <!-- ABOUT ME ME -->
+                <section class="glass-panel section-padding">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-text">
+                        Motivated Information Technology student seasoned in digital artistry, structural layouting, UI/UX interface architecture, and high-conversion visual design. Deeply inspired by intentional minimalism and luxury technical layouts like the Apple design ecosystem.
+                    </p>
+                </section>
+
+                <!-- CONTACT INFO LINKS -->
+                <section class="glass-panel section-padding">
+                    <h2 class="section-title">Channels</h2>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <label>Email Address</label>
+                            <span>arrojodenver@gmail.com</span>
+                        </div>
+                        <div class="info-card">
+                            <label>Mobile Contact</label>
+                            <span>(+63) 956 311 8160</span>
+                        </div>
+                        <div class="info-card">
+                            <label>Headquarters</label>
+                            <span>Malabon City, Philippines</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TECH & CREATIVE SKILLS -->
+                <section class="glass-panel section-padding">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-container">
+                        
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Graphic Design</span><span>95%</span></div>
+                            <div class="skill-track"><div class="skill-progress" style="width: 95%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Adobe Photoshop</span><span>92%</span></div>
+                            <div class="skill-track"><div class="skill-progress" style="width: 92%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>UI/UX Architecture</span><span>88%</span></div>
+                            <div class="skill-track"><div class="skill-progress" style="width: 88%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>IT Technical Support</span><span>90%</span></div>
+                            <div class="skill-track"><div class="skill-progress" style="width: 90%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>C# Scripting / Unity</span><span>97%</span></div>
+                            <div class="skill-track"><div class="skill-progress" style="width: 97%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Client Relations</span><span>93%</span></div>
+                            <div class="skill-track"><div class="skill-progress" style="width: 93%"></div></div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            © 2026 John Denver Arrojo • Designed to Stand Out
+        </footer>
+
+    </div>
+
+</body>
+</html>
