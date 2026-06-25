@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>John Denver Arrojo • 3D Modeling Showcase</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg-dark:#07070c;
+    --panel-glass:rgba(13,13,25,0.45);
+    --border-glass:rgba(255,255,255,0.07);
+
+    --accent-1:#00f5d4;
+    --accent-2:#d444f1;
+
+    --text-main:#f8fafc;
+    --text-muted:#94a3b8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+
+    background-color:var(--bg-dark);
+
+    background-image:
+    radial-gradient(at 0% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(30,41,59,0.4) 0px, transparent 80%);
+
+    min-height:100vh;
+
+    color:var(--text-main);
+
+    overflow-x:hidden;
+
+    padding:40px 20px;
+}
+
+/* AMBIENT BLOBS */
+
+.art-blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(140px);
+    z-index:-1;
+    opacity:.25;
+    mix-blend-mode:screen;
+    animation:float 14s infinite alternate ease-in-out;
+}
+
+.blob-1{
+    top:-10%;
+    right:10%;
+    width:500px;
+    height:500px;
+    background:var(--accent-1);
+}
+
+.blob-2{
+    bottom:-10%;
+    left:5%;
+    width:550px;
+    height:550px;
+    background:var(--accent-2);
+    animation-delay:-5s;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px) scale(1) rotate(0deg);
+    }
+
+    100%{
+        transform:translateY(50px) scale(1.05) rotate(15deg);
+    }
+}
+
+.container{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+}
+
+/* GLASS PANEL */
+
+.glass-panel{
+    background:var(--panel-glass);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid var(--border-glass);
+
+    border-radius:24px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* HERO */
+
+h1,
+.category{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.01em;
+}
+
+.hero{
+    padding:60px;
+
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:8px 16px;
+
+    border-radius:100px;
+
+    background:rgba(0,245,212,0.1);
+
+    border:1px solid rgba(0,245,212,0.25);
+
+    font-size:13px;
+    font-weight:600;
+
+    letter-spacing:.05em;
+
+    text-transform:uppercase;
+
+    color:#bffff6;
+
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-size:62px;
+    line-height:1.1;
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    background:linear-gradient(
+    135deg,
+    var(--accent-1),
+    var(--accent-2)
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--text-muted);
+
+    line-height:1.8;
+
+    font-size:17px;
+
+    max-width:650px;
+
+    margin:0 auto;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.back-btn{
+    text-decoration:none;
+
+    padding:14px 28px;
+
+    border-radius:14px;
+
+    font-weight:600;
+    font-size:15px;
+
+    transition:all .4s cubic-bezier(0.165,0.84,0.44,1);
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:rgba(255,255,255,0.04);
+
+    color:var(--text-main);
+
+    border:1px solid var(--border-glass);
+}
+
+.back-btn:hover{
+    background:var(--text-main);
+    color:var(--bg-dark);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(255,255,255,0.1);
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.photo-card{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:#000;
+
+    cursor:pointer;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    transition:all .4s cubic-bezier(0.165,0.84,0.44,1);
+}
+
+.photo-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,0.4);
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+    transform .8s cubic-bezier(0.165,0.84,0.44,1),
+    filter .5s;
+}
+
+.photo-card:hover img{
+    transform:scale(1.05);
+
+    filter:saturate(1.08);
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:28px;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(7,7,12,0.95) 0%,
+    rgba(7,7,12,0.4) 45%,
+    transparent 100%
+    );
+
+    opacity:0;
+
+    transition:opacity .35s ease;
+}
+
+.photo-card:hover .overlay{
+    opacity:1;
+}
+
+.overlay span{
+    font-family:'Space Grotesk',sans-serif;
+
+    font-size:18px;
+    font-weight:700;
+
+    transform:translateY(14px);
+
+    transition:transform .35s ease;
+}
+
+.photo-card:hover .overlay span{
+    transform:translateY(0);
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+
+    padding:20px 0;
+
+    color:var(--text-muted);
+
+    font-size:13px;
+
+    letter-spacing:.05em;
+
+    text-transform:uppercase;
+
+    border-top:1px solid var(--border-glass);
+
+    margin-top:8px;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(4,4,8,0.98);
+
+    backdrop-filter:blur(20px);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+}
+
+.modal img{
+    width:90%;
+    height:90%;
+
+    object-fit:contain;
+}
+
+.close{
+    position:absolute;
+
+    top:30px;
+    right:40px;
+
+    font-size:44px;
+    font-weight:300;
+
+    color:var(--text-muted);
+
+    cursor:pointer;
+
+    z-index:100000;
+
+    transition:color .2s;
+}
+
+.close:hover{
+    color:white;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:960px){
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+}
+
+@media(max-width:640px){
+
+    body{
+        padding:20px 12px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:40px 20px;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .back-btn{
+        width:100%;
+        justify-content:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND BLOBS -->
+
+<div class="art-blob blob-1"></div>
+<div class="art-blob blob-2"></div>
+
+<div class="container">
+
+    <!-- HERO -->
+
+    <section class="hero glass-panel">
+
+        <div class="badge">
+            ✦ 3D • Hard Surface • Product Modeling
+        </div>
+
+        <h1>
+            3D <span>Models</span>
+        </h1>
+
+        <p>
+            A high fidelity collection of hard-surface engineering models,
+            motorcycle component renders, precision mechanical assets,
+            and production-grade visualization systems.
+        </p>
+
+    </section>
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <a href="portfolio.html" class="back-btn">
+            ← Back to Portfolio
+        </a>
+
+    </div>
+
+    <!-- GALLERY -->
+
+    <section class="gallery">
+
+        <!-- MODEL 1 -->
+
+        <div class="photo-card"
+        onclick="window.location.href='viewer.html'">
+
+            <img src="Caliper.png">
+
+            <div class="overlay">
+                <span>Adelin Caliper Model</span>
+            </div>
+
+        </div>
+
+        <!-- MODEL 2 -->
+
+        <div class="photo-card"
+        onclick="window.location.href='viewer2.html'">
+
+            <img src="SA.png">
+
+            <div class="overlay">
+                <span>Kamui Swingarm Model</span>
+            </div>
+
+        </div>
+
+        <!-- MODEL 3 -->
+
+        <div class="photo-card"
+        onclick="window.location.href='viewer3.html'">
+
+            <img src="SA2.png">
+
+            <div class="overlay">
+                <span>TWPO Swingarm Model</span>
+            </div>
+
+        </div>
+
+        <!-- MODEL 4 -->
+
+        <div class="photo-card"
+        onclick="window.location.href='viewer4.html'">
+
+            <img src="Shock.png">
+
+            <div class="overlay">
+                <span>Ohlins Shock Model</span>
+            </div>
+
+        </div>
+
+        <!-- MODEL 5 -->
+
+        <div class="photo-card"
+        onclick="window.location.href='viewer5.html'">
+
+            <img src="bd.png">
+
+            <div class="overlay">
+                <span>Black Diamond Disc Brake</span>
+            </div>
+
+        </div>
+
+        <!-- MODEL 6 -->
+
+        <div class="photo-card"
+        onclick="window.location.href='viewer6.html'">
+
+            <img src="kd.png">
+
+            <div class="overlay">
+                <span>Kamui Disc Brake</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        © 2026 John Denver Arrojo • 3D Showcase
+    </footer>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal"
+id="modal"
+onclick="closeModalOnBackground(event)">
+
+    <span class="close"
+    onclick="closeModal()">
+
+        &times;
+
+    </span>
+
+    <img id="modal-img">
+
+</div>
+
+<script>
+
+const modal =
+document.getElementById("modal");
+
+const modalImg =
+document.getElementById("modal-img");
+
+function openModal(src){
+
+    modal.style.display = "flex";
+
+    modalImg.src = src;
+
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+
+    modal.style.display = "none";
+
+    modalImg.src = "";
+
+    document.body.style.overflow = "auto";
+}
+
+function closeModalOnBackground(e){
+
+    if(e.target === modal){
+        closeModal();
+    }
+}
+
+document.addEventListener("keydown", function(e){
+
+    if(e.key === "Escape"){
+        closeModal();
+    }
+});
+
+</script>
+
+</body>
+</html>

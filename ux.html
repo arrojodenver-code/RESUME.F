@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Denver Arrojo • Logo Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #07070c;
+            --panel-glass: rgba(13, 13, 25, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.07);
+            --accent-1: #d444f1; /* Vivid Amethyst */
+            --accent-2: #00f5d4; /* Cyber Teal */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 100%, rgba(212, 68, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 245, 212, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 80%);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+
+        /* Ambient Fluid Shaders */
+        .art-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.25;
+            mix-blend-mode: screen;
+            animation: float 14s infinite alternate ease-in-out;
+        }
+        .blob-1 { top: -10%; right: 10%; width: 500px; height: 500px; background: var(--accent-2); }
+        .blob-2 { bottom: -10%; left: 5%; width: 550px; height: 550px; background: var(--accent-1); animation-delay: -5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) scale(1) rotate(0deg); }
+            100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Glass Foundations */
+        .glass-panel {
+            background: var(--panel-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Structural Heading Profiles */
+        h1, .slide-card .category {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+        /* HERO MODULE */
+        .hero {
+            padding: 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 100px;
+            background: rgba(212, 68, 241, 0.1);
+            border: 1px solid rgba(212, 68, 241, 0.25);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #fbcfff;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 62px;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 17px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* ACTIONS ACTION HEADER */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .back-btn, .figma-btn {
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+        }
+
+        .back-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .figma-btn {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .figma-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45);
+            filter: brightness(1.1);
+        }
+
+        /* CAROUSEL CONTROLLER DECK */
+        .slider-wrapper {
+            padding: 24px;
+            background: rgba(10, 10, 18, 0.6);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 6px;
+        }
+
+        /* PORTFOLIO PIECE ITEM CARD */
+        .slide-card {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slide-card img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s;
+            display: block;
+        }
+
+        .slide-card:hover img {
+            transform: scale(1.02);
+            filter: saturate(1.05);
+        }
+
+        /* TEXT INSIDE PREVIEW DISPLAY */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.4) 40%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .category {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(0, 245, 212, 0.15);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            color: #bffff6;
+            width: fit-content;
+        }
+
+        /* DIRECTION INDICATOR ACTION NODES */
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            background: rgba(13, 13, 25, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            font-size: 18px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            border-color: var(--text-main);
+            scale: 1.05;
+        }
+
+        .prev { left: 40px; }
+        .next { right: 40px; }
+
+        /* PAGINATION NAILS TRACKER */
+        .thumbnails {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            justify-content: center;
+        }
+
+        .thumb {
+            width: 90px;
+            height: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            opacity: .4;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            background: #000;
+        }
+
+        .thumb:hover {
+            opacity: .8;
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: var(--accent-2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 245, 212, 0.2);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FOOTER STRUCTURE */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-top: 1px solid var(--border-glass);
+            margin-top: 8px;
+        }
+
+        /* ISOLATED THEATRE MODAL SYSTEM */
+        .modal {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 4, 8, 0.98);
+            backdrop-filter: blur(20px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .modal img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 44px;
+            font-weight: 300;
+            color: var(--text-muted);
+            cursor: pointer;
+            z-index: 100000;
+            transition: color 0.2s;
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        /* SMART RESPONSIVE SCALING RULES */
+        @media(max-width: 768px) {
+            body { padding: 20px 12px; }
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 42px; }
+            .slide-card img { height: 400px; }
+            .topbar { flex-direction: column; align-items: stretch; gap: 12px; }
+            .back-btn, .figma-btn { justify-content: center; }
+            .btn { width: 44px; height: 44px; font-size: 14px; }
+            .prev { left: 20px; }
+            .next { right: 20px; }
+            .thumb { width: 70px; height: 48px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Space Background Shaders -->
+    <div class="art-blob blob-1"></div>
+    <div class="art-blob blob-2"></div>
+
+    <div class="container">
+
+        <!-- HERO COMPONENT -->
+        <section class="hero glass-panel">
+            <div class="badge">✦ Branding • UX • Visual Identity</div>
+            <h1>User <span>Experience</span></h1>
+            <p>
+                A deliberate modern collection of visual design solutions, optimizing corporate brand positioning across interfaces and structural assets.
+            </p>
+        </section>
+
+        <!-- ACTION CONSOLE STRIP -->
+        <div class="topbar">
+            <a href="portfolio.html" class="back-btn">
+                ← Back to Portfolio
+            </a>
+            <a class="figma-btn" target="_blank" href="https://www.figma.com/design/zc7c5TGhD85w4vtxPgxwOk/Untitled?node-id=179-266&t=uHD4ZNXwWq6jQMHe-1">
+                View Figma Workspace
+            </a>
+        </div>
+
+        <!-- CAROUSEL ELEMENT PANELS -->
+        <section class="slider-wrapper glass-panel">
+
+            <button class="btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">❮</button>
+            <button class="btn next" onclick="moveSlide(1)" aria-label="Next Slide">❯</button>
+
+            <div class="slider" id="slider">
+
+                <!-- SLIDE 1 -->
+                <div class="slide">
+                    <div class="slide-card">
+                        <img src="ux1.png" alt="Identity Layout Prototype 1" onclick="openModal(this.src)">
+                        <div class="overlay">
+                            <div class="category">Brand Identity System</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="slide">
+                    <div class="slide-card">
+                        <img src="ux2.png" alt="Identity Layout Prototype 2" onclick="openModal(this.src)">
+                        <div class="overlay">
+                            <div class="category">Digital Identity Layout</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INDEX PIECE SELECTORS -->
+            <div class="thumbnails">
+                <div class="thumb active" onclick="showSlide(0)">
+                    <img src="ux1.png" alt="Thumbnail Select 1">
+                </div>
+                <div class="thumb" onclick="showSlide(1)">
+                    <img src="ux2.png" alt="Thumbnail Select 2">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- FOOTER BAR -->
+        <footer class="footer">
+            © 2026 John Denver Arrojo • UX Space Design Portfolio
+        </footer>
+
+    </div>
+
+    <!-- PRESENTATION COMPOSITE LAYER -->
+    <div class="modal" id="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImg" alt="High Resolution Content Preview">
+    </div>
+
+    <script>
+    let index = 0;
+    const slider = document.getElementById("slider");
+    const slides = document.querySelectorAll(".slide");
+    const thumbs = document.querySelectorAll(".thumb");
+
+    function showSlide(i){
+        index = (i + slides.length) % slides.length;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        thumbs.forEach(thumb => thumb.classList.remove("active"));
+        thumbs[index].classList.add("active");
+    }
+
+    function moveSlide(step){
+        showSlide(index + step);
+    }
+
+    /* CAROUSEL LOOP INTERVAL */
+    setInterval(() => {
+        moveSlide(1);
+    }, 5000);
+
+    /* FULL THEATRE ACTIVATION */
+    function openModal(src){
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modalImg");
+
+        modal.style.display = "flex";
+        modalImg.src = src;
+
+        if(modal.requestFullscreen){
+            modal.requestFullscreen();
+        }
+    }
+
+    /* DISMISS SCREEN VIEW LAYER */
+    function closeModal(){
+        const modal = document.getElementById("modal");
+        modal.style.display = "none";
+
+        if(document.fullscreenElement){
+            document.exitFullscreen();
+        }
+    }
+
+    /* KEYBOARD DISMISS TRACKER */
+    document.addEventListener("keydown", function(e){
+        if(e.key === "Escape"){
+            closeModal();
+        }
+    });
+    </script>
+
+</body>
+</html>
