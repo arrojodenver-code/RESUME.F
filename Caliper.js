@@ -1,8 +1,8 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+import * as THREE from 'three';
 
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 
 // ======================
@@ -38,8 +38,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-renderer.setPixelRatio(window.devicePixelRatio);
-
+// Better colors and lighting
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
 renderer.toneMappingExposure = 1.3;
@@ -53,6 +52,7 @@ document.body.appendChild(renderer.domElement);
 // LIGHTING
 // ======================
 
+// Ambient light
 const ambientLight = new THREE.AmbientLight(
     0xffffff,
     0.6
@@ -61,7 +61,7 @@ const ambientLight = new THREE.AmbientLight(
 scene.add(ambientLight);
 
 
-// Front Light
+// Main front light
 const frontLight = new THREE.DirectionalLight(
     0xffffff,
     3
@@ -72,7 +72,7 @@ frontLight.position.set(5, 6, 8);
 scene.add(frontLight);
 
 
-// Side Light
+// Side detail light
 const sideLight = new THREE.DirectionalLight(
     0xffffff,
     2
@@ -83,7 +83,7 @@ sideLight.position.set(-5, 3, 2);
 scene.add(sideLight);
 
 
-// Rim Light
+// Rim light
 const rimLight = new THREE.DirectionalLight(
     0xff4444,
     1.5
@@ -144,27 +144,22 @@ loader.load(
 
         scene.add(model);
 
-        // ======================
-        // CENTER MODEL
-        // ======================
-
+        // Get model size
         const box = new THREE.Box3().setFromObject(model);
 
         const size = box.getSize(new THREE.Vector3());
 
         const center = box.getCenter(new THREE.Vector3());
 
+        // Center model
         model.position.x -= center.x;
 
         model.position.z -= center.z;
 
+        // Put model on grid
         model.position.y -= box.min.y;
 
-
-        // ======================
-        // SCALE MODEL
-        // ======================
-
+        // Auto scale
         const maxSize = Math.max(
             size.x,
             size.y,
@@ -176,25 +171,16 @@ loader.load(
         model.scale.setScalar(scale);
 
 
-        // ======================
-        // MATERIALS
-        // ======================
-
+        // Improve materials
         model.traverse((child) => {
 
             if (child.isMesh) {
-
-                child.castShadow = true;
-
-                child.receiveShadow = true;
 
                 if (child.material) {
 
                     child.material.metalness = 0.9;
 
                     child.material.roughness = 0.25;
-
-                    child.material.needsUpdate = true;
 
                 }
 
@@ -206,17 +192,11 @@ loader.load(
 
     },
 
-    function(xhr){
-
-        console.log(
-            (xhr.loaded / xhr.total * 100) + '% loaded'
-        );
-
-    },
+    undefined,
 
     function(error){
 
-        console.error('MODEL ERROR:', error);
+        console.error(error);
 
     }
 
@@ -224,7 +204,7 @@ loader.load(
 
 
 // ======================
-// ANIMATION
+// ANIMATE
 // ======================
 
 function animate(){
