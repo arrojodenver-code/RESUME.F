@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>3D Viewer</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    background:#111;
+}
+
+/* 3D canvas */
+canvas{
+    display:block;
+}
+
+/* BACK BUTTON */
+.back-btn{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    backdrop-filter: blur(8px);
+    transition: 0.2s ease;
+}
+
+.back-btn:hover{
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.05);
+}
+</style>
+
+<!-- IMPORT MAP -->
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+    }
+}
+</script>
+
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+<button class="back-btn" onclick="history.back()">← Back</button>
+
+<script type="module" src="Swingarm.js"></script>
+
+</body>
+</html>
