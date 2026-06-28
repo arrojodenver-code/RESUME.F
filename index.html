@@ -1,1062 +1,2019 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
 
 <title>John Denver Arrojo • Portfolio Resume</title> 
 
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+
 
 <style>
 
+
+
 :root{
+
     --bg-dark:#07070c;
+
     --panel-glass:rgba(13,13,25,0.45);
+
     --border-glass:rgba(255,255,255,0.07);
+
     --accent-1:#d444f1;
+
     --accent-2:#00f5d4;
+
     --text-main:#f8fafc;
+
     --text-muted:#94a3b8;
+
 }
+
+
 
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
 }
+
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
+
+
 
 body{
+
     font-family:'Plus Jakarta Sans',sans-serif;
+
     background-color:var(--bg-dark);
+
     background-image:
+
         radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
+
         radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
+
         radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
+
     min-height:100vh;
+
     color:var(--text-main);
+
     overflow-x:hidden;
+
     padding:30px 18px;
+
 }
+
+
 
 .art-blob{
+
     position:fixed;
+
     border-radius:50%;
+
     filter:blur(140px);
+
     z-index:-1;
+
     opacity:0.25;
+
     mix-blend-mode:screen;
+
     animation:float 12s infinite alternate ease-in-out;
+
 }
+
+
 
 .blob-1{
+
     top:20%;
+
     left:-10%;
+
     width:500px;
+
     height:500px;
+
     background:var(--accent-1);
+
 }
+
+
 
 .blob-2{
+
     bottom:10%;
+
     right:-10%;
+
     width:600px;
+
     height:600px;
+
     background:var(--accent-2);
+
     animation-delay:-4s;
+
 }
+
+
 
 @keyframes float{
+
     0%{
+
         transform:translateY(0px) scale(1);
+
     }
+
     100%{
+
         transform:translateY(40px) scale(1.1);
+
     }
+
 }
+
+
 
 .resume-container{
+
     width:100%;
+
     max-width:1150px;
+
     margin:auto;
+
     display:flex;
+
     flex-direction:column;
+
     gap:28px;
+
 }
+
+
 
 .glass-panel{
+
     background:var(--panel-glass);
+
     backdrop-filter:blur(20px);
+
     -webkit-backdrop-filter:blur(20px);
+
     border:1px solid var(--border-glass);
+
     border-radius:24px;
+
     box-shadow:0 20px 50px rgba(0,0,0,0.35);
+
     position:relative;
+
     overflow:hidden;
+
 }
+
+
 
 .glass-panel::before{
+
     content:'';
+
     position:absolute;
+
     top:0;
+
     left:-100%;
+
     width:50%;
+
     height:100%;
+
     background:linear-gradient(
+
         90deg,
+
         transparent,
+
         rgba(255,255,255,0.03),
+
         transparent
+
     );
+
     transform:skewX(-25deg);
+
     transition:0.75s;
+
 }
+
+
 
 .glass-panel:hover::before{
+
     left:125%;
+
 }
 
+
+
 h1,h2,h3,.card-title{
+
     font-family:'Space Grotesk',sans-serif;
+
     letter-spacing:-0.03em;
+
 }
+
+
 
 /* HERO */
 
+
+
 .hero-grid{
+
     display:grid;
+
     grid-template-columns:1.15fr 0.75fr;
+
     gap:26px;
+
     align-items:stretch;
+
 }
+
+
 
 .hero-main{
+
     padding:45px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
+
 }
+
+
 
 .hero-badge{
+
     display:inline-flex;
+
     align-items:center;
+
     align-self:flex-start;
+
     gap:8px;
+
     padding:8px 16px;
+
     border-radius:100px;
+
     background:rgba(212,68,241,0.15);
+
     border:1px solid rgba(212,68,241,0.3);
+
     font-size:12px;
+
     font-weight:600;
+
     letter-spacing:0.05em;
+
     text-transform:uppercase;
+
     color:#f4bfff;
+
     margin-bottom:18px;
+
 }
+
+
 
 .hero-main h1{
+
     font-size:58px;
+
     line-height:0.95;
+
     font-weight:700;
+
     margin-bottom:20px;
+
 }
+
+
 
 .hero-main h1 span{
+
     background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+
     -webkit-background-clip:text;
+
     -webkit-text-fill-color:transparent;
+
 }
+
+
 
 .hero-main p{
+
     color:var(--text-muted);
+
     line-height:1.7;
+
     font-size:15px;
+
     margin-bottom:28px;
+
     max-width:580px;
+
 }
+
+
 
 .cta-group{
+
     display:flex;
+
     gap:14px;
+
     flex-wrap:wrap;
+
 }
+
+
 
 .btn{
+
     text-decoration:none;
+
     padding:14px 24px;
+
     border-radius:14px;
+
     font-weight:600;
+
     font-size:14px;
+
     transition:0.3s ease;
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
+
 }
+
+
 
 .btn-primary{
+
     background:var(--text-main);
+
     color:var(--bg-dark);
+
 }
+
+
 
 .btn-primary:hover{
+
     transform:translateY(-3px);
+
     background:var(--accent-2);
+
 }
+
+
 
 .btn-secondary{
+
     background:rgba(255,255,255,0.05);
+
     color:var(--text-main);
+
     border:1px solid var(--border-glass);
+
 }
 
+
+
 .btn-secondary:hover{
+
     transform:translateY(-3px);
+
     background:rgba(255,255,255,0.1);
+
 }
+
+
 
 /* HERO CARD */
 
+
+
 .hero-card{
+
     padding:26px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:space-between;
+
     background:linear-gradient(
+
         180deg,
+
         rgba(255,255,255,0.05) 0%,
+
         rgba(255,255,255,0.01) 100%
+
     );
+
 }
+
+
 
 .image-placeholder{
+
     width:100%;
+
     height:420px;
+
     border-radius:20px;
+
     overflow:hidden;
+
     margin-bottom:20px;
+
     border:1px solid rgba(255,255,255,0.08);
+
     background:#101018;
+
 }
+
+
 
 .profile-image{
+
     width:100%;
+
     height:100%;
+
     object-fit:cover;
+
     object-position:center top;
+
     display:block;
+
 }
+
+
 
 .card-title{
+
     font-size:24px;
+
     font-weight:700;
+
     margin-bottom:4px;
+
     background:linear-gradient(90deg,#fff,var(--text-muted));
+
     -webkit-background-clip:text;
+
     -webkit-text-fill-color:transparent;
+
 }
+
+
 
 .card-sub{
+
     color:var(--accent-2);
+
     font-size:13px;
+
     font-weight:500;
+
     text-transform:uppercase;
+
     letter-spacing:0.1em;
+
     margin-bottom:24px;
+
 }
+
+
 
 .stat-grid{
+
     display:grid;
+
     grid-template-columns:1fr 1fr;
+
     gap:14px;
+
 }
+
+
 
 .stat-box{
+
     padding:18px;
+
     border-radius:16px;
+
     background:rgba(255,255,255,0.03);
+
     border:1px solid rgba(255,255,255,0.05);
+
 }
+
+
 
 .stat-box h3{
+
     font-size:28px;
+
     margin-bottom:4px;
+
 }
 
+
+
 .stat-box p{
+
     color:var(--text-muted);
+
     font-size:11px;
+
     text-transform:uppercase;
+
 }
+
+
 
 /* MAIN LAYOUT */
 
+
+
 .main-layout{
+
     display:grid;
+
     grid-template-columns:1.15fr 0.85fr;
+
     gap:28px;
+
 }
+
+
 
 .asymmetrical-column{
+
     display:flex;
+
     flex-direction:column;
+
     gap:28px;
+
 }
+
+
 
 .section-padding{
+
     padding:38px;
+
 }
+
+
 
 .section-title{
+
     font-size:28px;
+
     font-weight:700;
+
     margin-bottom:24px;
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
 }
+
+
 
 .section-title::before{
+
     content:'';
+
     width:8px;
+
     height:24px;
+
     border-radius:4px;
+
     background:linear-gradient(
+
         to bottom,
+
         var(--accent-1),
+
         var(--accent-2)
+
     );
+
 }
 
+
+
 .about-text{
+
     font-size:15px;
+
     line-height:1.9;
+
     color:#cbd5e1;
+
 }
+
+
 
 /* INFO */
 
+
+
 .info-grid{
+
     display:flex;
+
     flex-direction:column;
+
     gap:14px;
+
 }
+
+
 
 .info-card{
+
     padding:20px;
+
     border-radius:16px;
+
     background:rgba(255,255,255,0.02);
+
     border:1px solid rgba(255,255,255,0.04);
+
     display:flex;
+
     flex-direction:column;
+
     gap:6px;
+
 }
+
+
 
 .info-card label{
+
     font-size:11px;
+
     text-transform:uppercase;
+
     color:var(--text-muted);
+
     letter-spacing:0.05em;
+
 }
 
+
+
 .info-card span{
+
     font-size:15px;
+
     font-weight:500;
+
 }
+
+
 
 /* SKILLS */
 
+
+
 .skills-container{
+
     display:flex;
+
     flex-direction:column;
+
     gap:22px;
+
 }
+
+
 
 .skill-item{
+
     display:flex;
+
     flex-direction:column;
+
     gap:8px;
+
 }
+
+
 
 .skill-info{
+
     display:flex;
+
     justify-content:space-between;
+
     font-size:14px;
+
     font-weight:500;
+
 }
+
+
 
 .skill-track{
+
     height:6px;
+
     width:100%;
+
     background:rgba(255,255,255,0.08);
+
     border-radius:20px;
+
     overflow:hidden;
+
 }
 
+
+
 .skill-progress{
+
     height:100%;
+
     border-radius:20px;
+
     background:linear-gradient(
+
         90deg,
+
         var(--accent-1),
+
         var(--accent-2)
+
     );
+
 }
+
+
 
 /* TIMELINE */
 
+
+
 .timeline-container{
+
     display:flex;
+
     flex-direction:column;
+
     gap:28px;
+
     position:relative;
+
 }
+
+
 
 .timeline-container::before{
+
     content:'';
+
     position:absolute;
+
     left:8px;
+
     top:0;
+
     width:1px;
+
     height:100%;
+
     background:linear-gradient(
+
         to bottom,
+
         var(--accent-1),
+
         var(--accent-2),
+
         transparent
+
     );
+
 }
+
+
 
 .timeline-node{
+
     position:relative;
+
     padding-left:38px;
+
 }
+
+
 
 .timeline-node::before{
+
     content:'';
+
     position:absolute;
+
     left:4px;
+
     top:8px;
+
     width:9px;
+
     height:9px;
+
     border-radius:50%;
+
     background:var(--accent-2);
+
     box-shadow:0 0 10px var(--accent-2);
+
 }
+
+
 
 .node-header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:flex-start;
+
     flex-wrap:wrap;
+
     gap:8px;
+
     margin-bottom:6px;
+
 }
+
+
 
 .node-title{
+
     font-size:20px;
+
     font-weight:600;
+
 }
+
+
 
 .node-date{
+
     font-size:12px;
+
     color:var(--text-muted);
+
     background:rgba(255,255,255,0.05);
+
     padding:4px 12px;
+
     border-radius:30px;
+
     border:1px solid var(--border-glass);
+
 }
+
+
 
 .node-sub{
+
     color:var(--accent-1);
+
     font-size:13px;
+
     font-weight:500;
+
     margin-bottom:14px;
+
     text-transform:uppercase;
+
     letter-spacing:0.05em;
+
 }
+
+
 
 .timeline-node ul{
+
     list-style:none;
+
     display:flex;
+
     flex-direction:column;
+
     gap:10px;
+
 }
+
+
 
 .timeline-node li{
+
     color:var(--text-muted);
+
     line-height:1.7;
+
     font-size:14px;
+
     position:relative;
+
     padding-left:15px;
+
 }
 
+
+
 .timeline-node li::before{
+
     content:'→';
+
     position:absolute;
+
     left:0;
+
     color:var(--accent-2);
+
 }
+
+
 
 /* EDUCATION */
 
+
+
 .edu-stack{
+
     display:flex;
+
     flex-direction:column;
+
     gap:18px;
+
 }
+
+
 
 .edu-node{
+
     padding:24px;
+
     border-radius:18px;
+
     background:rgba(255,255,255,0.02);
+
     border:1px solid rgba(255,255,255,0.04);
+
 }
+
+
 
 .edu-node h3{
+
     font-size:18px;
+
     margin-bottom:8px;
+
 }
+
+
 
 .edu-node p{
+
     font-size:14px;
+
     color:var(--text-muted);
+
     line-height:1.6;
+
 }
 
+
+
 .edu-meta{
+
     margin-top:10px;
+
     font-size:12px;
+
     color:var(--accent-2);
+
     font-weight:500;
+
 }
+
+
 
 /* FOOTER */
 
+
+
 .footer{
+
     text-align:center;
+
     padding:30px 0 10px;
+
     color:var(--text-muted);
+
     font-size:12px;
+
     letter-spacing:0.05em;
+
     text-transform:uppercase;
+
 }
+
+
 
 /* RESPONSIVE */
 
+
+
 .mobile-profile-wrapper{
+
     display:none;
+
 }
+
+
 
 @media(max-width:1024px){
 
+
+
     .hero-grid,
+
     .main-layout{
+
         grid-template-columns:1fr;
+
     }
+
+
 
     .hero-main{
+
         padding:35px;
+
     }
+
+
 
     .hero-main h1{
+
         font-size:50px;
+
     }
 
+
+
     .image-placeholder{
+
         height:420px;
+
     }
+
 }
+
+
 
 @media(max-width:768px){
 
+
+
     body{
+
         padding:18px 12px;
+
     }
+
+
 
     .desktop-hero-card{
+
         display:none;
+
     }
+
+
 
     .mobile-profile-wrapper{
+
         display:block;
+
         margin-bottom:18px;
+
     }
+
+
 
     .mobile-hero-card{
+
         padding:28px 20px;
+
         text-align:center;
+
         display:flex;
+
         flex-direction:column;
+
         align-items:center;
+
         justify-content:center;
+
     }
+
+
 
     .hero-grid{
+
         grid-template-columns:1fr;
+
         gap:18px;
+
     }
+
+
 
     .hero-main{
+
         padding:28px 20px;
+
     }
+
+
 
     .hero-main h1{
+
         font-size:40px;
+
         line-height:0.95;
+
         margin-bottom:18px;
+
     }
+
+
 
     .hero-main p{
+
         font-size:14px;
+
         line-height:1.7;
+
     }
 
+
+
     .section-padding{
+
         padding:28px 20px;
+
     }
+
+
 
     /* FIXED PROFILE IMAGE */
 
+
+
     .image-placeholder{
+
         width:180px;
+
         height:180px;
+
         margin:0 auto 20px auto;
+
         border-radius:26px;
+
         overflow:hidden;
+
         background:#101018;
+
         border:1px solid rgba(255,255,255,0.08);
 
+
+
         display:flex;
+
         align-items:center;
+
         justify-content:center;
 
+
+
         box-shadow:
+
             0 10px 30px rgba(0,0,0,0.25),
+
             0 0 0 1px rgba(255,255,255,0.03);
+
     }
+
+
 
     .profile-image{
+
         width:100%;
+
         height:100%;
+
         object-fit:cover;
+
         object-position:center top;
+
         display:block;
+
         transform:none;
+
     }
+
+
 
     .card-title{
+
         font-size:18px;
+
         text-align:center;
+
         margin-bottom:6px;
+
         font-weight:700;
+
     }
+
+
 
     .card-sub{
+
         text-align:center;
+
         font-size:11px;
+
         margin-bottom:22px;
+
         letter-spacing:0.14em;
+
     }
+
+
 
     .stat-grid{
+
         width:100%;
+
         display:grid;
+
         grid-template-columns:1fr 1fr;
+
         gap:14px;
+
         margin-top:4px;
+
     }
+
+
 
     .stat-box{
+
         padding:18px 14px;
+
         border-radius:18px;
+
         text-align:left;
+
     }
+
+
 
     .stat-box h3{
+
         font-size:24px;
+
         margin-bottom:4px;
+
     }
+
+
 
     .stat-box p{
+
         font-size:10px;
+
     }
+
+
 
     .node-header{
+
         flex-direction:column;
+
         align-items:flex-start;
+
     }
+
+
 
     .cta-group{
+
         width:100%;
+
         flex-direction:column;
+
     }
+
+
 
     .btn{
+
         width:100%;
+
     }
+
 }
 
+
+
 </style>
+
 </head>
+
+
 
 <body>
 
+
+
 <div class="art-blob blob-1"></div>
+
 <div class="art-blob blob-2"></div>
+
+
 
 <div class="resume-container">
 
+
+
 <header class="glass-panel">
+
+
 
 <div class="mobile-profile-wrapper">
 
+
+
 <div class="hero-card mobile-hero-card">
 
+
+
 <div class="image-placeholder">
+
 <img src="profile.jpg" alt="Profile Image" class="profile-image">
+
 </div>
 
+
+
 <div>
+
 <div class="card-title">UI/UX • Designer</div>
+
 <div class="card-sub">Creative Technologist</div>
+
 </div>
+
+
 
 <div class="stat-grid">
 
+
+
 <div class="stat-box">
+
 <h3>4+</h3>
+
 <p>Years Exp</p>
+
 </div>
+
+
 
 <div class="stat-box">
+
 <h3>50+</h3>
+
 <p>Projects</p>
-</div>
 
 </div>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 <div class="hero-grid">
 
+
+
 <div class="hero-main">
 
+
+
 <div class="hero-badge">
+
 ✦ Graphic Designer, UI/UX Architect & Creative Technologist
+
 </div>
 
+
+
 <h1>
+
 John Denver <br>
+
 <span>Arrojo</span>
+
 </h1>
 
+
+
 <p>
+
 Information Technology graduate with experience in UI/UX design, graphic design, web development, mobile applications, and IT technical support. Focused on building responsive digital experiences with clean interfaces, strong visual presentation, and functional user-centered design.
+
 </p>
+
+
 
 <div class="cta-group">
 
+
+
 <a href="https://www.facebook.com/dnvrarrj/" target="_blank" class="btn btn-primary">
+
 Facebook Profile
+
 </a>
 
-<a href="#ux-design" class="btn btn-secondary">
-UI/UX Design
+
+
+<a href="portfolio.html" class="btn btn-secondary">
+
+View Creative Portfolio
+
 </a>
 
-<a href="#creative-graphics" class="btn btn-secondary">
-Creative Graphics
-</a>
 
-<a href="#3d-models" class="btn btn-secondary">
-3D Models
-</a>
-
-<a href="#sample-apps" class="btn btn-secondary">
-Sample Apps
-</a>
 
 <a href="Arrojo_Resume.pdf" download class="btn btn-secondary">
+
 Download Resume PDF
+
 </a>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 <div class="hero-card desktop-hero-card">
 
+
+
 <div class="image-placeholder">
+
 <img src="profile.jpg" alt="Profile Image" class="profile-image">
+
 </div>
 
+
+
 <div>
+
 <div class="card-title">UI/UX • Designer</div>
+
 <div class="card-sub">Creative Technologist</div>
+
 </div>
+
+
 
 <div class="stat-grid">
 
+
+
 <div class="stat-box">
+
 <h3>4+</h3>
+
 <p>Years Exp</p>
+
 </div>
+
+
 
 <div class="stat-box">
+
 <h3>50+</h3>
+
 <p>Projects</p>
-</div>
 
 </div>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
 
 </header>
 
+
+
 <main class="main-layout">
+
+
 
 <div class="asymmetrical-column">
 
+
+
 <section class="glass-panel section-padding">
+
+
 
 <h2 class="section-title">Relevant Experience</h2>
 
+
+
 <div class="timeline-container">
+
+
 
 <div class="timeline-node">
 
+
+
 <div class="node-header">
+
 <div class="node-title">Magellan Solutions</div>
+
 <div class="node-date">OJT 2026</div>
+
 </div>
+
+
 
 <div class="node-sub">IT Support Specialist</div>
 
+
+
 <ul>
+
 <li>Performed computer maintenance, system troubleshooting, and software updates.</li>
+
 <li>Assisted in server maintenance, monitoring, and network-related tasks.</li>
+
 <li>Managed database-related tasks and basic SQL operations for system support.</li>
+
 </ul>
 
+
+
 </div>
+
+
 
 <div class="timeline-node">
 
+
+
 <div class="node-header">
+
 <div class="node-title">Tecno</div>
+
 <div class="node-date">March 2025 – Nov 2025</div>
+
 </div>
+
+
 
 <div class="node-sub">Tech Mobile Promoter</div>
 
+
+
 <ul>
+
 <li>Promoted and demonstrated smartphones to customers.</li>
+
 <li>Assisted customers based on preferences and technical needs.</li>
+
 </ul>
 
+
+
 </div>
+
+
 
 <div class="timeline-node">
 
+
+
 <div class="node-header">
+
 <div class="node-title">Café de Meli</div>
+
 <div class="node-date">Ongoing</div>
+
 </div>
+
+
 
 <div class="node-sub">Graphic Designer</div>
 
+
+
 <ul>
+
 <li>Designed menus, posters, and social media graphics.</li>
+
 <li>Maintained consistent visual branding identity.</li>
+
 </ul>
 
+
+
 </div>
+
+
 
 <div class="timeline-node">
 
+
+
 <div class="node-header">
+
 <div class="node-title">Kuya's Hotpot KTV Bar</div>
+
 <div class="node-date">2022 – 2024</div>
 
+
+
 </div>
+
+
 
 <div class="node-sub">Co-HR & Graphic Designer</div>
 
+
+
 <ul>
+
 <li>Handled staff coordination and HR support.</li>
+
 <li>Created event marketing visuals and layouts.</li>
+
 </ul>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 </section>
 
+
+
 <section class="glass-panel section-padding">
+
+
 
 <h2 class="section-title">Education</h2>
 
+
+
 <div class="edu-stack">
 
+
+
 <div class="edu-node">
+
 <h3>STI College Caloocan</h3>
+
 <p>Bachelor of Science in Information Technology</p>
+
 <div class="edu-meta">2022 – 2026</div>
+
 </div>
 
+
+
 <div class="edu-node">
+
 <h3>University of the East Caloocan</h3>
+
 <p>Senior High School – Visual Arts Track</p>
+
 <div class="edu-meta">2019 – 2022</div>
+
 </div>
+
+
 
 <div class="edu-node">
+
 <h3>Probex Inc.</h3>
+
 <p>Junior High School Curriculum</p>
+
 <div class="edu-meta">2015 – 2019</div>
-</div>
 
 </div>
+
+
+
+</div>
+
+
 
 </section>
 
+
+
 </div>
+
+
 
 <div class="asymmetrical-column">
 
+
+
 <section class="glass-panel section-padding">
+
+
 
 <h2 class="section-title">About Me</h2>
 
+
+
 <p class="about-text">
+
 Creative and detail-oriented Information Technology graduate skilled in UI/UX design, graphic design, front-end and back-end web development, mobile application development, and IT support. Experienced in creating responsive interfaces, managing digital branding assets, troubleshooting technical systems, and developing modern user-focused experiences across web and mobile platforms.
+
 </p>
+
 </section>
 
+
+
 <section class="glass-panel section-padding">
+
+
 
 <h2 class="section-title">Channels</h2>
 
+
+
 <div class="info-grid">
 
+
+
 <div class="info-card">
+
 <label>Email Address</label>
+
 <span>arrojodenver@gmail.com</span>
+
 </div>
 
+
+
 <div class="info-card">
+
 <label>Mobile Contact</label>
+
 <span>(+63) 956 311 8160</span>
+
 </div>
+
+
 
 <div class="info-card">
+
 <label>Address</label>
+
 <span>Malabon City, Philippines</span>
-</div>
 
 </div>
+
+
+
+</div>
+
+
 
 </section>
+
+
 
 <section class="glass-panel section-padding">
 
+
+
 <h2 class="section-title">Skills</h2>
+
+
 
 <div class="skills-container">
 
+
+
 <div class="skill-item">
+
 <div class="skill-info"><span>Graphic Design</span><span>95%</span></div>
+
 <div class="skill-track"><div class="skill-progress" style="width:95%"></div></div>
+
 </div>
 
+
+
 <div class="skill-item">
+
 <div class="skill-info"><span>Adobe Photoshop</span><span>92%</span></div>
+
 <div class="skill-track"><div class="skill-progress" style="width:92%"></div></div>
+
 </div>
 
+
+
 <div class="skill-item">
+
 <div class="skill-info"><span>UI/UX Architecture</span><span>88%</span></div>
+
 <div class="skill-track"><div class="skill-progress" style="width:88%"></div></div>
+
 </div>
 
+
+
 <div class="skill-item">
+
 <div class="skill-info"><span>IT Technical Support</span><span>90%</span></div>
+
 <div class="skill-track"><div class="skill-progress" style="width:90%"></div></div>
+
 </div>
 
+
+
 <div class="skill-item">
+
 <div class="skill-info"><span>C# Scripting / Unity</span><span>97%</span></div>
+
 <div class="skill-track"><div class="skill-progress" style="width:97%"></div></div>
+
 </div>
+
+
 
 <div class="skill-item">
+
 <div class="skill-info"><span>Client Relations</span><span>93%</span></div>
+
 <div class="skill-track"><div class="skill-progress" style="width:93%"></div></div>
-</div>
 
 </div>
+
+
+
+</div>
+
+
 
 </section>
 
+
+
 </div>
+
+
 
 </main>
 
-<section id="ux-design" class="glass-panel section-padding">
 
-<h2 class="section-title">UI/UX Design</h2>
-
-<p class="about-text">
-Modern interface designs focused on clean layouts, responsive experiences, usability, visual hierarchy, and interactive user-centered solutions for mobile and web platforms.
-</p>
-
-</section>
-
-<section id="creative-graphics" class="glass-panel section-padding">
-
-<h2 class="section-title">Creative Graphics</h2>
-
-<p class="about-text">
-Branding materials, promotional posters, social media graphics, menu layouts, digital advertisements, and artistic visual compositions designed with strong visual identity.
-</p>
-
-</section>
-
-<section id="3d-models" class="glass-panel section-padding">
-
-<h2 class="section-title">3D Models</h2>
-
-<p class="about-text">
-3D product visualization, environment concepts, motorcycle aftermarket customization previews, and interactive real-time rendering projects created for digital showcase experiences.
-</p>
-
-</section>
-
-<section id="sample-apps" class="glass-panel section-padding">
-
-<h2 class="section-title">Sample Applications</h2>
-
-<p class="about-text">
-Cross-platform mobile and web applications including UI prototypes, Unity projects, AR concepts, interactive systems, and responsive application interfaces.
-</p>
-
-</section>
 
 <footer class="footer">
+
 © 2026 John Denver Arrojo • Resume & Portfolio. All rights reserved.
+
 </footer>
+
+
 
 </div>
 
+
+
 </body>
+
 </html>
