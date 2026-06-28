@@ -548,6 +548,10 @@ h1,h2,h3,.card-title{
 
 /* RESPONSIVE */
 
+.mobile-profile-wrapper{
+    display:none;
+}
+
 @media(max-width:1024px){
 
     .hero-grid,
@@ -574,6 +578,19 @@ h1,h2,h3,.card-title{
         padding:18px 12px;
     }
 
+    .desktop-hero-card{
+        display:none;
+    }
+
+    .mobile-profile-wrapper{
+        display:block;
+    }
+
+    .mobile-hero-card{
+        padding:18px;
+        margin-bottom:18px;
+    }
+
     .hero-grid{
         grid-template-columns:1fr;
         gap:18px;
@@ -581,12 +598,6 @@ h1,h2,h3,.card-title{
 
     .hero-main{
         padding:28px 20px;
-        order:2;
-    }
-
-    .hero-card{
-        order:1;
-        padding:18px;
     }
 
     .hero-main h1{
@@ -604,8 +615,8 @@ h1,h2,h3,.card-title{
     }
 
     .image-placeholder{
-        width:220px;
-        height:220px;
+        width:100%;
+        height:300px;
         margin:0 auto 20px auto;
         border-radius:24px;
         overflow:hidden;
@@ -658,7 +669,40 @@ h1,h2,h3,.card-title{
 
 <div class="resume-container">
 
-<header class="glass-panel hero-grid">
+<header class="glass-panel">
+
+<div class="mobile-profile-wrapper">
+
+<div class="hero-card mobile-hero-card">
+
+<div class="image-placeholder">
+<img src="profile.jpg" alt="Profile Image" class="profile-image">
+</div>
+
+<div>
+<div class="card-title">UI/UX • Designer</div>
+<div class="card-sub">Creative Technologist</div>
+</div>
+
+<div class="stat-grid">
+
+<div class="stat-box">
+<h3>4+</h3>
+<p>Years Exp</p>
+</div>
+
+<div class="stat-box">
+<h3>50+</h3>
+<p>Projects</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-grid">
 
 <div class="hero-main">
 
@@ -687,7 +731,7 @@ View Creative Portfolio
 
 </div>
 
-<div class="hero-card">
+<div class="hero-card desktop-hero-card">
 
 <div class="image-placeholder">
 <img src="profile.jpg" alt="Profile Image" class="profile-image">
@@ -708,6 +752,8 @@ View Creative Portfolio
 <div class="stat-box">
 <h3>50+</h3>
 <p>Projects</p>
+</div>
+
 </div>
 
 </div>
