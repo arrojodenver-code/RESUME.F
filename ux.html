@@ -92,8 +92,8 @@
         }
 
         .brand-logo {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             border-radius: 10px;
             display: flex;
@@ -144,37 +144,57 @@
             color: var(--text-main);
         }
 
-        .nav-link .arrow {
-            font-size: 10px;
-            opacity: 0.7;
-        }
-
         .nav-link.active-page {
             color: var(--accent-2);
-            cursor: default;
-            pointer-events: none;
-            opacity: 0.8;
+            font-weight: 600;
         }
 
-        .nav-link.active-page .arrow {
-            display: none;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .social-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
 
         .btn-nav-cta {
-            background: linear-gradient(135deg, #e5a93c, #cca028);
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             color: #0d0d19;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 13px;
             text-decoration: none;
             transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
+            box-shadow: 0 4px 15px rgba(212, 68, 241, 0.25);
         }
 
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
+            box-shadow: 0 6px 20px rgba(0, 245, 212, 0.35);
         }
 
         /* Glass Foundations */
@@ -513,14 +533,21 @@
                 </a>
 
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Resume</a></li>
-                    <li><a href="ux.html" class="nav-link active-page">UX Design <span class="arrow">▾</span></a></li>
+                    <li><a href="about.html" class="nav-link active-page">About</a></li>
+                    <li><a href="ux.html" class="nav-link">UX Design</a></li>
                     <li><a href="gd.html" class="nav-link">Graphic Design</a></li>
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
                 </ul>
 
-                <a href="contact.html" class="btn-nav-cta">Let's Get Started</a>
+                <div class="nav-actions">
+                    <a href="https://facebook.com" target="_blank" class="social-btn" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="cv.pdf" download class="btn-nav-cta">Download CV</a>
+                </div>
             </nav>
         </div>
 
