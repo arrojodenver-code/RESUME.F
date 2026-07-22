@@ -175,33 +175,6 @@ body{
     gap: 12px;
 }
 
-.btn-social-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-glass);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-main);
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.btn-social-icon:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: var(--accent-2);
-    border-color: rgba(0, 245, 212, 0.4);
-    transform: translateY(-2px);
-}
-
-.btn-social-icon svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-}
-
 .btn-nav-cta {
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     color: var(--bg-dark);
@@ -269,7 +242,7 @@ h1,h2,h3,.card-title{
 }
 
 .hero-main{
-    padding:45px;
+    padding:40px 45px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -289,12 +262,12 @@ h1,h2,h3,.card-title{
     letter-spacing:0.05em;
     text-transform:uppercase;
     color:#f4bfff;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .hero-main h1{
-    font-size:58px;
-    line-height:0.95;
+    font-size:56px;
+    line-height:1.05;
     font-weight:700;
     margin-bottom:20px;
 }
@@ -307,49 +280,10 @@ h1,h2,h3,.card-title{
 
 .hero-main p{
     color:var(--text-muted);
-    line-height:1.7;
+    line-height:1.75;
     font-size:15px;
-    margin-bottom:28px;
+    margin-bottom:0;
     max-width:580px;
-}
-
-.cta-group{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    text-decoration:none;
-    padding:14px 24px;
-    border-radius:14px;
-    font-weight:600;
-    font-size:14px;
-    transition:0.3s ease;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.btn-primary{
-    background:var(--text-main);
-    color:var(--bg-dark);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-    background:var(--accent-2);
-}
-
-.btn-secondary{
-    background:rgba(255,255,255,0.05);
-    color:var(--text-main);
-    border:1px solid var(--border-glass);
-}
-
-.btn-secondary:hover{
-    transform:translateY(-3px);
-    background:rgba(255,255,255,0.1);
 }
 
 /* HERO CARD */
@@ -368,10 +302,10 @@ h1,h2,h3,.card-title{
 
 .image-placeholder{
     width:100%;
-    height:380px;
+    height:340px;
     border-radius:20px;
     overflow:hidden;
-    margin-bottom:20px;
+    margin-bottom:16px;
     border:1px solid rgba(255,255,255,0.08);
     background:#101018;
 }
@@ -385,7 +319,7 @@ h1,h2,h3,.card-title{
 }
 
 .card-title{
-    font-size:24px;
+    font-size:22px;
     font-weight:700;
     margin-bottom:4px;
     background:linear-gradient(90deg,#fff,var(--text-muted));
@@ -395,11 +329,11 @@ h1,h2,h3,.card-title{
 
 .card-sub{
     color:var(--accent-2);
-    font-size:13px;
+    font-size:12px;
     font-weight:500;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    margin-bottom:24px;
+    margin-bottom:18px;
 }
 
 .stat-grid{
@@ -409,14 +343,14 @@ h1,h2,h3,.card-title{
 }
 
 .stat-box{
-    padding:18px;
+    padding:16px;
     border-radius:16px;
     background:rgba(255,255,255,0.03);
     border:1px solid rgba(255,255,255,0.05);
 }
 
 .stat-box h3{
-    font-size:28px;
+    font-size:26px;
     margin-bottom:4px;
 }
 
@@ -706,11 +640,11 @@ h1,h2,h3,.card-title{
     }
 
     .hero-main h1{
-        font-size:50px;
+        font-size:48px;
     }
 
     .image-placeholder{
-        height:420px;
+        height:380px;
     }
 }
 
@@ -753,9 +687,9 @@ h1,h2,h3,.card-title{
     }
 
     .hero-main h1{
-        font-size:40px;
-        line-height:0.95;
-        margin-bottom:18px;
+        font-size:38px;
+        line-height:1.05;
+        margin-bottom:16px;
     }
 
     .hero-main p{
@@ -833,15 +767,6 @@ h1,h2,h3,.card-title{
         flex-direction:column;
         align-items:flex-start;
     }
-
-    .cta-group{
-        width:100%;
-        flex-direction:column;
-    }
-
-    .btn{
-        width:100%;
-    }
 }
 
 </style>
@@ -874,11 +799,6 @@ h1,h2,h3,.card-title{
             </ul>
 
             <div class="nav-actions">
-                <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
                 <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
             </div>
         </nav>
@@ -925,12 +845,6 @@ h1,h2,h3,.card-title{
                 <p>
                     Information Technology graduate with experience in UI/UX design, graphic design, web development, mobile applications, and IT technical support. Focused on building responsive digital experiences with clean interfaces, strong visual presentation, and functional user-centered design.
                 </p>
-
-                <div class="cta-group">
-                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" class="btn btn-primary">
-                        Facebook Profile
-                    </a>
-                </div>
             </div>
 
             <!-- DESKTOP HERO CARD -->
