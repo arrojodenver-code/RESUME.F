@@ -10,11 +10,11 @@
 
     <style>
         :root {
-            --bg-dark: #07070c;
-            --panel-glass: rgba(13, 13, 25, 0.45);
-            --border-glass: rgba(255, 255, 255, 0.07);
-            --accent-1: #d444f1; /* Vivid Amethyst */
-            --accent-2: #00f5d4; /* Cyber Teal */
+            --bg-dark: #05070e;
+            --panel-glass: rgba(10, 14, 29, 0.55);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --accent-1: #7928ca; /* Neon Violet */
+            --accent-2: #0070f3; /* Luminous Blue */
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -29,9 +29,9 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(at 0% 100%, rgba(212, 68, 241, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(0, 245, 212, 0.12) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 80%);
+                radial-gradient(at 0% 100%, rgba(121, 40, 202, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 112, 243, 0.18) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.5) 0px, transparent 80%);
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
@@ -44,7 +44,7 @@
             border-radius: 50%;
             filter: blur(140px);
             z-index: -1;
-            opacity: 0.25;
+            opacity: 0.3;
             mix-blend-mode: screen;
             animation: float 14s infinite alternate ease-in-out;
         }
@@ -72,9 +72,8 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             position: relative;
-            overflow: hidden;
         }
 
         /* NAVBAR STYLES */
@@ -89,6 +88,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 28px;
+            overflow: visible !important;
         }
 
         .nav-brand {
@@ -109,7 +109,7 @@
             justify-content: center;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            color: var(--bg-dark);
+            color: #ffffff;
             font-size: 16px;
         }
 
@@ -145,7 +145,8 @@
             transition: 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -154,9 +155,63 @@
 
         .nav-link.active-page {
             color: var(--accent-2);
-            cursor: default;
-            pointer-events: none;
-            opacity: 0.8;
+        }
+
+        /* NAV DROPDOWN STYLING */
+        .nav-item-dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 9px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-item-dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(10, 14, 29, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 8px;
+            min-width: 210px;
+            list-style: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1001;
+        }
+
+        .nav-item-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 10px;
+            transition: 0.2s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--accent-2);
         }
 
         .nav-actions {
@@ -189,20 +244,20 @@
         }
 
         .btn-nav-cta {
-            background: linear-gradient(135deg, #e5a93c, #cca028);
-            color: #0d0d19;
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+            color: #ffffff;
             padding: 10px 20px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 13px;
             text-decoration: none;
             transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 112, 243, 0.3);
         }
 
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
+            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.5);
         }
 
         /* STRUCTURAL HEADING PROFILES */
@@ -219,6 +274,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         .badge {
@@ -227,13 +283,13 @@
             gap: 8px;
             padding: 8px 16px;
             border-radius: 100px;
-            background: rgba(212, 68, 241, 0.1);
-            border: 1px solid rgba(212, 68, 241, 0.25);
+            background: rgba(0, 112, 243, 0.12);
+            border: 1px solid rgba(0, 112, 243, 0.3);
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: #fbcfff;
+            color: #b3d7ff;
             margin-bottom: 24px;
         }
 
@@ -336,7 +392,7 @@
         .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.3) 50%, transparent 100%);
+            background: linear-gradient(to top, rgba(5, 7, 14, 0.95) 0%, rgba(5, 7, 14, 0.3) 50%, transparent 100%);
             display: flex;
             align-items: flex-end;
             padding: 24px;
@@ -379,7 +435,7 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            background: rgba(4, 4, 8, 0.98);
+            background: rgba(3, 5, 11, 0.98);
             backdrop-filter: blur(20px);
             display: none;
             justify-content: center;
@@ -470,7 +526,20 @@
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Resume</a></li>
                     <li><a href="ux.html" class="nav-link">UX Design</a></li>
-                    <li><span class="nav-link active-page">Graphic Design</span></li>
+                    
+                    <!-- GRAPHIC DESIGN DROPDOWN ITEM -->
+                    <li class="nav-item-dropdown">
+                        <a href="graphic.html" class="nav-link active-page">
+                            Graphic Design <span class="dropdown-arrow">▼</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="graphic.html#manipulation">Photo Manipulation</a></li>
+                            <li><a href="graphic.html#social">Social Media Posts</a></li>
+                            <li><a href="graphic.html#branding">Branding & Logos</a></li>
+                            <li><a href="graphic.html#posters">Posters & Print</a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
                 </ul>
