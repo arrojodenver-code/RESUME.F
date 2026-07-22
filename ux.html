@@ -80,27 +80,6 @@
             overflow: hidden;
         }
 
-        .glass-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.03),
-                transparent
-            );
-            transform: skewX(-25deg);
-            transition: 0.75s;
-        }
-
-        .glass-panel:hover::before {
-            left: 125%;
-        }
-
         /* NAVBAR STYLES */
         .navbar-wrapper {
             position: sticky;
@@ -190,7 +169,7 @@
         }
 
         .nav-link.active-page .arrow {
-            display: none;
+            display: inline-block;
         }
 
         .btn-nav-cta {
@@ -322,7 +301,7 @@
 
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">Resume</a></li>
-                    <li><span class="nav-link active-page">UX Design</span></li>
+                    <li><span class="nav-link active-page">UX Design <span class="arrow">▾</span></span></li>
                     <li><a href="gd.html" class="nav-link">Graphic Design <span class="arrow">▾</span></a></li>
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
