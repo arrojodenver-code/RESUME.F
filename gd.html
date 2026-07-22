@@ -129,7 +129,7 @@
             margin: 0 auto;
         }
 
-        /* ACTIONS ACTION HEADER */
+        /* TOPBAR NAVIGATION */
         .topbar {
             display: flex;
             justify-content: space-between;
@@ -251,6 +251,13 @@
             justify-content: center;
             align-items: center;
             z-index: 99999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
         }
 
         .modal img {
@@ -260,6 +267,12 @@
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active img {
+            transform: scale(1);
         }
 
         .close {
@@ -328,7 +341,7 @@
                 <img src="design14.png" alt="Creative Design 14">
                 <div class="overlay"><span>Creative Design #2</span></div>
             </div>
-            
+
             <div class="photo" onclick="openModal('design1.jpg')">
                 <img src="design1.jpg" alt="Creative Design 1">
                 <div class="overlay"><span>Creative Design #3</span></div>
@@ -397,7 +410,7 @@
 
     </div>
 
-    <div class="modal" id="modal" onclick="closeModalOnBackground(event)">
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Image Lightbox" onclick="closeModalOnBackground(event)">
         <span class="close" onclick="closeModal()">&times;</span>
         <img id="modal-img" alt="High Resolution Asset View">
     </div>
@@ -406,16 +419,20 @@
         const modal = document.getElementById("modal");
         const modalImg = document.getElementById("modal-img");
 
-        function openModal(src){
-            modal.style.display = "flex";
+        function openModal(src) {
             modalImg.src = src;
+            modal.classList.add("active");
             document.body.style.overflow = "hidden";
         }
 
-        function closeModal(){
-            modal.style.display = "none";
-            modalImg.src = "";
+        function closeModal() {
+            modal.classList.remove("active");
             document.body.style.overflow = "auto";
+            setTimeout(() => {
+                if (!modal.classList.contains("active")) {
+                    modalImg.src = "";
+                }
+            }, 300);
         }
 
         function closeModalOnBackground(e) {
@@ -424,8 +441,8 @@
             }
         }
 
-        document.addEventListener("keydown", function(e){
-            if(e.key === "Escape"){
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
                 closeModal();
             }
         });
