@@ -3,709 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Denver Arrojo • Creative Design Showcase</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <title>Portfolio - Navbar</title>
     <style>
-        :root {
-            --bg-dark: #05070e;
-            --panel-glass: rgba(10, 14, 29, 0.55);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --accent-1: #7928ca; /* Neon Violet */
-            --accent-2: #0070f3; /* Luminous Blue */
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-        }
-
+        /* Base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(at 0% 100%, rgba(121, 40, 202, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(0, 112, 243, 0.18) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(15, 23, 42, 0.5) 0px, transparent 80%);
+            background-color: #0b0f19;
+            color: #ffffff;
             min-height: 100vh;
-            color: var(--text-main);
-            overflow-x: hidden;
-            padding: 20px 20px 40px 20px;
         }
 
-        /* Ambient Fluid Shaders */
-        .art-blob {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(140px);
-            z-index: -1;
-            opacity: 0.3;
-            mix-blend-mode: screen;
-            animation: float 14s infinite alternate ease-in-out;
-        }
-        .blob-1 { top: -10%; right: 10%; width: 500px; height: 500px; background: var(--accent-2); }
-        .blob-2 { bottom: -10%; left: 5%; width: 550px; height: 550px; background: var(--accent-1); animation-delay: -5s; }
-
-        @keyframes float {
-            0% { transform: translateY(0px) scale(1) rotate(0deg); }
-            100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        /* GLASS FOUNDATIONS */
-        .glass-panel {
-            background: var(--panel-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        /* NAVBAR STYLES */
-        .navbar-wrapper {
-            position: sticky;
-            top: 20px;
-            z-index: 1000;
-        }
-
+        /* Navbar Layout */
         .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 28px;
-            overflow: visible !important;
+            padding: 20px 8%;
+            background-color: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* Logo */
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
             text-decoration: none;
-            color: var(--text-main);
-        }
-
-        .brand-logo {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
             color: #ffffff;
-            font-size: 16px;
+            letter-spacing: -0.5px;
         }
 
-        .brand-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
+        .logo span {
+            color: #00f2fe;
         }
 
-        .brand-text span {
-            display: block;
-            font-size: 10px;
-            color: var(--text-muted);
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
+        /* Navigation Links */
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 28px;
             list-style: none;
+            gap: 32px;
+            align-items: center;
         }
 
-        .nav-link {
+        .nav-links a {
             text-decoration: none;
-            color: var(--text-muted);
+            color: #94a3b8;
             font-size: 14px;
             font-weight: 500;
-            transition: 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
+            transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: var(--text-main);
-        }
-
-        .nav-link.active-page {
-            color: var(--accent-2);
-        }
-
-        /* NAV DROPDOWN STYLING */
-        .nav-item-dropdown {
-            position: relative;
-        }
-
-        .dropdown-arrow {
-            font-size: 9px;
-            transition: transform 0.3s ease;
-            display: inline-block;
-        }
-
-        .nav-item-dropdown:hover .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: rgba(10, 14, 29, 0.95);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 8px;
-            min-width: 210px;
-            list-style: none;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            z-index: 1001;
-        }
-
-        .nav-item-dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .dropdown-menu li a {
-            display: block;
-            padding: 10px 16px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            border-radius: 10px;
-            transition: 0.2s ease;
-        }
-
-        .dropdown-menu li a:hover {
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--accent-2);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .btn-social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-glass);
-            transition: 0.3s ease;
-        }
-
-        .btn-social-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--text-main);
-        }
-
-        .btn-social-icon:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .btn-nav-cta {
-            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+        .nav-links a:hover {
             color: #ffffff;
-            padding: 10px 20px;
+        }
+
+        /* Gradient CTA Button (Download CV) */
+        .btn-nav-cta {
+            background: linear-gradient(90deg, #c084fc 0%, #38bdf8 50%, #00f2fe 100%);
+            color: #0b0f19; /* Dark text as shown in the design */
+            padding: 10px 24px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 13px;
             text-decoration: none;
-            transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 112, 243, 0.3);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 112, 243, 0.5);
-        }
-
-        /* STRUCTURAL HEADING PROFILES */
-        h1, .overlay span {
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.01em;
-        }
-
-        /* HERO MODULE */
-        .hero {
-            padding: 60px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 100px;
-            background: rgba(0, 112, 243, 0.12);
-            border: 1px solid rgba(0, 112, 243, 0.3);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #b3d7ff;
-            margin-bottom: 24px;
-        }
-
-        .hero h1 {
-            font-size: 62px;
-            line-height: 1.1;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 17px;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        /* TOPBAR NAVIGATION */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .back-btn {
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-main);
-            border: 1px solid var(--border-glass);
-        }
-
-        .back-btn:hover {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-        }
-
-        /* GRID SYSTEM SETUP */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        /* GALLERY GRAPHIC PHOTO ITEM */
-        .photo {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            background: #000;
-            border: 1px solid var(--border-glass);
-            aspect-ratio: 1/1;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .photo:focus-visible {
-            outline: 2px solid var(--accent-2);
-            outline-offset: 4px;
-        }
-
-        .photo:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s;
-            display: block;
-        }
-
-        .photo:hover img {
-            transform: scale(1.04);
-            filter: saturate(1.05);
-        }
-
-        /* CARD HOVER OVERLAY TEXT */
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(5, 7, 14, 0.95) 0%, rgba(5, 7, 14, 0.3) 50%, transparent 100%);
-            display: flex;
-            align-items: flex-end;
-            padding: 24px;
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
-        }
-
-        .photo:hover .overlay {
-            opacity: 1;
-        }
-
-        .overlay span {
-            font-size: 15px;
-            color: var(--text-main);
-            font-weight: 500;
-            transform: translateY(10px);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .photo:hover .overlay span {
-            transform: translateY(0);
-        }
-
-        /* FOOTER STRUCTURE */
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            color: var(--text-muted);
-            font-size: 13px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border-top: 1px solid var(--border-glass);
-            margin-top: 8px;
-        }
-
-        /* THEATRE LIGHTBOX MODAL LAYER */
-        .modal {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(3, 5, 11, 0.98);
-            backdrop-filter: blur(20px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.active img {
-            transform: scale(1);
-        }
-
-        .close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 44px;
-            font-weight: 300;
-            color: var(--text-muted);
-            cursor: pointer;
-            z-index: 100000;
-            transition: color 0.2s;
-            user-select: none;
-        }
-
-        .close:hover {
-            color: white;
-        }
-
-        /* SMART RESPONSIVE SCALING BREAKPOINTS */
-        @media(max-width: 850px) {
-            .nav-links {
-                display: none;
-            }
-        }
-
-        @media(max-width: 960px) {
-            .gallery { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .hero h1 { font-size: 46px; }
-        }
-
-        @media(max-width: 640px) {
-            body { padding: 12px; }
-            .gallery { grid-template-columns: 1fr; gap: 14px; }
-            .hero { padding: 40px 20px; }
-            .hero h1 { font-size: 38px; }
-            .container { padding: 0; }
-            .back-btn { width: 100%; justify-content: center; }
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6), 0 0 10px rgba(192, 132, 252, 0.4);
+            filter: brightness(1.05);
         }
     </style>
 </head>
-
 <body>
 
-    <div class="art-blob blob-1"></div>
-    <div class="art-blob blob-2"></div>
-
-    <div class="container">
-
-        <!-- NAVIGATION BAR -->
-        <header class="navbar-wrapper">
-            <nav class="glass-panel navbar">
-                <a href="index.html" class="nav-brand">
-                    <div class="brand-logo">JD</div>
-                    <div class="brand-text">
-                        ARROJO
-                        <span>PORTFOLIO</span>
-                    </div>
-                </a>
-
-                <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">Resume</a></li>
-                    <li><a href="ux.html" class="nav-link">UX Design</a></li>
-                    
-                    <!-- GRAPHIC DESIGN DROPDOWN ITEM -->
-                    <li class="nav-item-dropdown">
-                        <a href="graphic.html" class="nav-link active-page">
-                            Graphic Design <span class="dropdown-arrow">▼</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="graphic.html#manipulation">Photo Manipulation</a></li>
-                            <li><a href="graphic.html#social">Social Media Posts</a></li>
-                            <li><a href="graphic.html#branding">Branding & Logos</a></li>
-                            <li><a href="graphic.html#posters">Posters & Print</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="3d.html" class="nav-link">3D Model</a></li>
-                    <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
-                </ul>
-
-                <div class="nav-actions">
-                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
-                </div>
-            </nav>
-        </header>
-
-        <section class="hero glass-panel">
-            <div class="badge">✦ Creative Design Portfolio</div>
-            <h1>Creative <span>Designs</span></h1>
-            <p>
-                A collection of posters, social media graphics, advertisements, branding visuals, and digital creative works.
-            </p>
-        </section>
-
-        <div class="topbar">
-            <a href="portfolio.html" class="back-btn">
-                ← Back to Portfolio
-            </a>
-        </div>
-
-        <section class="gallery">
-            <div class="photo" tabindex="0" onclick="openModal('design15.jpg')" onkeypress="handleKeyPress(event, 'design15.jpg')">
-                <img src="design15.jpg" alt="Photo Manipulation Design">
-                <div class="overlay"><span>Photo Manipulation</span></div>
-            </div>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">PORTFOLIO<span>.</span></a>
             
-            <div class="photo" tabindex="0" onclick="openModal('design13.png')" onkeypress="handleKeyPress(event, 'design13.png')">
-                <img src="design13.png" alt="Digital Art Design">
-                <div class="overlay"><span>Digital Art</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design14.png')" onkeypress="handleKeyPress(event, 'design14.png')">
-                <img src="design14.png" alt="Finger Painting Artwork">
-                <div class="overlay"><span>Finger Painting</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design1.jpg')" onkeypress="handleKeyPress(event, 'design1.jpg')">
-                <img src="design1.jpg" alt="Graphic Design Project 1">
-                <div class="overlay"><span>Graphic Design 1</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design2.jpg')" onkeypress="handleKeyPress(event, 'design2.jpg')">
-                <img src="design2.jpg" alt="Graphic Design Project 2">
-                <div class="overlay"><span>Graphic Design 2</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design3.jpg')" onkeypress="handleKeyPress(event, 'design3.jpg')">
-                <img src="design3.jpg" alt="Graphic Design Project 3">
-                <div class="overlay"><span>Graphic Design 3</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design4.jpg')" onkeypress="handleKeyPress(event, 'design4.jpg')">
-                <img src="design4.jpg" alt="Graphic Design Project 4">
-                <div class="overlay"><span>Graphic Design 4</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design5.jpg')" onkeypress="handleKeyPress(event, 'design5.jpg')">
-                <img src="design5.jpg" alt="Graphic Design Project 5">
-                <div class="overlay"><span>Graphic Design 5</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design6.jpg')" onkeypress="handleKeyPress(event, 'design6.jpg')">
-                <img src="design6.jpg" alt="Graphic Design Project 6">
-                <div class="overlay"><span>Graphic Design 6</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design7.png')" onkeypress="handleKeyPress(event, 'design7.png')">
-                <img src="design7.png" alt="Graphic Design Project 7">
-                <div class="overlay"><span>Graphic Design 7</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design8.png')" onkeypress="handleKeyPress(event, 'design8.png')">
-                <img src="design8.png" alt="Graphic Design Project 8">
-                <div class="overlay"><span>Graphic Design 8</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design9.png')" onkeypress="handleKeyPress(event, 'design9.png')">
-                <img src="design9.png" alt="Graphic Design Project 9">
-                <div class="overlay"><span>Graphic Design 9</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design10.jpg')" onkeypress="handleKeyPress(event, 'design10.jpg')">
-                <img src="design10.jpg" alt="Graphic Design Project 10">
-                <div class="overlay"><span>Graphic Design 10</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design11.jpg')" onkeypress="handleKeyPress(event, 'design11.jpg')">
-                <img src="design11.jpg" alt="Graphic Design Project 11">
-                <div class="overlay"><span>Graphic Design 11</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design12.jpg')" onkeypress="handleKeyPress(event, 'design12.jpg')">
-                <img src="design12.jpg" alt="Graphic Design Project 12">
-                <div class="overlay"><span>Graphic Design 12</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design16.jpg')" onkeypress="handleKeyPress(event, 'design16.jpg')">
-                <img src="design16.jpg" alt="Graphic Design Project 13">
-                <div class="overlay"><span>Graphic Design 13</span></div>
-            </div>
-
-            <div class="photo" tabindex="0" onclick="openModal('design17.jpg')" onkeypress="handleKeyPress(event, 'design17.jpg')">
-                <img src="design17.jpg" alt="Graphic Design Project 14">
-                <div class="overlay"><span>Graphic Design 14</span></div>
-            </div>
-        </section>
-
-        <footer class="footer">
-            © 2026 John Denver Arrojo • Creative Design 
-        </footer>
-
-    </div>
-
-    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Image Lightbox" onclick="closeModalOnBackground(event)">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modal-img" alt="High Resolution Asset View">
-    </div>
-
-    <script>
-        const modal = document.getElementById("modal");
-        const modalImg = document.getElementById("modal-img");
-
-        function openModal(src) {
-            modalImg.src = src;
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeModal() {
-            modal.classList.remove("active");
-            document.body.style.overflow = "auto";
-            setTimeout(() => {
-                if (!modal.classList.contains("active")) {
-                    modalImg.src = "";
-                }
-            }, 300);
-        }
-
-        function closeModalOnBackground(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        }
-
-        function handleKeyPress(e, src) {
-            if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                openModal(src);
-            }
-        }
-
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") {
-                closeModal();
-            }
-        });
-    </script>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="btn-nav-cta">Download CV</a></li>
+            </ul>
+        </nav>
+    </header>
 
 </body>
 </html>
