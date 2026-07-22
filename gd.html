@@ -34,7 +34,7 @@
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px;
         }
 
         /* Ambient Fluid Shaders */
@@ -61,10 +61,10 @@
             margin: auto;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 28px;
         }
 
-        /* Glass Foundations */
+        /* GLASS FOUNDATIONS */
         .glass-panel {
             background: var(--panel-glass);
             backdrop-filter: blur(20px);
@@ -76,7 +76,106 @@
             overflow: hidden;
         }
 
-        /* Structural Heading Profiles */
+        /* NAVBAR STYLES */
+        .navbar-wrapper {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .brand-logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--bg-dark);
+            font-size: 16px;
+        }
+
+        .brand-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .brand-text span {
+            display: block;
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .nav-link.active-page {
+            color: var(--accent-2);
+            cursor: default;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .btn-nav-cta {
+            background: linear-gradient(135deg, #e5a93c, #cca028);
+            color: #0d0d19;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
+        }
+
+        /* STRUCTURAL HEADING PROFILES */
         h1, .overlay span {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
@@ -293,13 +392,19 @@
         }
 
         /* SMART RESPONSIVE SCALING BREAKPOINTS */
+        @media(max-width: 850px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
         @media(max-width: 960px) {
             .gallery { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .hero h1 { font-size: 46px; }
         }
 
         @media(max-width: 640px) {
-            body { padding: 20px 12px; }
+            body { padding: 12px; }
             .gallery { grid-template-columns: 1fr; gap: 14px; }
             .hero { padding: 40px 20px; }
             .hero h1 { font-size: 38px; }
@@ -315,6 +420,29 @@
     <div class="art-blob blob-2"></div>
 
     <div class="container">
+
+        <!-- NAVIGATION BAR -->
+        <div class="navbar-wrapper">
+            <nav class="glass-panel navbar">
+                <a href="index.html" class="nav-brand">
+                    <div class="brand-logo">JD</div>
+                    <div class="brand-text">
+                        ARROJO
+                        <span>PORTFOLIO</span>
+                    </div>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Resume</a></li>
+                    <li><a href="ux.html" class="nav-link">UX Design</a></li>
+                    <li><span class="nav-link active-page">Graphic Design</span></li>
+                    <li><a href="3d.html" class="nav-link">3D Model</a></li>
+                    <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
+                </ul>
+
+                <a href="contact.html" class="btn-nav-cta">Let's Get Started</a>
+            </nav>
+        </div>
 
         <section class="hero glass-panel">
             <div class="badge">✦ Creative Design Portfolio</div>
