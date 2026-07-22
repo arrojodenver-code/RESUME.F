@@ -84,6 +84,8 @@
         .navbar-wrapper {
             width: 100%;
             margin-bottom: 8px;
+            position: relative;
+            z-index: 100;
         }
 
         .navbar {
@@ -146,6 +148,8 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            cursor: pointer;
+            pointer-events: auto;
         }
 
         .nav-link:hover {
@@ -371,7 +375,7 @@
             background: var(--text-main);
             color: var(--bg-dark);
             border-color: var(--text-main);
-            scale: 1.05;
+            transform: translateY(-50%) scale(1.05);
         }
 
         .prev { left: 40px; }
