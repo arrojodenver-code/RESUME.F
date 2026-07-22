@@ -1,323 +1,646 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>John Denver Arrojo • UX Design Showcase</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
+
+
     <style>
+
         :root {
+
             --bg-dark: #07070c;
+
             --panel-glass: rgba(13, 13, 25, 0.45);
+
             --border-glass: rgba(255, 255, 255, 0.07);
+
             --accent-1: #d444f1; /* Vivid Amethyst */
+
             --accent-2: #00f5d4; /* Cyber Teal */
+
             --text-main: #f8fafc;
+
             --text-muted: #94a3b8;
+
         }
+
+
 
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
+
+
 
         html {
+
             scroll-behavior: smooth;
+
         }
+
+
 
         body {
+
             font-family: 'Plus Jakarta Sans', sans-serif;
+
             background-color: var(--bg-dark);
+
             background-image: 
+
                 radial-gradient(at 0% 100%, rgba(212, 68, 241, 0.1) 0px, transparent 50%),
+
                 radial-gradient(at 100% 0%, rgba(0, 245, 212, 0.12) 0px, transparent 50%),
+
                 radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 80%);
+
             min-height: 100vh;
+
             color: var(--text-main);
+
             overflow-x: hidden;
+
             padding: 20px;
+
         }
+
+
 
         /* Ambient Fluid Shaders */
+
         .art-blob {
+
             position: fixed;
+
             border-radius: 50%;
+
             filter: blur(140px);
+
             z-index: -1;
+
             opacity: 0.25;
+
             mix-blend-mode: screen;
+
             animation: float 14s infinite alternate ease-in-out;
+
         }
+
         .blob-1 { top: -10%; right: 10%; width: 500px; height: 500px; background: var(--accent-2); }
+
         .blob-2 { bottom: -10%; left: 5%; width: 550px; height: 550px; background: var(--accent-1); animation-delay: -5s; }
 
+
+
         @keyframes float {
+
             0% { transform: translateY(0px) scale(1) rotate(0deg); }
+
             100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
+
         }
+
+
 
         .container {
+
             width: 100%;
+
             max-width: 1100px;
+
             margin: auto;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 32px;
+
         }
+
+
 
         /* Glass Foundations */
+
         .glass-panel {
+
             background: var(--panel-glass);
+
             backdrop-filter: blur(20px);
+
             -webkit-backdrop-filter: blur(20px);
+
             border: 1px solid var(--border-glass);
+
             border-radius: 24px;
+
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
             position: relative;
+
             overflow: hidden;
+
         }
 
-        /* NAVBAR STYLES */
+
+
+        /* NAVBAR STYLES (Matched exact behavior, size, and styling) */
+
         .navbar-wrapper {
+
             position: sticky;
+
             top: 20px;
+
             z-index: 1000;
+
             margin-bottom: 10px;
+
         }
+
+
 
         .navbar {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             padding: 14px 28px;
+
         }
+
+
 
         .nav-brand {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
+
             text-decoration: none;
+
             color: var(--text-main);
+
         }
+
+
 
         .brand-logo {
+
             width: 36px;
+
             height: 36px;
+
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+
             border-radius: 10px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             font-family: 'Space Grotesk', sans-serif;
+
             font-weight: 700;
+
             color: var(--bg-dark);
+
             font-size: 16px;
+
         }
+
+
 
         .brand-text {
+
             font-family: 'Space Grotesk', sans-serif;
+
             font-weight: 700;
+
             font-size: 16px;
+
             letter-spacing: -0.02em;
+
             line-height: 1.1;
+
         }
+
+
 
         .brand-text span {
+
             display: block;
+
             font-size: 10px;
+
             color: var(--text-muted);
+
             font-weight: 500;
+
             letter-spacing: 0.05em;
+
             text-transform: uppercase;
+
         }
+
+
 
         .nav-links {
+
             display: flex;
+
             align-items: center;
+
             gap: 28px;
+
             list-style: none;
+
         }
+
+
 
         .nav-link {
+
             text-decoration: none;
+
             color: var(--text-muted);
+
             font-size: 14px;
+
             font-weight: 500;
+
             transition: 0.3s ease;
+
             display: flex;
+
             align-items: center;
+
             gap: 4px;
+
         }
+
+
 
         .nav-link:hover {
+
             color: var(--text-main);
+
         }
+
+
 
         .nav-link .arrow {
+
             font-size: 10px;
+
             opacity: 0.7;
+
         }
+
+
 
         .nav-link.active-page {
+
             color: var(--accent-2);
+
             cursor: default;
+
             pointer-events: none;
+
             opacity: 0.8;
+
         }
+
+
 
         .nav-link.active-page .arrow {
-            display: inline-block;
+
+            display: none;
+
         }
+
+
 
         .btn-nav-cta {
+
             background: linear-gradient(135deg, #e5a93c, #cca028);
+
             color: #0d0d19;
+
             padding: 10px 20px;
+
             border-radius: 100px;
+
             font-weight: 700;
+
             font-size: 13px;
+
             text-decoration: none;
+
             transition: 0.3s ease;
+
             box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
+
         }
+
+
 
         .btn-nav-cta:hover {
+
             transform: translateY(-2px);
+
             box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
+
         }
+
+
 
         @media(max-width: 850px) {
+
             .nav-links {
+
                 display: none;
+
             }
+
         }
+
+
 
         /* Structural Heading Profiles */
+
         h1, .slide-card .category {
+
             font-family: 'Space Grotesk', sans-serif;
+
             letter-spacing: -0.01em;
+
         }
+
+
 
         /* HERO MODULE */
+
         .hero {
+
             padding: 60px;
+
             text-align: center;
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             justify-content: center;
+
         }
+
+
 
         .badge {
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
+
             padding: 8px 16px;
+
             border-radius: 100px;
+
             background: rgba(212, 68, 241, 0.1);
+
             border: 1px solid rgba(212, 68, 241, 0.25);
+
             font-size: 13px;
+
             font-weight: 600;
+
             letter-spacing: 0.05em;
+
             text-transform: uppercase;
+
             color: #fbcfff;
+
             margin-bottom: 24px;
+
         }
+
+
 
         .hero h1 {
+
             font-size: 62px;
+
             line-height: 1.1;
+
             font-weight: 700;
+
             margin-bottom: 18px;
+
         }
+
+
 
         .hero h1 span {
+
             background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+
             -webkit-background-clip: text;
+
             -webkit-text-fill-color: transparent;
+
         }
+
+
 
         .hero p {
+
             color: var(--text-muted);
+
             line-height: 1.8;
+
             font-size: 17px;
+
             max-width: 650px;
+
             margin: 0 auto;
+
         }
+
+
 
         /* ACTIONS ACTION HEADER */
+
         .topbar {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             gap: 20px;
+
             flex-wrap: wrap;
+
         }
+
+
 
         .back-btn, .figma-btn {
+
             text-decoration: none;
+
             padding: 14px 28px;
+
             border-radius: 14px;
+
             font-weight: 600;
+
             font-size: 15px;
+
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
+
         }
+
+
 
         .back-btn {
+
             background: rgba(255, 255, 255, 0.04);
+
             color: var(--text-main);
+
             border: 1px solid var(--border-glass);
+
         }
+
+
 
         .back-btn:hover {
+
             transform: translateY(-2px);
+
             background: rgba(255, 255, 255, 0.08);
+
         }
+
     </style>
+
 </head>
+
 <body>
 
+
+
     <div class="art-blob blob-1"></div>
+
     <div class="art-blob blob-2"></div>
+
+
 
     <div class="container">
 
+
+
         <!-- NAVIGATION BAR -->
+
         <div class="navbar-wrapper">
+
             <nav class="glass-panel navbar">
+
                 <a href="index.html" class="nav-brand">
+
                     <div class="brand-logo">JD</div>
+
                     <div class="brand-text">
+
                         ARROJO
+
                         <span>PORTFOLIO</span>
+
                     </div>
+
                 </a>
 
+
+
                 <ul class="nav-links">
+
                     <li><a href="index.html" class="nav-link">Resume</a></li>
+
                     <li><span class="nav-link active-page">UX Design <span class="arrow">▾</span></span></li>
+
                     <li><a href="gd.html" class="nav-link">Graphic Design <span class="arrow">▾</span></a></li>
+
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
+
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
+
                 </ul>
 
+
+
                 <a href="contact.html" class="btn-nav-cta">Let's Get Started</a>
+
             </nav>
+
         </div>
 
+
+
         <section class="glass-panel hero">
+
             <div class="badge">✦ Interactive UX Showcase</div>
+
             <h1>User Experience <span>Design</span></h1>
+
             <p>Crafting intuitive interfaces, user-centered navigation pathways, and modern digital ecosystems.</p>
+
         </section>
+
+
 
     </div>
 
+
+
 </body>
-</html>
+
+</html> 
+
