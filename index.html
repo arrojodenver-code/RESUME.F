@@ -170,20 +170,21 @@ body{
 }
 
 .btn-nav-cta {
-    background: linear-gradient(135deg, #e5a93c, #cca028);
-    color: #0d0d19;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    color: var(--bg-dark);
     padding: 10px 20px;
     border-radius: 100px;
     font-weight: 700;
     font-size: 13px;
     text-decoration: none;
     transition: 0.3s ease;
-    box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.25);
 }
 
 .btn-nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
+    filter: brightness(1.1);
 }
 
 /* GLASS PANEL */
@@ -822,7 +823,7 @@ h1,h2,h3,.card-title{
             </a>
 
             <ul class="nav-links">
-                <li><span class="nav-link active-page">Resume</span></li>
+                <li><span class="nav-link active-page">About</span></li>
                 <li><a href="ux.html" class="nav-link">UX Design</a></li>
                 <li><a href="gd.html" class="nav-link">Graphic Design</a></li>
                 <li><a href="3d.html" class="nav-link">3D Model</a></li>
@@ -878,9 +879,6 @@ h1,h2,h3,.card-title{
                 <div class="cta-group">
                     <a href="https://www.facebook.com/dnvrarrj/" target="_blank" class="btn btn-primary">
                         Facebook Profile
-                    </a>
-                    <a href="Arrojo_Resume.pdf" download class="btn btn-secondary">
-                        Download Resume PDF
                     </a>
                 </div>
             </div>
