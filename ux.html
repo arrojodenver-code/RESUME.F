@@ -28,17 +28,17 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
+        body{
+            font-family:'Plus Jakarta Sans',sans-serif;
+            background-color:var(--bg-dark);
             background-image:
                 radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
                 radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
-            min-height: 100vh;
-            color: var(--text-main);
-            overflow-x: hidden;
-            padding: 20px 18px 30px 18px;
+            min-height:100vh;
+            color:var(--text-main);
+            overflow-x:hidden;
+            padding:20px 18px 30px 18px;
         }
 
         /* Ambient Fluid Shaders */
@@ -51,22 +51,21 @@
             mix-blend-mode: screen;
             animation: float 12s infinite alternate ease-in-out;
         }
-
-        .blob-1 {
-            top: 20%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: var(--accent-1);
+        .blob-1{
+            top:20%;
+            left:-10%;
+            width:500px;
+            height:500px;
+            background:var(--accent-1);
         }
 
-        .blob-2 {
-            bottom: 10%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: var(--accent-2);
-            animation-delay: -4s;
+        .blob-2{
+            bottom:10%;
+            right:-10%;
+            width:600px;
+            height:600px;
+            background:var(--accent-2);
+            animation-delay:-4s;
         }
 
         @keyframes float {
@@ -157,19 +156,6 @@
 
         .nav-link:hover {
             color: var(--text-main);
-        }
-
-        .nav-link.back-link {
-            color: var(--text-main);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px 14px;
-            border-radius: 100px;
-            border: 1px solid var(--border-glass);
-        }
-
-        .nav-link.back-link:hover {
-            background: rgba(255, 255, 255, 0.12);
-            color: var(--accent-2);
         }
 
         .nav-link.active-page {
@@ -294,21 +280,24 @@
             line-height: 1.8;
             font-size: 17px;
             max-width: 650px;
-            margin: 0 auto 28px auto;
+            margin: 0 auto;
         }
 
+        /* Figma Action Button in Hero */
         .figma-btn {
             text-decoration: none;
-            padding: 12px 24px;
+            padding: 14px 28px;
             border-radius: 100px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            margin-top: 28px;
             background: linear-gradient(135deg, #2563eb, #06b6d4);
             color: white;
+            border: none;
             box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
         }
 
@@ -540,7 +529,6 @@
                 </a>
 
                 <ul class="nav-links">
-                    <li><a href="portfolio.html" class="nav-link back-link">← Portfolio</a></li>
                     <li><a href="index.html" class="nav-link">About</a></li>
                     <li><span class="nav-link active-page">UX Design</span></li>
                     <li><a href="gd.html" class="nav-link">Graphic Design</a></li>
@@ -567,7 +555,7 @@
                 A deliberate modern collection of visual design solutions, optimizing corporate brand positioning across interfaces and structural assets.
             </p>
             <a class="figma-btn" target="_blank" href="https://www.figma.com/design/zc7c5TGhD85w4vtxPgxwOk/Untitled?node-id=179-266&t=uHD4ZNXwWq6jQMHe-1">
-                View Figma Workspace ↗
+                View Figma Workspace
             </a>
         </section>
 
@@ -584,7 +572,7 @@
                     <div class="slide-card">
                         <img src="ux1.png" alt="Identity Layout Prototype 1" onclick="openModal(this.src)">
                         <div class="overlay">
-                            <div class="category">Mobile App Prototype</div>
+                            <div class="category">Brand Identity System</div>
                         </div>
                     </div>
                 </div>
@@ -594,7 +582,7 @@
                     <div class="slide-card">
                         <img src="ux2.png" alt="Identity Layout Prototype 2" onclick="openModal(this.src)">
                         <div class="overlay">
-                            <div class="category">Website Prototype</div>
+                            <div class="category">Digital Identity Layout</div>
                         </div>
                     </div>
                 </div>
