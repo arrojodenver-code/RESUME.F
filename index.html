@@ -140,58 +140,56 @@ body{
     text-transform: uppercase;
 }
 
-/* --- UPDATED NAVIGATION PILL & GLOW EFFECT --- */
-
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 12px;
     list-style: none;
-    background: rgba(18, 18, 22, 0.85);
-    padding: 6px;
-    border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
-        inset 0 1px 1px rgba(255, 255, 255, 0.05),
-        0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
+/* --- LIQUID GLASS CAPSULE STYLES --- */
 
 .nav-link {
     text-decoration: none;
-    color: #8e8e93;
+    color: var(--text-muted);
     font-size: 14px;
     font-weight: 500;
-    padding: 8px 18px;
+    padding: 10px 22px;
     border-radius: 100px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    border: 1px solid transparent;
 }
 
 .nav-link:hover {
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Glossy 3D Highlight for Active Page */
+/* Liquid Glass Active Effect matching Cyan/Pink Accent Palette */
 .nav-link.active-page {
     color: #ffffff;
     font-weight: 600;
     background: 
-        radial-gradient(ellipse at top, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.02) 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+        radial-gradient(ellipse at top, rgba(0, 245, 212, 0.35) 0%, rgba(212, 68, 241, 0.15) 50%, rgba(13, 13, 25, 0.6) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 245, 212, 0.3);
     box-shadow: 
         inset 0 1px 1px rgba(255, 255, 255, 0.5),
-        inset 0 -1px 2px rgba(0, 0, 0, 0.5),
-        0 4px 12px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+        inset 0 -1px 2px rgba(0, 0, 0, 0.6),
+        0 8px 20px rgba(0, 245, 212, 0.15),
+        0 2px 6px rgba(212, 68, 241, 0.2);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
     cursor: default;
     pointer-events: none;
 }
 
-/* --- END OF NAV UPDATES --- */
+/* --- END LIQUID GLASS STYLES --- */
 
 .nav-actions {
     display: flex;
@@ -842,7 +840,7 @@ h1,h2,h3,.card-title{
                 </div>
             </a>
 
-            <!-- UPDATED UL STRUCTURE WITH HTML ANCHORS -->
+            <!-- CLEAN NAVIGATION LINKS WITH DIRECT LIQUID GLASS EFFECT -->
             <ul class="nav-links">
                 <li><a href="index.html" class="nav-link active-page">About</a></li>
                 <li><a href="ux.html" class="nav-link">UX Design</a></li>
