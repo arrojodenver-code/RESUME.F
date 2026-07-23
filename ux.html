@@ -361,12 +361,12 @@
         /* ACTION STRIP */
         .topbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             gap: 20px;
         }
 
-        .back-btn, .figma-btn {
+        .figma-btn {
             text-decoration: none;
             padding: 12px 24px;
             border-radius: 12px;
@@ -376,20 +376,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .back-btn {
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-main);
-            border: 1px solid var(--border-glass);
-        }
-
-        .back-btn:hover {
-            background: var(--text-main);
-            color: var(--bg-dark);
-        }
-
-        .figma-btn {
             background: linear-gradient(135deg, #2563eb, #06b6d4);
             color: white;
         }
@@ -528,7 +514,6 @@
 
         <!-- BOTTOM ACTION STRIP -->
         <div class="topbar">
-            <a href="portfolio.html" class="back-btn">← Back to Portfolio</a>
             <a class="figma-btn" target="_blank" href="https://www.figma.com/design/zc7c5TGhD85w4vtxPgxwOk/Untitled?node-id=179-266&t=uHD4ZNXwWq6jQMHe-1">View Figma Workspace</a>
         </div>
 
