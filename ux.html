@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Denver Arrojo • Logo Showcase</title>
+    <title>John Denver Arrojo • UX Showcase</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -12,8 +12,8 @@
             --bg-dark: #07070c;
             --panel-glass: rgba(13, 13, 25, 0.45);
             --border-glass: rgba(255, 255, 255, 0.07);
-            --accent-1: #d444f1; /* Vivid Amethyst */
-            --accent-2: #00f5d4; /* Cyber Teal */
+            --accent-1: #d444f1;
+            --accent-2: #00f5d4;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -24,9 +24,7 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -41,7 +39,6 @@
             padding: 20px 18px 30px 18px;
         }
 
-        /* Ambient Fluid Shaders */
         .art-blob {
             position: fixed;
             border-radius: 50%;
@@ -59,31 +56,45 @@
             100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
         }
 
-        /* CONTAINER SIZING */
         .container {
             width: 100%;
-            max-width: 1150px;
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
 
-        /* NAVIGATION BAR STYLES */
+        /* GLASS PANELS BASE */
+        .glass-panel {
+            background: var(--panel-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* LOCKED SLIM NAVBAR HEIGHT FIX */
         .navbar-wrapper {
             position: sticky;
             top: 20px;
             z-index: 1000;
             margin-bottom: 10px;
+            height: auto;
         }
 
         .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 6px 16px;
+            padding: 8px 18px !important;
             width: 100%;
-            min-height: 48px;
+            height: 52px !important; /* Strict height matching Left Screenshot */
+            box-sizing: border-box;
+            border-radius: 14px;
         }
 
         .nav-brand {
@@ -96,17 +107,17 @@
         }
 
         .brand-logo {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            border-radius: 7px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             color: var(--bg-dark);
-            font-size: 12px;
+            font-size: 13px;
         }
 
         .brand-text {
@@ -154,8 +165,8 @@
         }
 
         .social-btn {
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border-glass);
@@ -168,7 +179,7 @@
         }
 
         .social-btn:hover { background: rgba(255, 255, 255, 0.18); }
-        .social-btn svg { width: 12px; height: 12px; fill: currentColor; }
+        .social-btn svg { width: 13px; height: 13px; fill: currentColor; }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
@@ -188,33 +199,16 @@
             box-shadow: 0 6px 20px rgba(0, 245, 212, 0.35);
         }
 
-        /* Glass Foundations */
-        .glass-panel {
-            background: var(--panel-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        h1, .slide-card .category {
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: -0.01em;
-        }
-
-        /* HERO GRID LAYOUT (2 COLUMNS MATCHING IMAGE 1) */
+        /* HERO GRID */
         .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1fr 380px;
             gap: 20px;
             align-items: stretch;
         }
 
         .hero-text-card {
-            padding: 48px;
+            padding: 44px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -238,7 +232,8 @@
         }
 
         .hero-text-card h1 {
-            font-size: 48px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 46px;
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 16px;
@@ -253,30 +248,31 @@
         .hero-text-card p {
             color: var(--text-muted);
             line-height: 1.7;
-            font-size: 15px;
-            max-width: 520px;
+            font-size: 14.5px;
         }
 
-        /* CAROUSEL COMPACT PANEL (RIGHT SIDE MATCHING IMAGE 1 PHOTO BOX) */
-        .slider-wrapper {
-            padding: 16px;
+        /* SHOWCASE CARD */
+        .showcase-card {
+            padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .slider-container {
+        .slider-frame {
             position: relative;
-            overflow: hidden;
-            border-radius: 16px;
             width: 100%;
-            height: 380px; /* Fixed height matching the profile card */
+            height: 350px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #0d0d14;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .slider {
             display: flex;
             height: 100%;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .slide {
@@ -284,115 +280,68 @@
             height: 100%;
         }
 
-        .slide-card {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            background: #101018;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .slide-card img {
+        .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center;
             cursor: pointer;
-            transition: transform 0.8s ease;
             display: block;
         }
 
-        .slide-card:hover img {
-            transform: scale(1.03);
+        .card-info {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .overlay {
-            position: absolute;
-            inset: 0;
+        .card-title-group {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(7, 7, 12, 0.9) 0%, transparent 70%);
-            pointer-events: none;
         }
 
-        .category {
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 4px 12px;
-            border-radius: 100px;
-            background: rgba(0, 245, 212, 0.15);
-            border: 1px solid rgba(0, 245, 212, 0.3);
-            color: #bffff6;
-            width: fit-content;
-        }
-
-        /* DIRECTION INDICATORS */
-        .btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            background: rgba(13, 13, 25, 0.7);
-            backdrop-filter: blur(8px);
-            color: white;
+        .card-title-group .primary {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 14px;
-            z-index: 10;
+            font-weight: 700;
+            color: var(--accent-2);
+        }
+
+        .card-title-group .secondary {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #10b981;
+            text-transform: uppercase;
+        }
+
+        .nav-arrows {
+            display: flex;
+            gap: 6px;
+        }
+
+        .arrow-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            font-size: 12px;
+            transition: 0.2s ease;
         }
 
-        .btn:hover {
+        .arrow-btn:hover {
             background: var(--text-main);
             color: var(--bg-dark);
         }
 
-        .prev { left: 12px; }
-        .next { right: 12px; }
-
-        /* THUMBNAILS */
-        .thumbnails {
-            display: flex;
-            gap: 10px;
-            margin-top: 14px;
-            justify-content: center;
-        }
-
-        .thumb {
-            width: 60px;
-            height: 40px;
-            border-radius: 8px;
-            overflow: hidden;
-            opacity: .4;
-            cursor: pointer;
-            border: 1.5px solid transparent;
-            transition: all 0.3s ease;
-            background: #000;
-        }
-
-        .thumb.active {
-            opacity: 1;
-            border-color: var(--accent-2);
-        }
-
-        .thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* ACTIONS STRIP */
+        /* ACTION STRIP */
         .topbar {
             display: flex;
             justify-content: space-between;
@@ -405,7 +354,7 @@
             padding: 12px 24px;
             border-radius: 12px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13.5px;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -428,7 +377,6 @@
             color: white;
         }
 
-        /* FOOTER */
         .footer {
             text-align: center;
             padding: 16px 0;
@@ -439,7 +387,6 @@
             border-top: 1px solid var(--border-glass);
         }
 
-        /* MODAL */
         .modal {
             position: fixed;
             inset: 0;
@@ -462,10 +409,9 @@
             cursor: pointer;
         }
 
-        /* RESPONSIVE */
         @media(max-width: 900px) {
             .hero-grid { grid-template-columns: 1fr; }
-            .slider-container { height: 320px; }
+            .showcase-card { width: 100%; }
             .nav-links { display: none; }
         }
     </style>
@@ -478,7 +424,7 @@
 
     <div class="container">
 
-        <!-- NAVIGATION BAR -->
+        <!-- NAVBAR -->
         <div class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
@@ -506,10 +452,9 @@
             </nav>
         </div>
 
-        <!-- HERO SECTION (MATCHES IMAGE 1 GRID) -->
+        <!-- HERO GRID -->
         <div class="hero-grid">
             
-            <!-- LEFT COLUMN: HEADLINE & DETAILS -->
             <section class="hero-text-card glass-panel">
                 <div class="badge">✦ Branding • UX • Visual Identity</div>
                 <h1>User <span>Experience</span></h1>
@@ -518,46 +463,34 @@
                 </p>
             </section>
 
-            <!-- RIGHT COLUMN: CAROUSEL COMPACT FRAME -->
-            <section class="slider-wrapper glass-panel">
-                <div class="slider-container">
-                    <button class="btn prev" onclick="moveSlide(-1)">❮</button>
-                    <button class="btn next" onclick="moveSlide(1)">❯</button>
-
+            <section class="showcase-card glass-panel">
+                <div class="slider-frame">
                     <div class="slider" id="slider">
                         <div class="slide">
-                            <div class="slide-card">
-                                <img src="ux1.png" alt="Identity Layout Prototype 1" onclick="openModal(this.src)">
-                                <div class="overlay">
-                                    <div class="category">Brand Identity System</div>
-                                </div>
-                            </div>
+                            <img src="ux1.png" alt="Identity Layout Prototype 1" onclick="openModal(this.src)">
                         </div>
-
                         <div class="slide">
-                            <div class="slide-card">
-                                <img src="ux2.png" alt="Identity Layout Prototype 2" onclick="openModal(this.src)">
-                                <div class="overlay">
-                                    <div class="category">Digital Identity Layout</div>
-                                </div>
-                            </div>
+                            <img src="ux2.png" alt="Identity Layout Prototype 2" onclick="openModal(this.src)">
                         </div>
                     </div>
                 </div>
 
-                <div class="thumbnails">
-                    <div class="thumb active" onclick="showSlide(0)">
-                        <img src="ux1.png" alt="Thumb 1">
+                <div class="card-info">
+                    <div class="card-title-group">
+                        <span class="primary">Brand Identity System</span>
+                        <span class="secondary">UX Prototype Showcase</span>
                     </div>
-                    <div class="thumb" onclick="showSlide(1)">
-                        <img src="ux2.png" alt="Thumb 2">
+
+                    <div class="nav-arrows">
+                        <button class="arrow-btn" onclick="moveSlide(-1)">❮</button>
+                        <button class="arrow-btn" onclick="moveSlide(1)">❯</button>
                     </div>
                 </div>
             </section>
 
         </div>
 
-        <!-- ACTIONS STRIP -->
+        <!-- BOTTOM ACTION STRIP -->
         <div class="topbar">
             <a href="portfolio.html" class="back-btn">← Back to Portfolio</a>
             <a class="figma-btn" target="_blank" href="https://www.figma.com/design/zc7c5TGhD85w4vtxPgxwOk/Untitled?node-id=179-266&t=uHD4ZNXwWq6jQMHe-1">View Figma Workspace</a>
@@ -569,7 +502,7 @@
 
     </div>
 
-    <!-- MODAL THEATRE -->
+    <!-- MODAL -->
     <div class="modal" id="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img id="modalImg" alt="Preview">
@@ -579,13 +512,10 @@
     let index = 0;
     const slider = document.getElementById("slider");
     const slides = document.querySelectorAll(".slide");
-    const thumbs = document.querySelectorAll(".thumb");
 
     function showSlide(i){
         index = (i + slides.length) % slides.length;
         slider.style.transform = `translateX(-${index * 100}%)`;
-        thumbs.forEach(thumb => thumb.classList.remove("active"));
-        thumbs[index].classList.add("active");
     }
 
     function moveSlide(step){
