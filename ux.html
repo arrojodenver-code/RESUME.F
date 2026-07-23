@@ -105,18 +105,12 @@
             color: var(--text-main);
         }
 
-        .brand-logo {
+        .brand-logo-img {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            color: var(--bg-dark);
-            font-size: 16px;
+            object-fit: cover;
+            display: block;
         }
 
         .brand-text {
@@ -173,32 +167,32 @@
         }
 
         .btn-social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-glass);
-    color: var(--text-main);
-    transition: 0.3s ease;
-    text-decoration: none;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
 
-.btn-social-icon svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-    transition: 0.3s ease;
-}
+        .btn-social-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: 0.3s ease;
+        }
 
-.btn-social-icon:hover {
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: var(--accent-2);
-}
+        .btn-social-icon:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--accent-2);
+        }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
@@ -521,7 +515,7 @@
         <div class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
-                    <div class="brand-logo">JD</div>
+                    <img src="profile.jpg" alt="Logo" class="brand-logo-img">
                     <div class="brand-text">
                         ARROJO
                         <span>PORTFOLIO</span>
