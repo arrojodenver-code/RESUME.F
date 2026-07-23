@@ -24,21 +24,22 @@
             box-sizing: border-box;
         }
 
-        html { scroll-behavior: smooth; }
+        html{
+    scroll-behavior:smooth;
+}
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            background-image: 
-                radial-gradient(at 0% 100%, rgba(212, 68, 241, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(0, 245, 212, 0.12) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 80%);
-            min-height: 100vh;
-            color: var(--text-main);
-            overflow-x: hidden;
-            padding: 20px 18px 30px 18px;
-        }
-
+       body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background-color:var(--bg-dark);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
+    min-height:100vh;
+    color:var(--text-main);
+    overflow-x:hidden;
+    padding:20px 18px 30px 18px;
+}
         .art-blob {
             position: fixed;
             border-radius: 50%;
@@ -46,7 +47,7 @@
             z-index: -1;
             opacity: 0.25;
             mix-blend-mode: screen;
-            animation: float 14s infinite alternate ease-in-out;
+            animation: float 12s infinite alternate ease-in-out;
         }
         .blob-1 { top: -10%; right: 10%; width: 500px; height: 500px; background: var(--accent-2); }
         .blob-2 { bottom: -10%; left: 5%; width: 550px; height: 550px; background: var(--accent-1); animation-delay: -5s; }
@@ -87,23 +88,19 @@
         }
 
         .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 28px;
-            width: 100%;
-            box-sizing: border-box;
-            border-radius: 24px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+}
 
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text-main);
-            flex-shrink: 0;
-        }
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-main);
+}
 
         .brand-logo {
             width: 36px;
@@ -116,23 +113,23 @@
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             color: var(--bg-dark);
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .brand-text {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: 14px;
-            letter-spacing: -0.01em;
-            line-height: 1.05;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
         }
 
         .brand-text span {
             display: block;
-            font-size: 9px;
+            font-size: 10px;
             color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            font-weight: 500;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
@@ -145,22 +142,23 @@
             padding: 0;
         }
 
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-size: 13.5px;
-            font-weight: 500;
-            transition: color 0.25s ease;
-        }
+        .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+}
 
-        .nav-link:hover { color: var(--text-main); }
+        .nav-link:hover {
+    color: var(--text-main);
+}
         .nav-link.active-page { color: var(--accent-2); font-weight: 600; }
 
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
-            flex-shrink: 0;
+            gap: 12px;
+           
         }
 
         .social-btn {
