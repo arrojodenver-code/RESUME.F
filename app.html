@@ -37,50 +37,42 @@ html{
 
 body{
     font-family:'Plus Jakarta Sans',sans-serif;
-
     background-color:var(--bg-dark);
-
     background-image:
-    radial-gradient(at 0% 100%, rgba(212,68,241,0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(0,245,212,0.12) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(30,41,59,0.4) 0px, transparent 80%);
-
+        radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
     min-height:100vh;
-
     color:var(--text-main);
-
     overflow-x:hidden;
-
-    padding:20px 20px 40px 20px;
+    padding:20px 18px 30px 18px;
 }
-
-/* BLOBS */
 
 .art-blob{
     position:fixed;
     border-radius:50%;
     filter:blur(140px);
     z-index:-1;
-    opacity:.25;
+    opacity:0.25;
     mix-blend-mode:screen;
-    animation:float 14s infinite alternate ease-in-out;
+    animation:float 12s infinite alternate ease-in-out;
 }
 
 .blob-1{
-    top:-10%;
-    right:10%;
+    top:20%;
+    left:-10%;
     width:500px;
     height:500px;
-    background:var(--accent-2);
+    background:var(--accent-1);
 }
 
 .blob-2{
-    bottom:-10%;
-    left:5%;
-    width:550px;
-    height:550px;
-    background:var(--accent-1);
-    animation-delay:-5s;
+    bottom:10%;
+    right:-10%;
+    width:600px;
+    height:600px;
+    background:var(--accent-2);
+    animation-delay:-4s;
 }
 
 @keyframes float{
