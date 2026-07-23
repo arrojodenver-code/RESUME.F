@@ -69,7 +69,7 @@
             gap: 28px;
         }
 
-        /* NAVIGATION BAR STYLES (UPDATED SPACING) */
+        /* NAVIGATION BAR STYLES (MATCHES IMAGE 1 EXACTLY) */
         .navbar-wrapper {
             position: sticky;
             top: 20px;
@@ -81,55 +81,54 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 24px; /* Refined outer edge padding */
-            gap: 20px;
+            padding: 10px 20px;
+            width: 100%;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
             color: var(--text-main);
             flex-shrink: 0;
         }
 
         .brand-logo {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            border-radius: 10px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             color: var(--bg-dark);
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .brand-text {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             letter-spacing: -0.01em;
             line-height: 1.1;
         }
 
         .brand-text span {
             display: block;
-            font-size: 9.5px;
+            font-size: 9px;
             color: var(--text-muted);
             font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-top: 1px;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 20px; /* Reduced gap from 28px for cleaner inline spacing */
+            gap: 28px;
             list-style: none;
             margin: 0;
             padding: 0;
@@ -138,45 +137,35 @@
         .nav-link {
             text-decoration: none;
             color: var(--text-muted);
-            font-size: 13.5px;
+            font-size: 13px;
             font-weight: 500;
-            letter-spacing: -0.01em;
-            padding: 6px 10px; /* Added slight touch target padding */
-            border-radius: 8px;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
+            transition: color 0.25s ease;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
         }
 
         .nav-link:hover {
             color: var(--text-main);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .nav-link .arrow {
-            font-size: 9px;
-            opacity: 0.7;
-            transition: transform 0.2s ease;
+            background: transparent;
         }
 
         .nav-link.active-page {
             color: var(--accent-2);
             font-weight: 600;
-            background: rgba(0, 245, 212, 0.06);
+            background: transparent;
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             flex-shrink: 0;
         }
 
         .social-btn {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--border-glass);
@@ -190,22 +179,21 @@
 
         .social-btn:hover {
             background: rgba(255, 255, 255, 0.18);
-            transform: translateY(-2px);
         }
 
         .social-btn svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: currentColor;
         }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
             color: #0d0d19;
-            padding: 9px 20px;
+            padding: 7px 16px;
             border-radius: 100px;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             text-decoration: none;
             transition: 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 68, 241, 0.25);
@@ -213,7 +201,7 @@
         }
 
         .btn-nav-cta:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(0, 245, 212, 0.35);
         }
 
@@ -514,19 +502,12 @@
 
         /* SMART RESPONSIVE SCALING RULES */
         @media(max-width: 992px) {
-            .nav-links {
-                gap: 10px;
-            }
-            .nav-link {
-                font-size: 12.5px;
-                padding: 4px 6px;
-            }
+            .nav-links { gap: 16px; }
+            .nav-link { font-size: 12.5px; }
         }
 
         @media(max-width: 850px) {
-            .nav-links {
-                display: none;
-            }
+            .nav-links { display: none; }
         }
 
         @media(max-width: 768px) {
@@ -566,7 +547,7 @@
 
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">About</a></li>
-                    <li><a href="ux.html" class="nav-link active-page">UX Design <span class="arrow">▾</span></a></li>
+                    <li><a href="ux.html" class="nav-link active-page">UX Design</a></li>
                     <li><a href="gd.html" class="nav-link">Graphic Design</a></li>
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
