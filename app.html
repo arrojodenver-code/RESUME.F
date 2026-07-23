@@ -136,18 +136,12 @@ body{
     color: var(--text-main);
 }
 
-.brand-logo {
+.brand-logo-img {
     width: 36px;
     height: 36px;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    color: var(--bg-dark);
-    font-size: 16px;
+    object-fit: cover;
+    display: block;
 }
 
 .brand-text {
@@ -523,7 +517,7 @@ body{
     <div class="navbar-wrapper">
         <nav class="glass-panel navbar">
             <a href="index.html" class="nav-brand">
-                <div class="brand-logo">JD</div>
+                <img src="profile.jpg" alt="Logo" class="brand-logo-img">
                 <div class="brand-text">
                     ARROJO
                     <span>PORTFOLIO</span>
