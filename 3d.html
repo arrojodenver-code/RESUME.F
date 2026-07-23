@@ -331,46 +331,6 @@ h1,
     margin:0 auto;
 }
 
-/* TOPBAR */
-
-.topbar{
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-}
-
-.back-btn{
-    text-decoration:none;
-
-    padding:14px 28px;
-
-    border-radius:14px;
-
-    font-weight:600;
-    font-size:15px;
-
-    transition:all .4s cubic-bezier(0.165,0.84,0.44,1);
-
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-
-    background:rgba(255,255,255,0.04);
-
-    color:var(--text-main);
-
-    border:1px solid var(--border-glass);
-}
-
-.back-btn:hover{
-    background:var(--text-main);
-    color:var(--bg-dark);
-
-    transform:translateY(-3px);
-
-    box-shadow:0 10px 25px rgba(255,255,255,0.1);
-}
-
 /* GALLERY */
 
 .gallery{
@@ -572,11 +532,6 @@ h1,
     .hero h1{
         font-size:38px;
     }
-
-    .back-btn{
-        width:100%;
-        justify-content:center;
-    }
 }
 
 </style>
@@ -621,6 +576,7 @@ h1,
             </div>
         </nav>
     </div>
+
     <!-- HERO -->
 
     <section class="hero glass-panel">
@@ -640,16 +596,6 @@ h1,
         </p>
 
     </section>
-
-    <!-- TOPBAR -->
-
-    <div class="topbar">
-
-        <a href="portfolio.html" class="back-btn">
-            ← Back to Portfolio
-        </a>
-
-    </div>
 
     <!-- GALLERY -->
 
