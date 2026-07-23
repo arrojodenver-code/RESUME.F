@@ -266,37 +266,6 @@
             margin: 0 auto;
         }
 
-        /* TOPBAR NAVIGATION */
-        .topbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .back-btn {
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-main);
-            border: 1px solid var(--border-glass);
-        }
-
-        .back-btn:hover {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
-        }
-
         /* GRID SYSTEM SETUP */
         .gallery {
             display: grid;
@@ -452,7 +421,6 @@
             .hero { padding: 40px 20px; }
             .hero h1 { font-size: 38px; }
             .container { padding: 0; }
-            .back-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -501,12 +469,6 @@
                 A collection of posters, social media graphics, advertisements, branding visuals, and digital creative works.
             </p>
         </section>
-
-        <div class="topbar">
-            <a href="portfolio.html" class="back-btn">
-                ← Back to Portfolio
-            </a>
-        </div>
 
         <section class="gallery">
             <div class="photo" tabindex="0" onclick="openModal('design15.jpg')" onkeypress="handleKeyPress(event, 'design15.jpg')">
@@ -648,5 +610,3 @@
 
 </body>
 </html>
-
-```
