@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Denver Arrojo • UX Showcase</title>
+    <title>John Denver Arrojo • Logo Showcase</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -12,8 +12,8 @@
             --bg-dark: #07070c;
             --panel-glass: rgba(13, 13, 25, 0.45);
             --border-glass: rgba(255, 255, 255, 0.07);
-            --accent-1: #d444f1;
-            --accent-2: #00f5d4;
+            --accent-1: #d444f1; /* Vivid Amethyst */
+            --accent-2: #00f5d4; /* Cyber Teal */
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -31,16 +31,17 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
-            background-image:
-                radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
+            background-image: 
+                radial-gradient(at 0% 100%, rgba(212, 68, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 245, 212, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.4) 0px, transparent 80%);
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
-            padding: 20px 18px 30px 18px;
+            padding: 0 18px 30px 18px;
         }
 
+        /* Ambient Fluid Shaders */
         .art-blob {
             position: fixed;
             border-radius: 50%;
@@ -48,7 +49,7 @@
             z-index: -1;
             opacity: 0.25;
             mix-blend-mode: screen;
-            animation: float 12s infinite alternate ease-in-out;
+            animation: float 14s infinite alternate ease-in-out;
         }
         .blob-1 { top: -10%; right: 10%; width: 500px; height: 500px; background: var(--accent-2); }
         .blob-2 { bottom: -10%; left: 5%; width: 550px; height: 550px; background: var(--accent-1); animation-delay: -5s; }
@@ -58,30 +59,16 @@
             100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
         }
 
-        /* CONTAINER MATCHED TO INDEX.HTML */
         .container {
             width: 100%;
-            max-width: 1165px;
-            margin: 0 auto;
+            max-width: 1100px;
+            margin: auto;
             display: flex;
             flex-direction: column;
-            gap: 28px;
-        }
-
-        /* GLASS PANELS BASE */
-        .glass-panel {
-            background: var(--panel-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
+            gap: 32px;
         }
 
         /* NAVIGATION BAR STYLES */
-
         .navbar-wrapper {
             position: sticky;
             top: 20px;
@@ -157,6 +144,11 @@
             color: var(--text-main);
         }
 
+        .nav-link .arrow {
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
         .nav-link.active-page {
             color: var(--accent-2);
             cursor: default;
@@ -164,235 +156,291 @@
             opacity: 0.8;
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
-            transition: 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-social-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            transition: 0.3s ease;
-        }
-
-        .btn-social-icon:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: var(--accent-2);
+        .nav-link.active-page .arrow {
+            display: none;
         }
 
         .btn-nav-cta {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: var(--bg-dark);
+            background: linear-gradient(135deg, #e5a93c, #cca028);
+            color: #0d0d19;
             padding: 10px 20px;
             border-radius: 100px;
             font-weight: 700;
             font-size: 13px;
             text-decoration: none;
             transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 245, 212, 0.25);
+            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.2);
         }
 
         .btn-nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
-            filter: brightness(1.1);
+            box-shadow: 0 6px 20px rgba(229, 169, 60, 0.35);
         }
 
-        /* HERO GRID MATCHED TO INDEX.HTML */
-        .hero-grid {
-            display: grid;
-            grid-template-columns:1.15fr 0.75fr; /* Fixed right side width without impacting column proportions */
-            gap: 26px;
-            align-items: stretch;
+        /* Glass Foundations */
+        .glass-panel {
+            background: var(--panel-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-text-card {
-            padding: 40px 45px;
+        /* Structural Heading Profiles */
+        h1, .slide-card .category {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+        /* HERO MODULE */
+        .hero {
+            padding: 60px;
+            text-align: center;
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: flex-start;
         }
 
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 100px;
             background: rgba(212, 68, 241, 0.1);
             border: 1px solid rgba(212, 68, 241, 0.25);
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             color: #fbcfff;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
-        .hero-text-card h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 46px;
+        .hero h1 {
+            font-size: 62px;
             line-height: 1.1;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
-        .hero-text-card h1 span {
+        .hero h1 span {
             background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-text-card p {
+        .hero p {
             color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 14.5px;
+            line-height: 1.8;
+            font-size: 17px;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
-        /* SHOWCASE CARD MATCHED TO INDEX.HTML HERO CARD SPACING */
-        .showcase-card {
-            padding: 26px;
+        /* ACTIONS ACTION HEADER */
+        .topbar {
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .slider-frame {
-            position: relative;
-            width: 100%;
-            height: 340px;
-            border-radius: 20px;
-            overflow: hidden;
-            background: #0d0d14;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .back-btn, .figma-btn {
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            border: 1px solid var(--border-glass);
+        }
+
+        .back-btn:hover {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .figma-btn {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .figma-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.45);
+            filter: brightness(1.1);
+        }
+
+        /* CAROUSEL CONTROLLER DECK */
+        .slider-wrapper {
+            padding: 24px;
+            background: rgba(10, 10, 18, 0.6);
         }
 
         .slider {
             display: flex;
-            height: 100%;
-            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         .slide {
             min-width: 100%;
-            height: 100%;
+            padding: 6px;
         }
 
-        .slide img {
+        /* PORTFOLIO PIECE ITEM CARD */
+        .slide-card {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .slide-card img {
             width: 100%;
-            height: 100%;
+            height: 600px;
             object-fit: cover;
-            object-position: center;
             cursor: pointer;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s;
             display: block;
         }
 
-        .card-info {
-            margin-top: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .slide-card:hover img {
+            transform: scale(1.02);
+            filter: saturate(1.05);
         }
 
-        .card-title-group {
+        /* TEXT INSIDE PREVIEW DISPLAY */
+        .overlay {
+            position: absolute;
+            inset: 0;
             display: flex;
             flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.4) 40%, transparent 100%);
+            pointer-events: none;
         }
 
-        .card-title-group .primary {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent-2);
-        }
-
-        .card-title-group .secondary {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            color: #10b981;
+        .category {
+            font-size: 12px;
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(0, 245, 212, 0.15);
+            border: 1px solid rgba(0, 245, 212, 0.3);
+            color: #bffff6;
+            width: fit-content;
         }
 
-        .nav-arrows {
-            display: flex;
-            gap: 6px;
-        }
-
-        .arrow-btn {
-            width: 32px;
-            height: 32px;
+        /* DIRECTION INDICATOR ACTION NODES */
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
+            background: rgba(13, 13, 25, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: white;
+            font-size: 18px;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            transition: 0.2s ease;
+            transition: all 0.3s ease;
         }
 
-        .arrow-btn:hover {
+        .btn:hover {
             background: var(--text-main);
             color: var(--bg-dark);
+            border-color: var(--text-main);
+            scale: 1.05;
         }
 
-        /* ACTION STRIP */
-        .topbar {
+        .prev { left: 40px; }
+        .next { right: 40px; }
+
+        /* PAGINATION NAILS TRACKER */
+        .thumbnails {
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 20px;
+            gap: 12px;
+            margin-top: 24px;
+            justify-content: center;
         }
 
-        .figma-btn {
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 13.5px;
+        .thumb {
+            width: 90px;
+            height: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            opacity: .4;
+            cursor: pointer;
+            border: 2px solid transparent;
             transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #2563eb, #06b6d4);
-            color: white;
+            background: #000;
         }
 
+        .thumb:hover {
+            opacity: .8;
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: var(--accent-2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 245, 212, 0.2);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FOOTER STRUCTURE */
         .footer {
             text-align: center;
-            padding: 16px 0;
+            padding: 20px 0;
             color: var(--text-muted);
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             border-top: 1px solid var(--border-glass);
+            margin-top: 8px;
         }
 
+        /* ISOLATED THEATRE MODAL SYSTEM */
         .modal {
             position: fixed;
             inset: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(4, 4, 8, 0.98);
             backdrop-filter: blur(20px);
             display: none;
@@ -401,52 +449,59 @@
             z-index: 99999;
         }
 
-        .modal img { width: 90%; height: 90%; object-fit: contain; }
+        .modal img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
 
         .close {
             position: absolute;
             top: 30px;
             right: 40px;
             font-size: 44px;
+            font-weight: 300;
             color: var(--text-muted);
             cursor: pointer;
+            z-index: 100000;
+            transition: color 0.2s;
         }
 
-        /* RESPONSIVE BREAKPOINTS MATCHED TO INDEX.HTML */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
+        .close:hover {
+            color: white;
         }
 
-        @media (max-width: 850px) {
+        /* SMART RESPONSIVE SCALING RULES */
+        @media(max-width: 850px) {
             .nav-links {
                 display: none;
             }
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            .hero-text-card {
-                padding: 28px 20px;
-            }
-            .slider-frame {
-                height: 260px;
-            }
+        @media(max-width: 768px) {
+            body { padding: 0 12px 18px 12px; }
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 42px; }
+            .slide-card img { height: 400px; }
+            .topbar { flex-direction: column; align-items: stretch; gap: 12px; }
+            .back-btn, .figma-btn { justify-content: center; }
+            .btn { width: 44px; height: 44px; font-size: 14px; }
+            .prev { left: 20px; }
+            .next { right: 20px; }
+            .thumb { width: 70px; height: 48px; }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- Space Background Shaders -->
     <div class="art-blob blob-1"></div>
     <div class="art-blob blob-2"></div>
 
     <div class="container">
 
-        <!-- NAVBAR -->
+        <!-- NAVIGATION BAR -->
         <div class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
@@ -458,106 +513,141 @@
                 </a>
 
                 <ul class="nav-links">
-                    <li><a href="index.html" class="nav-link">About</a></li>
-                    <li><a href="ux.html" class="nav-link active-page">UX Design</a></li>
+                    <li><a href="index.html" class="nav-link">Resume</a></li>
+                    <li><a href="ux.html" class="nav-link active-page">UX Design <span class="arrow">▾</span></a></li>
                     <li><a href="gd.html" class="nav-link">Graphic Design</a></li>
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
                 </ul>
 
-                <div class="nav-actions">
-                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon">
-                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-                    <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
-                </div>
+                <a href="contact.html" class="btn-nav-cta">Let's Get Started</a>
             </nav>
         </div>
 
-        <!-- HERO GRID -->
-        <div class="hero-grid">
-            
-            <section class="hero-text-card glass-panel">
-                <div class="badge">✦ Branding • UX • Visual Identity</div>
-                <h1>User <span>Experience</span></h1>
-                <p>
-                    A deliberate modern collection of visual design solutions, optimizing corporate brand positioning across interfaces and structural assets.
-                </p>
-            </section>
+        <!-- HERO COMPONENT -->
+        <section class="hero glass-panel">
+            <div class="badge">✦ Branding • UX • Visual Identity</div>
+            <h1>User <span>Experience</span></h1>
+            <p>
+                A deliberate modern collection of visual design solutions, optimizing corporate brand positioning across interfaces and structural assets.
+            </p>
+        </section>
 
-            <section class="showcase-card glass-panel">
-                <div class="slider-frame">
-                    <div class="slider" id="slider">
-                        <div class="slide">
-                            <img src="ux1.png" alt="Identity Layout Prototype 1" onclick="openModal(this.src)">
-                        </div>
-                        <div class="slide">
-                            <img src="ux2.png" alt="Identity Layout Prototype 2" onclick="openModal(this.src)">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-info">
-                    <div class="card-title-group">
-                        <span class="primary">Brand Identity System</span>
-                        <span class="secondary">UX Prototype Showcase</span>
-                    </div>
-
-                    <div class="nav-arrows">
-                        <button class="arrow-btn" onclick="moveSlide(-1)">❮</button>
-                        <button class="arrow-btn" onclick="moveSlide(1)">❯</button>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- BOTTOM ACTION STRIP -->
+        <!-- ACTION CONSOLE STRIP -->
         <div class="topbar">
-            <a class="figma-btn" target="_blank" href="https://www.figma.com/design/zc7c5TGhD85w4vtxPgxwOk/Untitled?node-id=179-266&t=uHD4ZNXwWq6jQMHe-1">View Figma Workspace</a>
+            <a href="portfolio.html" class="back-btn">
+                ← Back to Portfolio
+            </a>
+            <a class="figma-btn" target="_blank" href="https://www.figma.com/design/zc7c5TGhD85w4vtxPgxwOk/Untitled?node-id=179-266&t=uHD4ZNXwWq6jQMHe-1">
+                View Figma Workspace
+            </a>
         </div>
 
+        <!-- CAROUSEL ELEMENT PANELS -->
+        <section class="slider-wrapper glass-panel">
+
+            <button class="btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">❮</button>
+            <button class="btn next" onclick="moveSlide(1)" aria-label="Next Slide">❯</button>
+
+            <div class="slider" id="slider">
+
+                <!-- SLIDE 1 -->
+                <div class="slide">
+                    <div class="slide-card">
+                        <img src="ux1.png" alt="Identity Layout Prototype 1" onclick="openModal(this.src)">
+                        <div class="overlay">
+                            <div class="category">Brand Identity System</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="slide">
+                    <div class="slide-card">
+                        <img src="ux2.png" alt="Identity Layout Prototype 2" onclick="openModal(this.src)">
+                        <div class="overlay">
+                            <div class="category">Digital Identity Layout</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INDEX PIECE SELECTORS -->
+            <div class="thumbnails">
+                <div class="thumb active" onclick="showSlide(0)">
+                    <img src="ux1.png" alt="Thumbnail Select 1">
+                </div>
+                <div class="thumb" onclick="showSlide(1)">
+                    <img src="ux2.png" alt="Thumbnail Select 2">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- FOOTER BAR -->
         <footer class="footer">
             © 2026 John Denver Arrojo • UX Space Design Portfolio
         </footer>
 
     </div>
 
-    <!-- MODAL -->
+    <!-- PRESENTATION COMPOSITE LAYER -->
     <div class="modal" id="modal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImg" alt="Preview">
+        <img id="modalImg" alt="High Resolution Content Preview">
     </div>
 
     <script>
     let index = 0;
     const slider = document.getElementById("slider");
     const slides = document.querySelectorAll(".slide");
+    const thumbs = document.querySelectorAll(".thumb");
 
     function showSlide(i){
         index = (i + slides.length) % slides.length;
         slider.style.transform = `translateX(-${index * 100}%)`;
+        thumbs.forEach(thumb => thumb.classList.remove("active"));
+        thumbs[index].classList.add("active");
     }
 
     function moveSlide(step){
         showSlide(index + step);
     }
 
-    setInterval(() => { moveSlide(1); }, 5000);
+    /* CAROUSEL LOOP INTERVAL */
+    setInterval(() => {
+        moveSlide(1);
+    }, 5000);
 
+    /* FULL THEATRE ACTIVATION */
     function openModal(src){
         const modal = document.getElementById("modal");
         const modalImg = document.getElementById("modalImg");
+
         modal.style.display = "flex";
         modalImg.src = src;
+
+        if(modal.requestFullscreen){
+            modal.requestFullscreen();
+        }
     }
 
+    /* DISMISS SCREEN VIEW LAYER */
     function closeModal(){
-        document.getElementById("modal").style.display = "none";
+        const modal = document.getElementById("modal");
+        modal.style.display = "none";
+
+        if(document.fullscreenElement){
+            document.exitFullscreen();
+        }
     }
 
+    /* KEYBOARD DISMISS TRACKER */
     document.addEventListener("keydown", function(e){
-        if(e.key === "Escape"){ closeModal(); }
+        if(e.key === "Escape"){
+            closeModal();
+        }
     });
     </script>
 
