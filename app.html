@@ -18,8 +18,8 @@
     --panel-glass:rgba(13,13,25,0.45);
     --border-glass:rgba(255,255,255,0.07);
 
-    --accent-1:#00f5d4;
-    --accent-2:#d444f1;
+    --accent-1:#d444f1; /* Vivid Amethyst */
+    --accent-2:#00f5d4; /* Cyber Teal */
 
     --text-main:#f8fafc;
     --text-muted:#94a3b8;
@@ -41,8 +41,8 @@ body{
     background-color:var(--bg-dark);
 
     background-image:
-    radial-gradient(at 0% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(212,68,241,0.1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(0,245,212,0.12) 0px, transparent 50%),
     radial-gradient(at 50% 50%, rgba(30,41,59,0.4) 0px, transparent 80%);
 
     min-height:100vh;
@@ -71,7 +71,7 @@ body{
     right:10%;
     width:500px;
     height:500px;
-    background:var(--accent-1);
+    background:var(--accent-2);
 }
 
 .blob-2{
@@ -79,7 +79,7 @@ body{
     left:5%;
     width:550px;
     height:550px;
-    background:var(--accent-2);
+    background:var(--accent-1);
     animation-delay:-5s;
 }
 
@@ -247,7 +247,7 @@ body{
     font-size: 13px;
     text-decoration: none;
     transition: 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 245, 212, 0.25);
+    box-shadow: 0 4px 15px rgba(212, 68, 241, 0.25);
 }
 
 .btn-nav-cta:hover {
@@ -278,9 +278,9 @@ body{
 
     border-radius:100px;
 
-    background:rgba(0,245,212,0.1);
+    background:rgba(212,68,241,0.1);
 
-    border:1px solid rgba(0,245,212,0.25);
+    border:1px solid rgba(212,68,241,0.25);
 
     font-size:13px;
     font-weight:600;
@@ -289,7 +289,7 @@ body{
 
     text-transform:uppercase;
 
-    color:#bffff6;
+    color:#fbcfff;
 
     margin-bottom:24px;
 }
@@ -438,7 +438,7 @@ body{
 
     border:1px solid var(--border-glass);
 
-    color:var(--accent-1);
+    color:var(--accent-2);
 
     font-size:11px;
     font-weight:700;
@@ -585,7 +585,7 @@ body{
                 <li><span class="nav-link active-page">Mobile App Samples</span></li>
             </ul>
 
-          <div class="nav-actions">
+            <div class="nav-actions">
                 <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
                     <svg viewBox="0 0 24 24">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -595,6 +595,7 @@ body{
             </div>
         </nav>
     </div>
+
     <!-- HERO -->
 
     <section class="hero glass-panel">
