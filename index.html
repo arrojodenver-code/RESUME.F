@@ -7,54 +7,52 @@
 <title>John Denver Arrojo • Certified Portfolio Resume</title> 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ==================== THEME VARIABLES ==================== */
 
 :root {
-    /* DEFAULT: CLEAN WHITE CERTIFICATE THEME */
+    /* LIGHT MODE: BLACK & WHITE + CHROME RED ACCENT */
     --bg-main: #ffffff;
     --bg-paper: #ffffff;
-    --border-outer: #d4af37;
-    --border-inner: #c5a028;
-    --border-glass: rgba(0, 0, 0, 0.08);
-    --panel-glass: rgba(255, 255, 255, 0.95);
+    --border-outer: #000000;
+    --border-inner: #000000;
+    --border-glass: #000000;
+    --panel-glass: #ffffff;
     
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-accent: #b91c1c; /* Crimson Accent */
+    --text-primary: #000000;
+    --text-secondary: #222222;
+    --text-accent: #e50914; /* Chrome Red */
     
-    --gold-1: #d4af37;
-    --gold-2: #aa771c;
-    --gold-gradient: linear-gradient(135deg, #d4af37, #fcf6ba, #b38728, #aa771c);
+    --chrome-red: #e50914;
+    --red-hover: #b80710;
     
-    --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --seal-opacity: 0.05;
-    --item-bg: rgba(0, 0, 0, 0.02);
+    --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --seal-opacity: 0.06;
+    --item-bg: #ffffff;
 }
 
 [data-theme="dark"] {
-    /* DARK MODE THEME */
-    --bg-main: #0a0a0c;
-    --bg-paper: #12141a;
-    --border-outer: #aa771c;
-    --border-inner: #d4af37;
-    --border-glass: rgba(255, 255, 255, 0.08);
-    --panel-glass: rgba(18, 18, 22, 0.85);
+    /* DARK MODE: DEEP BLACK + CHROME RED ACCENT */
+    --bg-main: #000000;
+    --bg-paper: #0a0a0a;
+    --border-outer: #333333;
+    --border-inner: #e50914;
+    --border-glass: #222222;
+    --panel-glass: #0a0a0a;
     
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-accent: #ff4d4d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-accent: #ff2e3a; /* Bright Chrome Red */
     
-    --gold-1: #fcf6ba;
-    --gold-2: #bf953f;
-    --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #aa771c);
+    --chrome-red: #e50914;
+    --red-hover: #ff2e3a;
     
-    --shadow-main: 0 20px 50px rgba(0, 0, 0, 0.6);
-    --seal-opacity: 0.06;
-    --item-bg: rgba(255, 255, 255, 0.03);
+    --shadow-main: 0 20px 50px rgba(0, 0, 0, 0.9);
+    --seal-opacity: 0.08;
+    --item-bg: #111111;
 }
 
 *{
@@ -114,7 +112,7 @@ body{
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    border: 2px solid var(--border-inner);
+    border: 2px solid var(--chrome-red);
     object-fit: cover;
 }
 
@@ -129,8 +127,8 @@ body{
 .brand-text span {
     display: block;
     font-size: 9px;
-    color: var(--text-secondary);
-    font-weight: 600;
+    color: var(--chrome-red);
+    font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
 }
@@ -146,17 +144,17 @@ body{
     text-decoration: none;
     color: var(--text-secondary);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     transition: 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--text-primary);
+    color: var(--chrome-red);
 }
 
 .nav-link.active-page {
-    color: var(--border-inner);
-    font-weight: 700;
+    color: var(--chrome-red);
+    font-weight: 800;
     cursor: default;
     pointer-events: none;
 }
@@ -176,43 +174,42 @@ body{
     padding: 8px 16px;
     border-radius: 100px;
     background: var(--item-bg);
-    border: 1px solid var(--border-glass);
+    border: 2px solid var(--text-primary);
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
 }
 
 .theme-toggle-btn:hover {
-    border-color: var(--border-inner);
+    border-color: var(--chrome-red);
+    color: var(--chrome-red);
 }
 
 .btn-nav-cta {
-    background: var(--gold-gradient);
-    color: #111;
+    background: var(--chrome-red);
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 100px;
     font-weight: 700;
     font-size: 13px;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2);
-    border: none;
+    border: 2px solid var(--chrome-red);
 }
 
 .btn-nav-cta:hover {
+    background: var(--red-hover);
+    border-color: var(--red-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(184, 134, 11, 0.35);
 }
 
 /* ==================== CERTIFICATE GLASS PANEL ==================== */
 
 .glass-panel {
     background: var(--panel-glass);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--border-glass);
-    border-radius: 16px;
+    border: 2px solid var(--text-primary);
+    border-radius: 12px;
     box-shadow: var(--shadow-main);
     position: relative;
     overflow: hidden;
@@ -227,11 +224,11 @@ body{
 .certificate-frame::before {
     content: '';
     position: absolute;
-    top: 10px; left: 10px; right: 10px; bottom: 10px;
-    border: 1px dashed var(--border-inner);
-    border-radius: 10px;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px dashed var(--chrome-red);
+    border-radius: 8px;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 /* Watermark Seal Background */
@@ -242,7 +239,7 @@ body{
     width: 350px;
     height: 350px;
     border-radius: 50%;
-    border: 15px double var(--border-inner);
+    border: 10px double var(--chrome-red);
     opacity: var(--seal-opacity);
     pointer-events: none;
     display: flex;
@@ -251,7 +248,7 @@ body{
     font-family: 'Cinzel', serif;
     font-size: 120px;
     font-weight: 900;
-    color: var(--border-inner);
+    color: var(--chrome-red);
 }
 
 /* Typography */
@@ -289,32 +286,32 @@ h1, h2, h3, .cert-title {
     padding:6px 16px;
     border-radius:100px;
     background: var(--item-bg);
-    border:1px solid var(--border-inner);
+    border:2px solid var(--chrome-red);
     font-size:11px;
-    font-weight:700;
+    font-weight:800;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color: var(--border-inner);
+    color: var(--chrome-red);
     margin-bottom:20px;
 }
 
 .hero-main h1{
     font-size:48px;
     line-height:1.15;
-    font-weight:800;
+    font-weight:900;
     margin-bottom:15px;
+    color: var(--text-primary);
 }
 
 .hero-main h1 span{
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--chrome-red);
 }
 
 .hero-main p{
     color:var(--text-secondary);
     line-height:1.8;
     font-size:15px;
+    font-weight: 500;
 }
 
 /* HERO CARD / PHOTO */
@@ -330,10 +327,10 @@ h1, h2, h3, .cert-title {
 .image-placeholder{
     width:100%;
     height:300px;
-    border-radius:12px;
+    border-radius:8px;
     overflow:hidden;
     margin-bottom:16px;
-    border:2px double var(--border-inner);
+    border:2px solid var(--text-primary);
     background:var(--bg-paper);
 }
 
@@ -346,14 +343,15 @@ h1, h2, h3, .cert-title {
 
 .card-title{
     font-size:20px;
-    font-weight:700;
+    font-weight:800;
     margin-bottom:4px;
+    color: var(--text-primary);
 }
 
 .card-sub{
     color:var(--text-accent);
     font-size:12px;
-    font-weight:700;
+    font-weight:800;
     text-transform:uppercase;
     letter-spacing:0.1em;
     margin-bottom:18px;
@@ -367,21 +365,22 @@ h1, h2, h3, .cert-title {
 
 .stat-box{
     padding:14px;
-    border-radius:10px;
+    border-radius:8px;
     background: var(--item-bg);
-    border:1px solid var(--border-glass);
+    border:2px solid var(--text-primary);
 }
 
 .stat-box h3{
     font-size:24px;
-    color: var(--border-inner);
+    color: var(--chrome-red);
+    font-weight:900;
 }
 
 .stat-box p{
     color:var(--text-secondary);
     font-size:10px;
     text-transform:uppercase;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* ==================== MAIN CONTENT LAYOUT ==================== */
@@ -409,13 +408,14 @@ h1, h2, h3, .cert-title {
     display:flex;
     align-items:center;
     gap:12px;
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 2px solid var(--text-primary);
     padding-bottom: 10px;
+    color: var(--text-primary);
 }
 
 .section-title::before{
     content:'✦';
-    color: var(--border-inner);
+    color: var(--chrome-red);
     font-size: 18px;
 }
 
@@ -423,6 +423,7 @@ h1, h2, h3, .cert-title {
     font-size:14px;
     line-height:1.9;
     color:var(--text-secondary);
+    font-weight: 500;
 }
 
 /* INFO CARDS */
@@ -435,9 +436,9 @@ h1, h2, h3, .cert-title {
 
 .info-card{
     padding:16px 20px;
-    border-radius:10px;
+    border-radius:8px;
     background: var(--item-bg);
-    border:1px solid var(--border-glass);
+    border:2px solid var(--text-primary);
     display:flex;
     flex-direction:column;
     gap:4px;
@@ -446,14 +447,14 @@ h1, h2, h3, .cert-title {
 .info-card label{
     font-size:10px;
     text-transform:uppercase;
-    color:var(--border-inner);
-    font-weight: 700;
+    color:var(--chrome-red);
+    font-weight: 800;
     letter-spacing:0.05em;
 }
 
 .info-card span, .info-card a{
     font-size:14px;
-    font-weight:600;
+    font-weight:700;
     color: var(--text-primary);
     text-decoration: none;
 }
@@ -476,22 +477,23 @@ h1, h2, h3, .cert-title {
     display:flex;
     justify-content:space-between;
     font-size:13px;
-    font-weight:600;
+    font-weight:700;
+    color: var(--text-primary);
 }
 
 .skill-track{
-    height:6px;
+    height:8px;
     width:100%;
     background: var(--item-bg);
     border-radius:20px;
     overflow:hidden;
-    border: 1px solid var(--border-glass);
+    border: 2px solid var(--text-primary);
 }
 
 .skill-progress{
     height:100%;
     border-radius:20px;
-    background: var(--gold-gradient);
+    background: var(--chrome-red);
 }
 
 /* TIMELINE & EDUCATION */
@@ -508,10 +510,9 @@ h1, h2, h3, .cert-title {
     position:absolute;
     left:8px;
     top:0;
-    width:1px;
+    width:2px;
     height:100%;
-    background: var(--border-inner);
-    opacity: 0.4;
+    background: var(--text-primary);
 }
 
 .timeline-node{
@@ -522,12 +523,12 @@ h1, h2, h3, .cert-title {
 .timeline-node::before{
     content:'';
     position:absolute;
-    left:4px;
+    left:3px;
     top:6px;
-    width:9px;
-    height:9px;
+    width:12px;
+    height:12px;
     border-radius:50%;
-    background:var(--border-inner);
+    background:var(--chrome-red);
 }
 
 .node-header{
@@ -541,24 +542,25 @@ h1, h2, h3, .cert-title {
 
 .node-title{
     font-size:18px;
-    font-weight:700;
+    font-weight:800;
     font-family: 'Cinzel', serif;
+    color: var(--text-primary);
 }
 
 .node-date{
     font-size:11px;
-    color:var(--text-secondary);
-    border: 1px solid var(--border-glass);
+    color:var(--text-primary);
+    border: 2px solid var(--text-primary);
     padding:2px 10px;
     border-radius:30px;
-    font-weight: 600;
+    font-weight: 700;
     background: var(--item-bg);
 }
 
 .node-sub{
     color:var(--text-accent);
     font-size:12px;
-    font-weight:700;
+    font-weight:800;
     margin-bottom:10px;
     text-transform:uppercase;
     letter-spacing:0.05em;
@@ -577,13 +579,15 @@ h1, h2, h3, .cert-title {
     font-size:13px;
     position:relative;
     padding-left:14px;
+    font-weight: 500;
 }
 
 .timeline-node li::before{
     content:'•';
     position:absolute;
     left:0;
-    color:var(--border-inner);
+    color:var(--chrome-red);
+    font-weight: bold;
 }
 
 .edu-stack{
@@ -594,26 +598,29 @@ h1, h2, h3, .cert-title {
 
 .edu-node{
     padding:18px;
-    border-radius:10px;
+    border-radius:8px;
     background: var(--item-bg);
-    border:1px solid var(--border-glass);
+    border:2px solid var(--text-primary);
 }
 
 .edu-node h3{
     font-size:16px;
     margin-bottom:4px;
+    color: var(--text-primary);
+    font-weight:800;
 }
 
 .edu-node p{
     font-size:13px;
     color:var(--text-secondary);
+    font-weight: 500;
 }
 
 .edu-meta{
     margin-top:6px;
     font-size:11px;
-    color:var(--border-inner);
-    font-weight:700;
+    color:var(--chrome-red);
+    font-weight:800;
 }
 
 /* ==================== FOOTER ==================== */
@@ -626,6 +633,7 @@ h1, h2, h3, .cert-title {
     letter-spacing:0.1em;
     text-transform:uppercase;
     font-family: 'Cinzel', serif;
+    font-weight: 700;
 }
 
 /* RESPONSIVE */
