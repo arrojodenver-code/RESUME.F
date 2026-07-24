@@ -1,7 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"><!-- UPDATED NAVBAR -->
+<header class="navbar-wrapper">
+    <nav class="glass-panel navbar">
+        <a href="index.html" class="nav-brand">
+            <img src="jd.png" alt="John Denver Arrojo Logo" class="brand-logo-img">
+            <div class="brand-text">
+                ARROJO
+                <span>PORTFOLIO</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">About</a></li>
+            <li><a href="ux.html" class="nav-link">UX Design</a></li>
+            <li><a href="graphic.html" class="nav-link">Graphic Design</a></li>
+            <li><a href="3d.html" class="nav-link">3D Model</a></li>
+            <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <!-- THEME TOGGLE BUTTON (No Facebook button) -->
+            <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark and Light Mode" onclick="toggleTheme()">
+                <!-- Sun Icon (Shown in Dark Mode to switch to Light Mode) -->
+                <svg class="icon-sun" viewBox="0 0 24 24">
+                    <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm10-10a1 1 0 0 0-1-1h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zM4 12a1 1 0 0 0-1-1H2a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zm14.071-7.071a1 1 0 0 0-1.414 0l-.707.707a1 1 0 1 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zM6.05 17.95a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zm12.021 12.021a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0zM6.05 6.05a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0z"/>
+                </svg>
+                <!-- Moon Icon (Shown in Light Mode to switch back to Dark Mode) -->
+                <svg class="icon-moon" viewBox="0 0 24 24">
+                    <path d="M12.3 2a10 10 0 0 0 9.7 11.5 10 10 0 1 1-11.2-11.4 10 10 0 0 0 1.5-.1z"/>
+                </svg>
+            </button>
+
+            <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
+        </div>
+    </nav>
+</header>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Denver Arrojo • Graphic Design Showcase</title>
     
