@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Denver Arrojo • Logo Showcase</title>
+
+    <!-- INSTANT THEME CHECK (Prevents screen flashing light/dark on load) -->
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode-init');
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -18,6 +26,56 @@
             --text-muted: #94a3b8;
         }
 
+        /* LIGHT MODE THEME OVERRIDES */
+        body.light-mode {
+            --bg-dark: #f1f5f9;
+            --panel-glass: rgba(255, 255, 255, 0.75);
+            --border-glass: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-2: #008b7d;
+        }
+
+        body.light-mode .art-blob {
+            opacity: 0.15;
+        }
+
+        body.light-mode .badge {
+            background: rgba(212, 68, 241, 0.1);
+            border: 1px solid rgba(212, 68, 241, 0.2);
+            color: #9333ea;
+        }
+
+        body.light-mode .slider-wrapper {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        body.light-mode .slide-card {
+            background: #e2e8f0;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .category {
+            background: rgba(0, 139, 125, 0.15);
+            border: 1px solid rgba(0, 139, 125, 0.3);
+            color: #005e54;
+        }
+
+        body.light-mode .btn {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #0f172a;
+        }
+
+        body.light-mode .btn:hover {
+            background: #0f172a;
+            color: #ffffff;
+        }
+
+        body.light-mode .thumb {
+            background: #e2e8f0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -28,17 +86,17 @@
             scroll-behavior: smooth;
         }
 
-        body{
-            font-family:'Plus Jakarta Sans',sans-serif;
-            background-color:var(--bg-dark);
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
             background-image:
                 radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
                 radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
-            min-height:100vh;
-            color:var(--text-main);
-            overflow-x:hidden;
-            padding:20px 18px 30px 18px;
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 20px 18px 30px 18px;
         }
 
         /* Ambient Fluid Shaders */
@@ -51,21 +109,22 @@
             mix-blend-mode: screen;
             animation: float 12s infinite alternate ease-in-out;
         }
-        .blob-1{
-            top:20%;
-            left:-10%;
-            width:500px;
-            height:500px;
-            background:var(--accent-1);
+
+        .blob-1 {
+            top: 20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent-1);
         }
 
-        .blob-2{
-            bottom:10%;
-            right:-10%;
-            width:600px;
-            height:600px;
-            background:var(--accent-2);
-            animation-delay:-4s;
+        .blob-2 {
+            bottom: 10%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--accent-2);
+            animation-delay: -4s;
         }
 
         @keyframes float {
@@ -95,6 +154,17 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 28px;
+            background: rgba(13, 13, 25, 0.2) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        body.light-mode .navbar {
+            background: rgba(255, 255, 255, 0.25) !important;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
         }
 
         .nav-brand {
@@ -154,9 +224,15 @@
 
         .nav-link.active-page {
             color: var(--accent-2);
+            font-weight: 700;
             cursor: default;
             pointer-events: none;
-            opacity: 0.8;
+            text-shadow: 0 0 12px rgba(0, 245, 212, 0.4), 0 1px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        body.light-mode .nav-link.active-page {
+            color: #00877a;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
         }
 
         /* Nav Actions (Social & CTA) */
@@ -178,6 +254,11 @@
             color: var(--text-main);
             transition: 0.3s ease;
             text-decoration: none;
+            cursor: pointer;
+        }
+
+        body.light-mode .btn-social-icon {
+            background: rgba(0, 0, 0, 0.05);
         }
 
         .btn-social-icon svg {
@@ -192,6 +273,11 @@
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
+        }
+
+        body.light-mode .btn-social-icon:hover {
+            background: rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.2);
         }
 
         .btn-nav-cta {
@@ -219,7 +305,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
             position: relative;
             overflow: hidden;
         }
@@ -350,6 +436,10 @@
             padding: 40px;
             background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.4) 40%, transparent 100%);
             pointer-events: none;
+        }
+
+        body.light-mode .overlay {
+            background: linear-gradient(to top, rgba(241, 245, 249, 0.95) 0%, rgba(241, 245, 249, 0.4) 40%, transparent 100%);
         }
 
         .category {
@@ -483,6 +573,21 @@
             color: white;
         }
 
+        /* CIRCULAR VIEW TRANSITION STYLES */
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation: none;
+            mix-blend-mode: normal;
+        }
+
+        ::view-transition-old(root) {
+            z-index: 1;
+        }
+
+        ::view-transition-new(root) {
+            z-index: 9999;
+        }
+
         /* SMART RESPONSIVE SCALING RULES */
         @media(max-width: 850px) {
             .nav-links {
@@ -531,11 +636,19 @@
                 </ul>
 
                 <div class="nav-actions">
-                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <button id="theme-toggle" class="btn-social-icon" aria-label="Toggle Dark/Light Mode">
+                        <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
-                    </a>
+                    </button>
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
                 </div>
             </nav>
@@ -659,6 +772,78 @@
             closeModal();
         }
     });
+
+    /* THEME SYSTEM INTEGRATION */
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+
+    const sunSVG = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+
+    function loadSavedTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            if (themeIcon) themeIcon.innerHTML = moonSVG;
+        } else {
+            body.classList.remove('light-mode');
+            if (themeIcon) themeIcon.innerHTML = sunSVG;
+        }
+    }
+
+    loadSavedTheme();
+
+    function toggleTheme() {
+        body.classList.toggle('light-mode');
+        if (body.classList.contains('light-mode')) {
+            themeIcon.innerHTML = moonSVG;
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeIcon.innerHTML = sunSVG;
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            if (!document.startViewTransition) {
+                toggleTheme();
+                return;
+            }
+
+            const rect = themeToggle.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            const endRadius = Math.hypot(
+                Math.max(x, innerWidth - x),
+                Math.max(y, innerHeight - y)
+            );
+
+            const transition = document.startViewTransition(() => {
+                toggleTheme();
+            });
+
+            transition.ready.then(() => {
+                const clipPath = [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${endRadius}px at ${x}px ${y}px)`
+                ];
+                
+                document.documentElement.animate(
+                    {
+                        clipPath: clipPath
+                    },
+                    {
+                        duration: 650,
+                        easing: 'ease-in-out',
+                        pseudoElement: '::view-transition-new(root)'
+                    }
+                );
+            });
+        });
+    }
     </script>
 
 </body>
