@@ -5,13 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Denver Arrojo • UX Design Showcase</title>
     
-    <!-- Prevent theme flashing on page load -->
-    <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-mode');
-        }
-    </script>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,31 +13,12 @@
     <style>
         :root {
             --bg-dark: #07070c;
-            --bg-gradient-1: rgba(212, 68, 241, 0.12);
-            --bg-gradient-2: rgba(0, 245, 212, 0.1);
             --panel-glass: rgba(13, 13, 25, 0.45);
             --border-glass: rgba(255, 255, 255, 0.07);
-            --accent-1: #d444f1;
-            --accent-2: #00f5d4;
+            --accent-1: #d444f1; /* Vivid Amethyst */
+            --accent-2: #00f5d4; /* Cyber Teal */
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --icon-bg: rgba(255, 255, 255, 0.05);
-            --icon-hover: rgba(255, 255, 255, 0.12);
-        }
-
-        /* LIGHT MODE OVERRIDES */
-        html.light-mode {
-            --bg-dark: #f0f4f8;
-            --bg-gradient-1: rgba(212, 68, 241, 0.08);
-            --bg-gradient-2: rgba(0, 245, 212, 0.12);
-            --panel-glass: rgba(255, 255, 255, 0.65);
-            --border-glass: rgba(0, 0, 0, 0.08);
-            --accent-1: #b81bd6;
-            --accent-2: #00b39b;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --icon-bg: rgba(0, 0, 0, 0.05);
-            --icon-hover: rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -61,14 +35,13 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             background-image:
-                radial-gradient(at 0% 0%, var(--bg-gradient-1) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, var(--bg-gradient-2) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(148, 163, 184, 0.1) 0px, transparent 80%);
+                radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.5) 0px, transparent 80%);
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
             padding: 20px 18px 30px 18px;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* BACKGROUND ANIMATED BLOBS */
@@ -78,13 +51,9 @@
             filter: blur(140px);
             z-index: -1;
             opacity: 0.25;
-            mix-blend-mode: multiply;
+            mix-blend-mode: screen;
             will-change: transform;
             animation: float 12s infinite alternate ease-in-out;
-        }
-
-        html:not(.light-mode) .art-blob {
-            mix-blend-mode: screen;
         }
 
         .blob-1 {
@@ -125,10 +94,9 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             position: relative;
             overflow: hidden;
-            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         /* NAVIGATION BAR */
@@ -192,6 +160,9 @@
             font-size: 14px;
             font-weight: 500;
             transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .nav-link:hover,
@@ -204,57 +175,49 @@
             color: var(--accent-2);
             cursor: default;
             pointer-events: none;
-            font-weight: 700;
+            opacity: 0.85;
         }
 
+        /* NAV ACTIONS */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .btn-theme-toggle {
+        .btn-social-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background: var(--icon-bg);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
             transition: all 0.3s ease;
-            cursor: pointer;
-            outline: none;
+            text-decoration: none;
         }
 
-        .btn-theme-toggle svg {
+        .btn-social-icon svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
-            transition: fill 0.3s ease, transform 0.3s ease;
+            transition: fill 0.3s ease;
         }
 
-        .btn-theme-toggle:hover,
-        .btn-theme-toggle:focus-visible {
-            background: var(--icon-hover);
+        .btn-social-icon:hover,
+        .btn-social-icon:focus-visible {
+            background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
+            outline: none;
         }
-
-        /* TOGGLE ICON DISPLAY RULES */
-        /* Dark mode (default): Show SUN icon */
-        .icon-sun { display: block; }
-        .icon-moon { display: none; }
-
-        /* Light mode: Show MOON icon */
-        html.light-mode .icon-sun { display: none; }
-        html.light-mode .icon-moon { display: block; }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: #ffffff;
+            color: var(--bg-dark);
             padding: 10px 20px;
             border-radius: 100px;
             font-weight: 700;
@@ -272,14 +235,15 @@
             outline: none;
         }
 
-        /* TYPOGRAPHY & HERO */
+        /* TYPOGRAPHY */
         h1, h2 {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
         }
 
+        /* HERO SECTION */
         .hero {
-            padding: 60px 40px;
+            padding: 60px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -291,20 +255,20 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 100px;
-            background: rgba(212, 68, 241, 0.1);
-            border: 1px solid rgba(212, 68, 241, 0.3);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
+            background: rgba(0, 245, 212, 0.1);
+            border: 1px solid rgba(0, 245, 212, 0.25);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            color: #e879f9;
+            color: var(--accent-2);
             margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 60px;
+            font-size: 62px;
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 18px;
@@ -318,96 +282,60 @@
 
         .hero p {
             color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 16px;
-            max-width: 600px;
-            margin: 0 auto 28px auto;
+            line-height: 1.8;
+            font-size: 17px;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
-        .btn-figma-workspace {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #2563eb, #00f5d4);
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 14px;
-            padding: 12px 28px;
-            border-radius: 100px;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(0, 245, 212, 0.25);
-            transition: all 0.3s ease;
+        /* UX SHOWCASE GRID */
+        .ux-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
         }
 
-        .btn-figma-workspace:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 245, 212, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .showcase-wrapper {
-            position: relative;
-            padding: 24px;
-            min-height: 520px;
+        .ux-card {
+            padding: 32px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 20px;
+            transition: all 0.4s ease;
         }
 
-        .showcase-viewport {
-            width: 100%;
-            height: 100%;
-            overflow-x: auto;
-            border-radius: 16px;
-            display: flex;
+        .ux-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        .ux-card h2 {
+            font-size: 24px;
+            color: var(--text-main);
+        }
+
+        .ux-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .figma-link {
+            display: inline-flex;
             align-items: center;
-            gap: 16px;
-            scroll-behavior: smooth;
+            gap: 8px;
+            color: var(--accent-2);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: gap 0.3s ease;
         }
 
-        .showcase-viewport::-webkit-scrollbar {
-            height: 6px;
+        .figma-link:hover {
+            gap: 12px;
         }
 
-        .showcase-viewport::-webkit-scrollbar-thumb {
-            background: var(--border-glass);
-            border-radius: 10px;
-        }
-
-        .figma-frame-img {
-            max-width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--border-glass);
-            object-fit: contain;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(13, 13, 25, 0.8);
-            border: 1px solid var(--border-glass);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-btn:hover {
-            background: var(--accent-2);
-            color: #000;
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .carousel-btn.prev { left: 16px; }
-        .carousel-btn.next { right: 16px; }
-
+        /* FOOTER */
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -419,8 +347,10 @@
             margin-top: 8px;
         }
 
+        /* RESPONSIVE BREAKPOINTS */
         @media(max-width: 850px) {
             .nav-links { display: none; }
+            .ux-grid { grid-template-columns: 1fr; }
         }
 
         @media(max-width: 640px) {
@@ -458,18 +388,11 @@
                 </ul>
 
                 <div class="nav-actions">
-                    <!-- THEME TOGGLE BUTTON -->
-                    <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark and Light Mode" onclick="toggleTheme()">
-                        <!-- Sun Icon (Shown in Dark Mode) -->
-                        <svg class="icon-sun" viewBox="0 0 24 24">
-                            <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm10-10a1 1 0 0 0-1-1h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zM4 12a1 1 0 0 0-1-1H2a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zm14.071-7.071a1 1 0 0 0-1.414 0l-.707.707a1 1 0 1 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zM6.05 17.95a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zm12.021 12.021a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0zM6.05 6.05a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0z"/>
+                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                         </svg>
-                        <!-- Moon Icon (Shown in Light Mode) -->
-                        <svg class="icon-moon" viewBox="0 0 24 24">
-                            <path d="M12.3 2a10 10 0 0 0 9.7 11.5 10 10 0 1 1-11.2-11.4 10 10 0 0 0 1.5-.1z"/>
-                        </svg>
-                    </button>
-
+                    </a>
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
                 </div>
             </nav>
@@ -477,25 +400,34 @@
 
         <!-- HERO SECTION -->
         <section class="hero glass-panel">
-            <div class="badge">✦ BRANDING • UX • VISUAL IDENTITY</div>
+            <div class="badge">✦ UX & Product Design</div>
             <h1>User <span>Experience</span></h1>
             <p>
-                A deliberate modern collection of visual design solutions, optimizing corporate brand positioning across interfaces and structural assets.
+                Interactive prototypes, user journey workflows, wireframes, and digital product case studies built in Figma.
             </p>
-            <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="btn-figma-workspace">
-                View Figma Workspace
-            </a>
         </section>
 
-        <!-- FIGMA SHOWCASE CAROUSEL -->
-        <section class="glass-panel showcase-wrapper">
-            <button class="carousel-btn prev" onclick="scrollShowcase(-400)" aria-label="Scroll Left">&larr;</button>
-            
-            <div class="showcase-viewport" id="showcase-viewport">
-                <img src="ux-figma-canvas.png" alt="Figma User Flow Canvas" class="figma-frame-img">
+        <!-- UX PROJECTS GRID -->
+        <section class="ux-grid">
+            <div class="glass-panel ux-card">
+                <div>
+                    <h2>Interactive Web Prototype</h2>
+                    <p style="margin-top: 8px;">A user-centered interactive flow designed for seamless web navigation, focused on accessibility and micro-interactions.</p>
+                </div>
+                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="figma-link">
+                    Open in Figma Workspace &rarr;
+                </a>
             </div>
 
-            <button class="carousel-btn next" onclick="scrollShowcase(400)" aria-label="Scroll Right">&rarr;</button>
+            <div class="glass-panel ux-card">
+                <div>
+                    <h2>Mobile UI Case Study</h2>
+                    <p style="margin-top: 8px;">End-to-end mobile design flow from wireframing to high-fidelity interactive screens and design system tokens.</p>
+                </div>
+                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="figma-link">
+                    Open in Figma Workspace &rarr;
+                </a>
+            </div>
         </section>
 
         <!-- FOOTER -->
@@ -505,27 +437,11 @@
 
     </div>
 
-    <!-- SCRIPT -->
     <script>
-        function toggleTheme() {
-            const doToggle = () => {
-                const isLight = document.documentElement.classList.toggle('light-mode');
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            };
-
-            if (!document.startViewTransition) {
-                doToggle();
-                return;
-            }
-
-            document.startViewTransition(() => {
-                doToggle();
-            });
-        }
-
-        function scrollShowcase(offset) {
-            const viewport = document.getElementById('showcase-viewport');
-            viewport.scrollBy({ left: offset, behavior: 'smooth' });
+        // Check for saved theme setting on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.add('light-mode');
         }
     </script>
 
