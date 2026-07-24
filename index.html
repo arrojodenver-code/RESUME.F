@@ -941,11 +941,11 @@ function toggleTheme() {
     
     if (html.getAttribute('data-theme') === 'dark') {
         html.removeAttribute('data-theme');
-        themeIcon.textContent = '🌙';
+        
         themeText.textContent = 'Dark Mode';
     } else {
         html.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
+        
         themeText.textContent = 'Light Mode';
     }
 }
