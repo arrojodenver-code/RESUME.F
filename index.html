@@ -430,9 +430,10 @@ body.light-mode .hero-card{
     );
 }
 
+/* PERFECT 1:1 SQUARE IMAGE CONTAINER */
 .image-placeholder{
     width:100%;
-    height:340px;
+    aspect-ratio: 1 / 1; /* Forces 1:1 square ratio */
     border-radius:20px;
     overflow:hidden;
     margin-bottom:16px;
@@ -444,7 +445,7 @@ body.light-mode .hero-card{
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center 15%;
+    object-position:center top; /* Perfectly framing head and shoulders */
     display:block;
 }
 
@@ -788,10 +789,6 @@ body.light-mode .hero-card{
     .hero-main h1{
         font-size:48px;
     }
-
-    .image-placeholder{
-        height:380px;
-    }
 }
 
 @media(max-width:850px){
@@ -848,8 +845,8 @@ body.light-mode .hero-card{
     }
 
     .image-placeholder{
-        width:180px;
-        height:180px;
+        width:200px;
+        aspect-ratio: 1 / 1;
         margin:0 auto 20px auto;
         border-radius:26px;
         overflow:hidden;
@@ -867,7 +864,7 @@ body.light-mode .hero-card{
         width:100%;
         height:100%;
         object-fit:cover;
-        object-position:center 15%;
+        object-position:center top;
         display:block;
         transform:none;
     }
