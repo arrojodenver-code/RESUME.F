@@ -6,6 +6,13 @@
 
 <title>John Denver Arrojo • Portfolio Resume</title> 
 
+<!-- INSTANT THEME CHECK (Prevents screen flashing light/dark on load) -->
+<script>
+    if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.add('light-mode-init');
+    }
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -27,7 +34,7 @@ body.light-mode{
     --border-glass:rgba(0,0,0,0.08);
     --text-main:#0f172a;
     --text-muted:#64748b;
-    --accent-2:#008b7d; /* Darker cyan base for light mode contrast */
+    --accent-2:#008b7d;
 }
 
 body.light-mode .art-blob{
@@ -69,8 +76,6 @@ body.light-mode .node-date{
     background:rgba(0,0,0,0.04);
     border:1px solid rgba(0,0,0,0.08);
 }
-
-/* LIGHT MODE VISIBILITY FIXES FOR CYAN ACCENTS */
 
 body.light-mode .card-sub {
     color: #00877a;
@@ -433,7 +438,7 @@ body.light-mode .hero-card{
 /* PERFECT 1:1 SQUARE IMAGE CONTAINER */
 .image-placeholder{
     width:100%;
-    aspect-ratio: 1 / 1; /* Forces 1:1 square ratio */
+    aspect-ratio: 1 / 1;
     border-radius:20px;
     overflow:hidden;
     margin-bottom:16px;
@@ -445,7 +450,7 @@ body.light-mode .hero-card{
     width:100%;
     height:100%;
     object-fit:cover;
-    object-position:center top; /* Perfectly framing head and shoulders */
+    object-position:center top;
     display:block;
 }
 
@@ -1199,54 +1204,73 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
-    function toggleTheme() {
-        body.classList.toggle('light-mode');
-        if (body.classList.contains('light-mode')) {
-            // Moon symbol
-            themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    const sunSVG = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+    const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+
+    // Load saved theme state immediately
+    function loadSavedTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            if (themeIcon) themeIcon.innerHTML = moonSVG;
         } else {
-            // Sun symbol
-            themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+            body.classList.remove('light-mode');
+            if (themeIcon) themeIcon.innerHTML = sunSVG;
         }
     }
 
-    themeToggle.addEventListener('click', (e) => {
-        if (!document.startViewTransition) {
-            toggleTheme();
-            return;
+    loadSavedTheme();
+
+    function toggleTheme() {
+        body.classList.toggle('light-mode');
+        if (body.classList.contains('light-mode')) {
+            themeIcon.innerHTML = moonSVG;
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeIcon.innerHTML = sunSVG;
+            localStorage.setItem('theme', 'dark');
         }
+    }
 
-        const rect = themeToggle.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            if (!document.startViewTransition) {
+                toggleTheme();
+                return;
+            }
 
-        const endRadius = Math.hypot(
-            Math.max(x, innerWidth - x),
-            Math.max(y, innerHeight - y)
-        );
+            const rect = themeToggle.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
 
-        const transition = document.startViewTransition(() => {
-            toggleTheme();
-        });
-
-        transition.ready.then(() => {
-            const clipPath = [
-                `circle(0px at ${x}px ${y}px)`,
-                `circle(${endRadius}px at ${x}px ${y}px)`
-            ];
-            
-            document.documentElement.animate(
-                {
-                    clipPath: clipPath
-                },
-                {
-                    duration: 650,
-                    easing: 'ease-in-out',
-                    pseudoElement: '::view-transition-new(root)'
-                }
+            const endRadius = Math.hypot(
+                Math.max(x, innerWidth - x),
+                Math.max(y, innerHeight - y)
             );
+
+            const transition = document.startViewTransition(() => {
+                toggleTheme();
+            });
+
+            transition.ready.then(() => {
+                const clipPath = [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${endRadius}px at ${x}px ${y}px)`
+                ];
+                
+                document.documentElement.animate(
+                    {
+                        clipPath: clipPath
+                    },
+                    {
+                        duration: 650,
+                        easing: 'ease-in-out',
+                        pseudoElement: '::view-transition-new(root)'
+                    }
+                );
+            });
         });
-    });
+    }
 </script>
 
 </body>
