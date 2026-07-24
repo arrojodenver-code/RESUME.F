@@ -142,11 +142,23 @@ body{
     margin-bottom: 10px;
 }
 
+/* ADJUSTED TRANSPARENT LIQUID GLASS NAVBAR */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 14px 28px;
+    background: rgba(13, 13, 25, 0.2) !important; /* Higher transparency for dark mode */
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+body.light-mode .navbar {
+    background: rgba(255, 255, 255, 0.25) !important; /* Higher transparency for light mode */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
 }
 
 .nav-brand {
@@ -1178,24 +1190,20 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
     }
 
     themeToggle.addEventListener('click', (e) => {
-        // Fallback for browsers that don't support View Transitions API
         if (!document.startViewTransition) {
             toggleTheme();
             return;
         }
 
-        // Get click position
         const rect = themeToggle.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
 
-        // Calculate max radius needed to cover the screen
         const endRadius = Math.hypot(
             Math.max(x, innerWidth - x),
             Math.max(y, innerHeight - y)
         );
 
-        // Perform the View Transition animation
         const transition = document.startViewTransition(() => {
             toggleTheme();
         });
