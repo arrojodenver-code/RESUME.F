@@ -4,31 +4,64 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>John Denver Arrojo • Portfolio Resume</title> 
+<title>John Denver Arrojo • Certified Portfolio Resume</title> 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-    /* Subtle Black Theme */
-    --bg-dark:#0a0a0c;
-    --panel-glass:rgba(18, 18, 22, 0.55);
-    --border-glass:rgba(255, 255, 255, 0.08);
+/* ==================== THEME VARIABLES ==================== */
+
+:root {
+    /* DEFAULT: CLEAN WHITE CERTIFICATE THEME */
+    --bg-main: #ffffff;
+    --bg-paper: #ffffff;
+    --border-outer: #d4af37;
+    --border-inner: #c5a028;
+    --border-glass: rgba(0, 0, 0, 0.08);
+    --panel-glass: rgba(255, 255, 255, 0.95);
     
-    /* Red Accents */
-    --accent-1:#ff2e43;
-    --accent-2:#ff4d4d;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-accent: #b91c1c; /* Crimson Accent */
     
-    --text-main:#f8fafc;
-    --text-muted:#a1a1aa;
+    --gold-1: #d4af37;
+    --gold-2: #aa771c;
+    --gold-gradient: linear-gradient(135deg, #d4af37, #fcf6ba, #b38728, #aa771c);
+    
+    --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --seal-opacity: 0.05;
+    --item-bg: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] {
+    /* DARK MODE THEME */
+    --bg-main: #0a0a0c;
+    --bg-paper: #12141a;
+    --border-outer: #aa771c;
+    --border-inner: #d4af37;
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --panel-glass: rgba(18, 18, 22, 0.85);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-accent: #ff4d4d;
+    
+    --gold-1: #fcf6ba;
+    --gold-2: #bf953f;
+    --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #aa771c);
+    
+    --shadow-main: 0 20px 50px rgba(0, 0, 0, 0.6);
+    --seal-opacity: 0.06;
+    --item-bg: rgba(255, 255, 255, 0.03);
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 html{
@@ -37,47 +70,11 @@ html{
 
 body{
     font-family:'Plus Jakarta Sans',sans-serif;
-    background-color:var(--bg-dark);
-    background-image:
-        radial-gradient(at 0% 0%, rgba(255, 46, 67, 0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(255, 77, 77, 0.08) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(20, 20, 25, 0.6) 0px, transparent 80%);
+    background-color:var(--bg-main);
     min-height:100vh;
-    color:var(--text-main);
+    color:var(--text-primary);
     overflow-x:hidden;
-    padding:20px 18px 30px 18px;
-}
-
-.art-blob{
-    position:fixed;
-    border-radius:50%;
-    filter:blur(140px);
-    z-index:-1;
-    opacity:0.25;
-    mix-blend-mode:screen;
-    animation:float 12s infinite alternate ease-in-out;
-}
-
-.blob-1{
-    top:20%;
-    left:-10%;
-    width:500px;
-    height:500px;
-    background:var(--accent-1);
-}
-
-.blob-2{
-    bottom:10%;
-    right:-10%;
-    width:600px;
-    height:600px;
-    background:var(--accent-2);
-    animation-delay:-4s;
-}
-
-@keyframes float{
-    0%{ transform:translateY(0px) scale(1); }
-    100%{ transform:translateY(40px) scale(1.1); }
+    padding:20px 18px 40px 18px;
 }
 
 .resume-container{
@@ -89,7 +86,7 @@ body{
     gap:28px;
 }
 
-/* NAVIGATION BAR STYLES */
+/* ==================== NAVBAR ==================== */
 
 .navbar-wrapper {
     position: sticky;
@@ -110,31 +107,31 @@ body{
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: var(--text-main);
+    color: var(--text-primary);
 }
 
 .brand-logo-img {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid var(--border-inner);
     object-fit: cover;
-    display: block;
 }
 
 .brand-text {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 16px;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em;
     line-height: 1.1;
 }
 
 .brand-text span {
     display: block;
-    font-size: 10px;
-    color: var(--text-muted);
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-size: 9px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
 }
 
@@ -147,24 +144,21 @@ body{
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     font-size: 14px;
     font-weight: 500;
     transition: 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 4px;
 }
 
 .nav-link:hover {
-    color: var(--text-main);
+    color: var(--text-primary);
 }
 
 .nav-link.active-page {
-    color: var(--accent-2);
+    color: var(--border-inner);
+    font-weight: 700;
     cursor: default;
     pointer-events: none;
-    opacity: 0.8;
 }
 
 .nav-actions {
@@ -173,92 +167,105 @@ body{
     gap: 12px;
 }
 
-.btn-social-icon {
+/* Theme Switcher Button */
+.theme-toggle-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: var(--item-bg);
     border: 1px solid var(--border-glass);
-    color: var(--text-main);
-    transition: 0.3s ease;
-    text-decoration: none;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.btn-social-icon svg {
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-    transition: 0.3s ease;
-}
-
-.btn-social-icon:hover {
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: var(--accent-2);
+.theme-toggle-btn:hover {
+    border-color: var(--border-inner);
 }
 
 .btn-nav-cta {
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    color: #ffffff;
+    background: var(--gold-gradient);
+    color: #111;
     padding: 10px 20px;
     border-radius: 100px;
     font-weight: 700;
     font-size: 13px;
     text-decoration: none;
-    transition: 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 46, 67, 0.3);
+    box-shadow: 0 4px 15px rgba(184, 134, 11, 0.2);
+    border: none;
 }
 
 .btn-nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 46, 67, 0.5);
-    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(184, 134, 11, 0.35);
 }
 
-/* GLASS PANEL */
+/* ==================== CERTIFICATE GLASS PANEL ==================== */
 
-.glass-panel{
-    background:var(--panel-glass);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border:1px solid var(--border-glass);
-    border-radius:24px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.5);
-    position:relative;
-    overflow:hidden;
+.glass-panel {
+    background: var(--panel-glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    box-shadow: var(--shadow-main);
+    position: relative;
+    overflow: hidden;
 }
 
-.glass-panel::before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:50%;
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.03),
-        transparent
-    );
-    transform:skewX(-25deg);
-    transition:0.75s;
+/* Certificate Border Framing */
+.certificate-frame {
+    position: relative;
+    padding: 30px;
 }
 
-.glass-panel:hover::before{
-    left:125%;
+.certificate-frame::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px dashed var(--border-inner);
+    border-radius: 10px;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
-h1,h2,h3,.card-title{
-    font-family:'Space Grotesk',sans-serif;
-    letter-spacing:-0.03em;
+/* Watermark Seal Background */
+.watermark-seal {
+    position: absolute;
+    right: -50px;
+    bottom: -50px;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 15px double var(--border-inner);
+    opacity: var(--seal-opacity);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: var(--border-inner);
 }
 
-/* HERO */
+/* Typography */
+h1, h2, h3, .cert-title {
+    font-family: 'Cinzel', serif;
+    letter-spacing: -0.01em;
+}
+
+.cert-title {
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* ==================== HERO SECTION ==================== */
 
 .hero-grid{
     display:grid;
@@ -279,61 +286,55 @@ h1,h2,h3,.card-title{
     align-items:center;
     align-self:flex-start;
     gap:8px;
-    padding:8px 16px;
+    padding:6px 16px;
     border-radius:100px;
-    background:rgba(255, 46, 67, 0.12);
-    border:1px solid rgba(255, 46, 67, 0.3);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:0.05em;
+    background: var(--item-bg);
+    border:1px solid var(--border-inner);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.1em;
     text-transform:uppercase;
-    color:#ff99a4;
+    color: var(--border-inner);
     margin-bottom:20px;
 }
 
 .hero-main h1{
-    font-size:56px;
-    line-height:1.05;
-    font-weight:700;
-    margin-bottom:20px;
+    font-size:48px;
+    line-height:1.15;
+    font-weight:800;
+    margin-bottom:15px;
 }
 
 .hero-main h1 span{
-    background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-main p{
-    color:var(--text-muted);
-    line-height:1.75;
+    color:var(--text-secondary);
+    line-height:1.8;
     font-size:15px;
-    margin-bottom:0;
-    max-width:580px;
 }
 
-/* HERO CARD */
+/* HERO CARD / PHOTO */
 
 .hero-card{
     padding:26px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    background:linear-gradient(
-        180deg,
-        rgba(255,255,255,0.03) 0%,
-        rgba(255,255,255,0.005) 100%
-    );
+    text-align: center;
 }
 
 .image-placeholder{
     width:100%;
-    height:340px;
-    border-radius:20px;
+    height:300px;
+    border-radius:12px;
     overflow:hidden;
     margin-bottom:16px;
-    border:1px solid rgba(255,255,255,0.08);
-    background:#121216;
+    border:2px double var(--border-inner);
+    background:var(--bg-paper);
 }
 
 .profile-image{
@@ -341,22 +342,18 @@ h1,h2,h3,.card-title{
     height:100%;
     object-fit:cover;
     object-position:center 15%;
-    display:block;
 }
 
 .card-title{
-    font-size:22px;
+    font-size:20px;
     font-weight:700;
     margin-bottom:4px;
-    background:linear-gradient(90deg,#fff,var(--text-muted));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
 }
 
 .card-sub{
-    color:var(--accent-2);
+    color:var(--text-accent);
     font-size:12px;
-    font-weight:500;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.1em;
     margin-bottom:18px;
@@ -369,24 +366,25 @@ h1,h2,h3,.card-title{
 }
 
 .stat-box{
-    padding:16px;
-    border-radius:16px;
-    background:rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.04);
+    padding:14px;
+    border-radius:10px;
+    background: var(--item-bg);
+    border:1px solid var(--border-glass);
 }
 
 .stat-box h3{
-    font-size:26px;
-    margin-bottom:4px;
+    font-size:24px;
+    color: var(--border-inner);
 }
 
 .stat-box p{
-    color:var(--text-muted);
-    font-size:11px;
+    color:var(--text-secondary);
+    font-size:10px;
     text-transform:uppercase;
+    font-weight: 600;
 }
 
-/* MAIN LAYOUT */
+/* ==================== MAIN CONTENT LAYOUT ==================== */
 
 .main-layout{
     display:grid;
@@ -405,33 +403,29 @@ h1,h2,h3,.card-title{
 }
 
 .section-title{
-    font-size:28px;
-    font-weight:700;
+    font-size:24px;
+    font-weight:800;
     margin-bottom:24px;
     display:flex;
     align-items:center;
     gap:12px;
+    border-bottom: 1px solid var(--border-glass);
+    padding-bottom: 10px;
 }
 
 .section-title::before{
-    content:'';
-    width:8px;
-    height:24px;
-    border-radius:4px;
-    background:linear-gradient(
-        to bottom,
-        var(--accent-1),
-        var(--accent-2)
-    );
+    content:'✦';
+    color: var(--border-inner);
+    font-size: 18px;
 }
 
 .about-text{
-    font-size:15px;
+    font-size:14px;
     line-height:1.9;
-    color:#d1d5db;
+    color:var(--text-secondary);
 }
 
-/* INFO */
+/* INFO CARDS */
 
 .info-grid{
     display:flex;
@@ -440,35 +434,28 @@ h1,h2,h3,.card-title{
 }
 
 .info-card{
-    padding:20px;
-    border-radius:16px;
-    background:rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.04);
+    padding:16px 20px;
+    border-radius:10px;
+    background: var(--item-bg);
+    border:1px solid var(--border-glass);
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:4px;
 }
 
 .info-card label{
-    font-size:11px;
+    font-size:10px;
     text-transform:uppercase;
-    color:var(--text-muted);
+    color:var(--border-inner);
+    font-weight: 700;
     letter-spacing:0.05em;
 }
 
-.info-card span{
-    font-size:15px;
-    font-weight:500;
-}
-
-.info-card a{
-    color:var(--text-main);
-    text-decoration:none;
-    transition:color 0.2s ease;
-}
-
-.info-card a:hover{
-    color:var(--accent-2);
+.info-card span, .info-card a{
+    font-size:14px;
+    font-weight:600;
+    color: var(--text-primary);
+    text-decoration: none;
 }
 
 /* SKILLS */
@@ -476,46 +463,43 @@ h1,h2,h3,.card-title{
 .skills-container{
     display:flex;
     flex-direction:column;
-    gap:22px;
+    gap:18px;
 }
 
 .skill-item{
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:6px;
 }
 
 .skill-info{
     display:flex;
     justify-content:space-between;
-    font-size:14px;
-    font-weight:500;
+    font-size:13px;
+    font-weight:600;
 }
 
 .skill-track{
     height:6px;
     width:100%;
-    background:rgba(255,255,255,0.08);
+    background: var(--item-bg);
     border-radius:20px;
     overflow:hidden;
+    border: 1px solid var(--border-glass);
 }
 
 .skill-progress{
     height:100%;
     border-radius:20px;
-    background:linear-gradient(
-        90deg,
-        var(--accent-1),
-        var(--accent-2)
-    );
+    background: var(--gold-gradient);
 }
 
-/* TIMELINE */
+/* TIMELINE & EDUCATION */
 
 .timeline-container{
     display:flex;
     flex-direction:column;
-    gap:28px;
+    gap:24px;
     position:relative;
 }
 
@@ -526,29 +510,24 @@ h1,h2,h3,.card-title{
     top:0;
     width:1px;
     height:100%;
-    background:linear-gradient(
-        to bottom,
-        var(--accent-1),
-        var(--accent-2),
-        transparent
-    );
+    background: var(--border-inner);
+    opacity: 0.4;
 }
 
 .timeline-node{
     position:relative;
-    padding-left:38px;
+    padding-left:32px;
 }
 
 .timeline-node::before{
     content:'';
     position:absolute;
     left:4px;
-    top:8px;
+    top:6px;
     width:9px;
     height:9px;
     border-radius:50%;
-    background:var(--accent-2);
-    box-shadow:0 0 10px var(--accent-2);
+    background:var(--border-inner);
 }
 
 .node-header{
@@ -557,28 +536,30 @@ h1,h2,h3,.card-title{
     align-items:flex-start;
     flex-wrap:wrap;
     gap:8px;
-    margin-bottom:6px;
+    margin-bottom:4px;
 }
 
 .node-title{
-    font-size:20px;
-    font-weight:600;
+    font-size:18px;
+    font-weight:700;
+    font-family: 'Cinzel', serif;
 }
 
 .node-date{
-    font-size:12px;
-    color:var(--text-muted);
-    background:rgba(255,255,255,0.05);
-    padding:4px 12px;
+    font-size:11px;
+    color:var(--text-secondary);
+    border: 1px solid var(--border-glass);
+    padding:2px 10px;
     border-radius:30px;
-    border:1px solid var(--border-glass);
+    font-weight: 600;
+    background: var(--item-bg);
 }
 
 .node-sub{
-    color:var(--accent-1);
-    font-size:13px;
-    font-weight:500;
-    margin-bottom:14px;
+    color:var(--text-accent);
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:10px;
     text-transform:uppercase;
     letter-spacing:0.05em;
 }
@@ -587,212 +568,85 @@ h1,h2,h3,.card-title{
     list-style:none;
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:8px;
 }
 
 .timeline-node li{
-    color:var(--text-muted);
-    line-height:1.7;
-    font-size:14px;
+    color:var(--text-secondary);
+    line-height:1.6;
+    font-size:13px;
     position:relative;
-    padding-left:15px;
+    padding-left:14px;
 }
 
 .timeline-node li::before{
-    content:'→';
+    content:'•';
     position:absolute;
     left:0;
-    color:var(--accent-2);
+    color:var(--border-inner);
 }
-
-/* EDUCATION */
 
 .edu-stack{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:16px;
 }
 
 .edu-node{
-    padding:24px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.02);
-    border:1px solid rgba(255,255,255,0.04);
+    padding:18px;
+    border-radius:10px;
+    background: var(--item-bg);
+    border:1px solid var(--border-glass);
 }
 
 .edu-node h3{
-    font-size:18px;
-    margin-bottom:8px;
+    font-size:16px;
+    margin-bottom:4px;
 }
 
 .edu-node p{
-    font-size:14px;
-    color:var(--text-muted);
-    line-height:1.6;
+    font-size:13px;
+    color:var(--text-secondary);
 }
 
 .edu-meta{
-    margin-top:10px;
-    font-size:12px;
-    color:var(--accent-2);
-    font-weight:500;
+    margin-top:6px;
+    font-size:11px;
+    color:var(--border-inner);
+    font-weight:700;
 }
 
-/* FOOTER */
+/* ==================== FOOTER ==================== */
 
 .footer{
     text-align:center;
-    padding:30px 0 10px;
-    color:var(--text-muted);
-    font-size:12px;
-    letter-spacing:0.05em;
+    padding:20px 0 10px;
+    color:var(--text-secondary);
+    font-size:11px;
+    letter-spacing:0.1em;
     text-transform:uppercase;
+    font-family: 'Cinzel', serif;
 }
 
 /* RESPONSIVE */
-
-.mobile-profile-wrapper{
-    display:none;
-}
+.mobile-profile-wrapper{ display:none; }
 
 @media(max-width:1024px){
-    .hero-grid,
-    .main-layout{
-        grid-template-columns:1fr;
-    }
-
-    .hero-main{
-        padding:35px;
-    }
-
-    .hero-main h1{
-        font-size:48px;
-    }
-
-    .image-placeholder{
-        height:380px;
-    }
+    .hero-grid, .main-layout{ grid-template-columns:1fr; }
+    .hero-main{ padding:30px; }
+    .hero-main h1{ font-size:38px; }
 }
 
 @media(max-width:850px){
-    .nav-links {
-        display: none;
-    }
+    .nav-links { display: none; }
 }
 
 @media(max-width:768px){
-    body{
-        padding:12px;
-    }
-
-    .desktop-hero-card{
-        display:none;
-    }
-
-    .mobile-profile-wrapper{
-        display:block;
-        margin-bottom:18px;
-    }
-
-    .mobile-hero-card{
-        padding:28px 20px;
-        text-align:center;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-        gap:18px;
-    }
-
-    .hero-main{
-        padding:28px 20px;
-    }
-
-    .hero-main h1{
-        font-size:38px;
-        line-height:1.05;
-        margin-bottom:16px;
-    }
-
-    .hero-main p{
-        font-size:14px;
-        line-height:1.7;
-    }
-
-    .section-padding{
-        padding:28px 20px;
-    }
-
-    .image-placeholder{
-        width:180px;
-        height:180px;
-        margin:0 auto 20px auto;
-        border-radius:26px;
-        overflow:hidden;
-        background:#121216;
-        border:1px solid rgba(255,255,255,0.08);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        box-shadow:
-            0 10px 30px rgba(0,0,0,0.5),
-            0 0 0 1px rgba(255,255,255,0.03);
-    }
-
-    .profile-image{
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        object-position:center 15%;
-        display:block;
-        transform:none;
-    }
-
-    .card-title{
-        font-size:18px;
-        text-align:center;
-        margin-bottom:6px;
-        font-weight:700;
-    }
-
-    .card-sub{
-        text-align:center;
-        font-size:11px;
-        margin-bottom:22px;
-        letter-spacing:0.14em;
-    }
-
-    .stat-grid{
-        width:100%;
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:14px;
-        margin-top:4px;
-    }
-
-    .stat-box{
-        padding:18px 14px;
-        border-radius:18px;
-        text-align:left;
-    }
-
-    .stat-box h3{
-        font-size:24px;
-        margin-bottom:4px;
-    }
-
-    .stat-box p{
-        font-size:10px;
-    }
-
-    .node-header{
-        flex-direction:column;
-        align-items:flex-start;
-    }
+    .desktop-hero-card{ display:none; }
+    .mobile-profile-wrapper{ display:block; margin-bottom:18px; }
+    .image-placeholder{ width:160px; height:160px; margin:0 auto 15px auto; border-radius:50%; }
+    .hero-main h1{ font-size:32px; }
+    .section-padding{ padding:24px 18px; }
 }
 
 </style>
@@ -800,19 +654,16 @@ h1,h2,h3,.card-title{
 
 <body>
 
-<div class="art-blob blob-1"></div>
-<div class="art-blob blob-2"></div>
-
 <div class="resume-container">
 
     <!-- NAVIGATION BAR -->
     <div class="navbar-wrapper">
-        <nav class="glass-panel navbar">
+        <nav class="glass-panel navbar certificate-frame">
             <a href="index.html" class="nav-brand">
                 <img src="jd.png" alt="Logo" class="brand-logo-img">
                 <div class="brand-text">
                     ARROJO
-                    <span>PORTFOLIO</span>
+                    <span>CREDENTIALS</span>
                 </div>
             </a>
 
@@ -821,32 +672,33 @@ h1,h2,h3,.card-title{
                 <li><a href="ux.html" class="nav-link">UX Design</a></li>
                 <li><a href="gd.html" class="nav-link">Graphic Design</a></li>
                 <li><a href="3d.html" class="nav-link">3D Model</a></li>
-                <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
+                <li><a href="app.html" class="nav-link">Mobile Apps</a></li>
             </ul>
 
-           <div class="nav-actions">
-                <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                </a>
+            <div class="nav-actions">
+                <!-- DARK / LIGHT SWITCHER BUTTON -->
+                <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">
+                    <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+                </button>
+
                 <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
             </div>
         </nav>
     </div>
 
-    <!-- HERO SECTION -->
-    <header class="glass-panel">
+    <!-- HERO / HEADER CERTIFICATE PANEL -->
+    <header class="glass-panel certificate-frame">
+        <div class="watermark-seal">JDA</div>
 
         <!-- MOBILE PROFILE VIEW -->
         <div class="mobile-profile-wrapper">
-            <div class="hero-card mobile-hero-card">
+            <div class="hero-card">
                 <div class="image-placeholder">
                     <img src="profile.jpg" alt="Profile Image" class="profile-image">
                 </div>
                 <div>
-                    <div class="card-title">UI/UX • Designer</div>
-                    <div class="card-sub">Creative Technologist</div>
+                    <div class="card-title">John Denver Arrojo</div>
+                    <div class="card-sub">UI/UX • Creative Technologist</div>
                 </div>
                 <div class="stat-grid">
                     <div class="stat-box">
@@ -865,7 +717,7 @@ h1,h2,h3,.card-title{
         <div class="hero-grid">
             <div class="hero-main">
                 <div class="hero-badge">
-                    ✦ Bachelor of Science in Information Technology
+                    ✦ Certified Information Technology Professional
                 </div>
 
                 <h1>
@@ -884,13 +736,13 @@ h1,h2,h3,.card-title{
                     <img src="profile.jpg" alt="Profile Image" class="profile-image">
                 </div>
                 <div>
-                    <div class="card-title">Full Stack Dev | Graphic Artist</div>
-                    <div class="card-sub">Multimedia Artist</div>
+                    <div class="card-title">Full Stack & Graphic Artist</div>
+                    <div class="card-sub">Multimedia Specialist</div>
                 </div>
                 <div class="stat-grid">
                     <div class="stat-box">
                         <h3>4+</h3>
-                        <p>Years Freelance Exp</p>
+                        <p>Freelance Exp</p>
                     </div>
                     <div class="stat-box">
                         <h3>50+</h3>
@@ -902,13 +754,14 @@ h1,h2,h3,.card-title{
 
     </header>
 
-    <!-- MAIN CONTENT SECTION -->
+    <!-- MAIN LAYOUT CONTENT -->
     <main class="main-layout">
 
         <div class="asymmetrical-column">
 
-            <section id="experience" class="glass-panel section-padding">
-                <h2 class="section-title">Relevant Experience</h2>
+            <!-- EXPERIENCE SECTION -->
+            <section id="experience" class="glass-panel certificate-frame section-padding">
+                <h2 class="section-title">Verified Experience</h2>
                 <div class="timeline-container">
 
                     <div class="timeline-node">
@@ -963,8 +816,9 @@ h1,h2,h3,.card-title{
                 </div>
             </section>
 
-            <section class="glass-panel section-padding">
-                <h2 class="section-title">Education</h2>
+            <!-- EDUCATION SECTION -->
+            <section class="glass-panel certificate-frame section-padding">
+                <h2 class="section-title">Academic Qualifications</h2>
                 <div class="edu-stack">
 
                     <div class="edu-node">
@@ -992,20 +846,21 @@ h1,h2,h3,.card-title{
 
         <div class="asymmetrical-column">
 
-            <section id="about" class="glass-panel section-padding">
-                <h2 class="section-title">About me</h2>
+            <!-- ABOUT SECTION -->
+            <section id="about" class="glass-panel certificate-frame section-padding">
+                <h2 class="section-title">Profile Overview</h2>
                 <p class="about-text">
                     Information Technology graduate with a passion for creating practical and user-friendly digital solutions.
 Combines creativity with technical skills in UI/UX design, web development, mobile applications, and IT support.
 Detail-oriented, adaptable, and committed to delivering quality work in every project.
 Fast learner who embraces new technologies and continuously improves technical and creative skills.
 Team player with strong problem-solving abilities and a user-focused mindset.
-Motivated to contribute, grow professionally, and make a meaningful impact in every opportunity.
                 </p>
             </section>
 
-            <section id="contact" class="glass-panel section-padding">
-                <h2 class="section-title">Channels</h2>
+            <!-- CHANNELS SECTION -->
+            <section id="contact" class="glass-panel certificate-frame section-padding">
+                <h2 class="section-title">Contact Credentials</h2>
                 <div class="info-grid">
                     <div class="info-card">
                         <label>Email Address</label>
@@ -1016,14 +871,15 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
                         <span><a href="tel:+639563118160">(+63) 956 311 8160</a></span>
                     </div>
                     <div class="info-card">
-                        <label>Address</label>
+                        <label>Location</label>
                         <span>Malabon City, Philippines</span>
                     </div>
                 </div>
             </section>
 
-            <section id="skills" class="glass-panel section-padding">
-                <h2 class="section-title">Skills</h2>
+            <!-- SKILLS SECTION -->
+            <section id="skills" class="glass-panel certificate-frame section-padding">
+                <h2 class="section-title">Technical Competencies</h2>
                 <div class="skills-container">
 
                     <div class="skill-item">
@@ -1064,10 +920,28 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
     </main>
 
     <footer class="footer">
-        © 2026 John Denver Arrojo • Resume & Portfolio. All rights reserved.
+        Official Digital Portfolio Certificate • John Denver Arrojo • 2026
     </footer>
 
 </div>
+
+<script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+    
+    if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        themeIcon.textContent = '🌙';
+        themeText.textContent = 'Dark Mode';
+    } else {
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Light Mode';
+    }
+}
+</script>
 
 </body>
 </html>
