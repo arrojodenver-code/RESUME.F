@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Denver Arrojo • Creative Design Showcase</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
@@ -42,6 +44,7 @@
             padding: 20px 18px 30px 18px;
         }
 
+        /* BACKGROUND ANIMATED BLOBS */
         .art-blob {
             position: fixed;
             border-radius: 50%;
@@ -49,6 +52,7 @@
             z-index: -1;
             opacity: 0.25;
             mix-blend-mode: screen;
+            will-change: transform;
             animation: float 12s infinite alternate ease-in-out;
         }
 
@@ -83,7 +87,7 @@
             gap: 28px;
         }
 
-        /* GLASS FOUNDATIONS */
+        /* GLASS PANELS */
         .glass-panel {
             background: var(--panel-glass);
             backdrop-filter: blur(20px);
@@ -95,7 +99,7 @@
             overflow: hidden;
         }
 
-        /* NAVIGATION BAR STYLES */
+        /* NAVIGATION BAR */
         .navbar-wrapper {
             position: sticky;
             top: 20px;
@@ -155,24 +159,26 @@
             color: var(--text-muted);
             font-size: 14px;
             font-weight: 500;
-            transition: 0.3s ease;
+            transition: color 0.3s ease;
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        .nav-link:hover {
+        .nav-link:hover,
+        .nav-link:focus-visible {
             color: var(--text-main);
+            outline: none;
         }
 
         .nav-link.active-page {
             color: var(--accent-2);
             cursor: default;
             pointer-events: none;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
-        /* Nav Actions (Social & CTA) */
+        /* NAV ACTIONS */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -189,7 +195,7 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
-            transition: 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
         }
 
@@ -197,14 +203,16 @@
             width: 18px;
             height: 18px;
             fill: currentColor;
-            transition: 0.3s ease;
+            transition: fill 0.3s ease;
         }
 
-        .btn-social-icon:hover {
+        .btn-social-icon:hover,
+        .btn-social-icon:focus-visible {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
+            outline: none;
         }
 
         .btn-nav-cta {
@@ -215,23 +223,25 @@
             font-weight: 700;
             font-size: 13px;
             text-decoration: none;
-            transition: 0.3s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 245, 212, 0.25);
         }
 
-        .btn-nav-cta:hover {
+        .btn-nav-cta:hover,
+        .btn-nav-cta:focus-visible {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
             filter: brightness(1.1);
+            outline: none;
         }
 
-        /* STRUCTURAL HEADING PROFILES */
+        /* TYPOGRAPHY */
         h1, .overlay span {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
         }
 
-        /* HERO MODULE */
+        /* HERO SECTION */
         .hero {
             padding: 60px;
             text-align: center;
@@ -278,14 +288,13 @@
             margin: 0 auto;
         }
 
-        /* GRID SYSTEM SETUP */
+        /* GALLERY GRID */
         .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        /* GALLERY GRAPHIC PHOTO ITEM */
         .photo {
             position: relative;
             overflow: hidden;
@@ -321,7 +330,7 @@
             filter: saturate(1.05);
         }
 
-        /* CARD HOVER OVERLAY TEXT */
+        /* HOVER OVERLAY */
         .overlay {
             position: absolute;
             inset: 0;
@@ -334,7 +343,8 @@
             pointer-events: none;
         }
 
-        .photo:hover .overlay {
+        .photo:hover .overlay,
+        .photo:focus-visible .overlay {
             opacity: 1;
         }
 
@@ -346,11 +356,12 @@
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .photo:hover .overlay span {
+        .photo:hover .overlay span,
+        .photo:focus-visible .overlay span {
             transform: translateY(0);
         }
 
-        /* FOOTER STRUCTURE */
+        /* FOOTER */
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -362,7 +373,7 @@
             margin-top: 8px;
         }
 
-        /* THEATRE LIGHTBOX MODAL LAYER */
+        /* LIGHTBOX MODAL */
         .modal {
             position: fixed;
             inset: 0;
@@ -409,13 +420,17 @@
             z-index: 100000;
             transition: color 0.2s;
             user-select: none;
+            background: none;
+            border: none;
+            outline: none;
         }
 
-        .close:hover {
-            color: white;
+        .close:hover,
+        .close:focus-visible {
+            color: #ffffff;
         }
 
-        /* SMART RESPONSIVE SCALING BREAKPOINTS */
+        /* RESPONSIVE BREAKPOINTS */
         @media(max-width: 850px) {
             .nav-links {
                 display: none;
@@ -448,7 +463,7 @@
         <header class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
-                    <img src="jd.png" alt="Logo" class="brand-logo-img">
+                    <img src="jd.png" alt="John Denver Arrojo Logo" class="brand-logo-img">
                     <div class="brand-text">
                         ARROJO
                         <span>PORTFOLIO</span>
@@ -474,6 +489,7 @@
             </nav>
         </header>
 
+        <!-- HERO SECTION -->
         <section class="hero glass-panel">
             <div class="badge">✦ Creative Design Portfolio</div>
             <h1>Creative <span>Designs</span></h1>
@@ -482,101 +498,104 @@
             </p>
         </section>
 
+        <!-- GALLERY SECTION -->
         <section class="gallery">
-            <div class="photo" tabindex="0" onclick="openModal('design15.jpg')" onkeypress="handleKeyPress(event, 'design15.jpg')">
-                <img src="design15.jpg" alt="Photo Manipulation Design">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design15.jpg')" onkeydown="handleKeyPress(event, 'design15.jpg')">
+                <img src="design15.jpg" alt="Photo Manipulation Design" loading="lazy">
                 <div class="overlay"><span>Photo Manipulation</span></div>
             </div>
-            
-            <div class="photo" tabindex="0" onclick="openModal('design13.png')" onkeypress="handleKeyPress(event, 'design13.png')">
-                <img src="design13.png" alt="Digital Art Design">
+
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design13.png')" onkeydown="handleKeyPress(event, 'design13.png')">
+                <img src="design13.png" alt="Digital Art Design" loading="lazy">
                 <div class="overlay"><span>Digital Art</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design14.png')" onkeypress="handleKeyPress(event, 'design14.png')">
-                <img src="design14.png" alt="Finger Painting Artwork">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design14.png')" onkeydown="handleKeyPress(event, 'design14.png')">
+                <img src="design14.png" alt="Finger Painting Artwork" loading="lazy">
                 <div class="overlay"><span>Finger Painting</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design1.jpg')" onkeypress="handleKeyPress(event, 'design1.jpg')">
-                <img src="design1.jpg" alt="Graphic Design Project 1">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design1.jpg')" onkeydown="handleKeyPress(event, 'design1.jpg')">
+                <img src="design1.jpg" alt="Graphic Design Project 1" loading="lazy">
                 <div class="overlay"><span>Graphic Design 1</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design2.jpg')" onkeypress="handleKeyPress(event, 'design2.jpg')">
-                <img src="design2.jpg" alt="Graphic Design Project 2">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design2.jpg')" onkeydown="handleKeyPress(event, 'design2.jpg')">
+                <img src="design2.jpg" alt="Graphic Design Project 2" loading="lazy">
                 <div class="overlay"><span>Graphic Design 2</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design3.jpg')" onkeypress="handleKeyPress(event, 'design3.jpg')">
-                <img src="design3.jpg" alt="Graphic Design Project 3">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design3.jpg')" onkeydown="handleKeyPress(event, 'design3.jpg')">
+                <img src="design3.jpg" alt="Graphic Design Project 3" loading="lazy">
                 <div class="overlay"><span>Graphic Design 3</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design4.jpg')" onkeypress="handleKeyPress(event, 'design4.jpg')">
-                <img src="design4.jpg" alt="Graphic Design Project 4">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design4.jpg')" onkeydown="handleKeyPress(event, 'design4.jpg')">
+                <img src="design4.jpg" alt="Graphic Design Project 4" loading="lazy">
                 <div class="overlay"><span>Graphic Design 4</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design5.jpg')" onkeypress="handleKeyPress(event, 'design5.jpg')">
-                <img src="design5.jpg" alt="Graphic Design Project 5">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design5.jpg')" onkeydown="handleKeyPress(event, 'design5.jpg')">
+                <img src="design5.jpg" alt="Graphic Design Project 5" loading="lazy">
                 <div class="overlay"><span>Graphic Design 5</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design6.jpg')" onkeypress="handleKeyPress(event, 'design6.jpg')">
-                <img src="design6.jpg" alt="Graphic Design Project 6">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design6.jpg')" onkeydown="handleKeyPress(event, 'design6.jpg')">
+                <img src="design6.jpg" alt="Graphic Design Project 6" loading="lazy">
                 <div class="overlay"><span>Graphic Design 6</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design7.png')" onkeypress="handleKeyPress(event, 'design7.png')">
-                <img src="design7.png" alt="Graphic Design Project 7">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design7.png')" onkeydown="handleKeyPress(event, 'design7.png')">
+                <img src="design7.png" alt="Graphic Design Project 7" loading="lazy">
                 <div class="overlay"><span>Graphic Design 7</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design8.png')" onkeypress="handleKeyPress(event, 'design8.png')">
-                <img src="design8.png" alt="Graphic Design Project 8">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design8.png')" onkeydown="handleKeyPress(event, 'design8.png')">
+                <img src="design8.png" alt="Graphic Design Project 8" loading="lazy">
                 <div class="overlay"><span>Graphic Design 8</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design9.png')" onkeypress="handleKeyPress(event, 'design9.png')">
-                <img src="design9.png" alt="Graphic Design Project 9">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design9.png')" onkeydown="handleKeyPress(event, 'design9.png')">
+                <img src="design9.png" alt="Graphic Design Project 9" loading="lazy">
                 <div class="overlay"><span>Graphic Design 9</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design10.jpg')" onkeypress="handleKeyPress(event, 'design10.jpg')">
-                <img src="design10.jpg" alt="Graphic Design Project 10">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design10.jpg')" onkeydown="handleKeyPress(event, 'design10.jpg')">
+                <img src="design10.jpg" alt="Graphic Design Project 10" loading="lazy">
                 <div class="overlay"><span>Graphic Design 10</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design11.jpg')" onkeypress="handleKeyPress(event, 'design11.jpg')">
-                <img src="design11.jpg" alt="Graphic Design Project 11">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design11.jpg')" onkeydown="handleKeyPress(event, 'design11.jpg')">
+                <img src="design11.jpg" alt="Graphic Design Project 11" loading="lazy">
                 <div class="overlay"><span>Graphic Design 11</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design12.jpg')" onkeypress="handleKeyPress(event, 'design12.jpg')">
-                <img src="design12.jpg" alt="Graphic Design Project 12">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design12.jpg')" onkeydown="handleKeyPress(event, 'design12.jpg')">
+                <img src="design12.jpg" alt="Graphic Design Project 12" loading="lazy">
                 <div class="overlay"><span>Graphic Design 12</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design16.jpg')" onkeypress="handleKeyPress(event, 'design16.jpg')">
-                <img src="design16.jpg" alt="Graphic Design Project 13">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design16.jpg')" onkeydown="handleKeyPress(event, 'design16.jpg')">
+                <img src="design16.jpg" alt="Graphic Design Project 13" loading="lazy">
                 <div class="overlay"><span>Graphic Design 13</span></div>
             </div>
 
-            <div class="photo" tabindex="0" onclick="openModal('design17.jpg')" onkeypress="handleKeyPress(event, 'design17.jpg')">
-                <img src="design17.jpg" alt="Graphic Design Project 14">
+            <div class="photo" role="button" tabindex="0" onclick="openModal('design17.jpg')" onkeydown="handleKeyPress(event, 'design17.jpg')">
+                <img src="design17.jpg" alt="Graphic Design Project 14" loading="lazy">
                 <div class="overlay"><span>Graphic Design 14</span></div>
             </div>
         </section>
 
+        <!-- FOOTER -->
         <footer class="footer">
             © 2026 John Denver Arrojo • Creative Design 
         </footer>
 
     </div>
 
+    <!-- LIGHTBOX MODAL -->
     <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Image Lightbox" onclick="closeModalOnBackground(event)">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <button class="close" onclick="closeModal()" aria-label="Close image lightbox">&times;</button>
         <img id="modal-img" alt="High Resolution Asset View">
     </div>
 
