@@ -1,46 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><!-- UPDATED NAVBAR -->
-<header class="navbar-wrapper">
-    <nav class="glass-panel navbar">
-        <a href="index.html" class="nav-brand">
-            <img src="jd.png" alt="John Denver Arrojo Logo" class="brand-logo-img">
-            <div class="brand-text">
-                ARROJO
-                <span>PORTFOLIO</span>
-            </div>
-        </a>
-
-        <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">About</a></li>
-            <li><a href="ux.html" class="nav-link">UX Design</a></li>
-            <li><a href="graphic.html" class="nav-link">Graphic Design</a></li>
-            <li><a href="3d.html" class="nav-link">3D Model</a></li>
-            <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
-        </ul>
-
-        <div class="nav-actions">
-            <!-- THEME TOGGLE BUTTON (No Facebook button) -->
-            <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark and Light Mode" onclick="toggleTheme()">
-                <!-- Sun Icon (Shown in Dark Mode to switch to Light Mode) -->
-                <svg class="icon-sun" viewBox="0 0 24 24">
-                    <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm10-10a1 1 0 0 0-1-1h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zM4 12a1 1 0 0 0-1-1H2a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zm14.071-7.071a1 1 0 0 0-1.414 0l-.707.707a1 1 0 1 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zM6.05 17.95a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zm12.021 12.021a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0zM6.05 6.05a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0z"/>
-                </svg>
-                <!-- Moon Icon (Shown in Light Mode to switch back to Dark Mode) -->
-                <svg class="icon-moon" viewBox="0 0 24 24">
-                    <path d="M12.3 2a10 10 0 0 0 9.7 11.5 10 10 0 1 1-11.2-11.4 10 10 0 0 0 1.5-.1z"/>
-                </svg>
-            </button>
-
-            <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
-        </div>
-    </nav>
-</header>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Denver Arrojo • Graphic Design Showcase</title>
+    <title>John Denver Arrojo • UX Design Showcase</title>
     
-    <!-- Script run immediately to prevent flashing before render -->
+    <!-- Prevent theme flashing on page load -->
     <script>
         if (localStorage.getItem('theme') === 'light') {
             document.documentElement.classList.add('light-mode');
@@ -59,8 +24,8 @@
             --bg-gradient-2: rgba(0, 245, 212, 0.1);
             --panel-glass: rgba(13, 13, 25, 0.45);
             --border-glass: rgba(255, 255, 255, 0.07);
-            --accent-1: #d444f1; /* Vivid Amethyst */
-            --accent-2: #00f5d4; /* Cyber Teal */
+            --accent-1: #d444f1;
+            --accent-2: #00f5d4;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --icon-bg: rgba(255, 255, 255, 0.05);
@@ -242,14 +207,13 @@
             font-weight: 700;
         }
 
-        /* NAV ACTIONS */
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .btn-social-icon, .btn-theme-toggle {
+        .btn-theme-toggle {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -260,32 +224,33 @@
             border: 1px solid var(--border-glass);
             color: var(--text-main);
             transition: all 0.3s ease;
-            text-decoration: none;
             cursor: pointer;
             outline: none;
         }
 
-        .btn-social-icon svg, .btn-theme-toggle svg {
+        .btn-theme-toggle svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
             transition: fill 0.3s ease, transform 0.3s ease;
         }
 
-        .btn-social-icon:hover, .btn-theme-toggle:hover,
-        .btn-social-icon:focus-visible, .btn-theme-toggle:focus-visible {
+        .btn-theme-toggle:hover,
+        .btn-theme-toggle:focus-visible {
             background: var(--icon-hover);
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
         }
 
-        /* SUN / MOON ICON VISIBILITY */
-        .icon-sun { display: none; }
-        .icon-moon { display: block; }
+        /* TOGGLE ICON DISPLAY RULES */
+        /* Dark mode (default): Show SUN icon */
+        .icon-sun { display: block; }
+        .icon-moon { display: none; }
 
-        html.light-mode .icon-sun { display: block; }
-        html.light-mode .icon-moon { display: none; }
+        /* Light mode: Show MOON icon */
+        html.light-mode .icon-sun { display: none; }
+        html.light-mode .icon-moon { display: block; }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
@@ -307,15 +272,14 @@
             outline: none;
         }
 
-        /* TYPOGRAPHY */
-        h1, .overlay span {
+        /* TYPOGRAPHY & HERO */
+        h1, h2 {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
         }
 
-        /* HERO SECTION */
         .hero {
-            padding: 60px;
+            padding: 60px 40px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -327,20 +291,20 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 100px;
             background: rgba(212, 68, 241, 0.1);
-            border: 1px solid rgba(212, 68, 241, 0.25);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            border: 1px solid rgba(212, 68, 241, 0.3);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--accent-1);
+            color: #e879f9;
             margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 62px;
+            font-size: 60px;
             line-height: 1.1;
             font-weight: 700;
             margin-bottom: 18px;
@@ -354,86 +318,96 @@
 
         .hero p {
             color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 17px;
-            max-width: 650px;
-            margin: 0 auto;
+            line-height: 1.7;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 28px auto;
         }
 
-        /* GALLERY GRID */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .btn-figma-workspace {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2563eb, #00f5d4);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(0, 245, 212, 0.25);
+            transition: all 0.3s ease;
         }
 
-        .photo {
+        .btn-figma-workspace:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 245, 212, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .showcase-wrapper {
             position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            background: #000;
-            border: 1px solid var(--border-glass);
-            aspect-ratio: 1/1;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            padding: 24px;
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .photo:focus-visible {
-            outline: 2px solid var(--accent-2);
-            outline-offset: 4px;
-        }
-
-        .photo:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-        }
-
-        .photo img {
+        .showcase-viewport {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s;
-            display: block;
-        }
-
-        .photo:hover img {
-            transform: scale(1.04);
-            filter: saturate(1.05);
-        }
-
-        /* HOVER OVERLAY */
-        .overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.3) 50%, transparent 100%);
+            overflow-x: auto;
+            border-radius: 16px;
             display: flex;
-            align-items: flex-end;
-            padding: 24px;
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
+            align-items: center;
+            gap: 16px;
+            scroll-behavior: smooth;
         }
 
-        .photo:hover .overlay,
-        .photo:focus-visible .overlay {
-            opacity: 1;
+        .showcase-viewport::-webkit-scrollbar {
+            height: 6px;
         }
 
-        .overlay span {
-            font-size: 15px;
+        .showcase-viewport::-webkit-scrollbar-thumb {
+            background: var(--border-glass);
+            border-radius: 10px;
+        }
+
+        .figma-frame-img {
+            max-width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            object-fit: contain;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(13, 13, 25, 0.8);
+            border: 1px solid var(--border-glass);
             color: #ffffff;
-            font-weight: 500;
-            transform: translateY(10px);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
         }
 
-        .photo:hover .overlay span,
-        .photo:focus-visible .overlay span {
-            transform: translateY(0);
+        .carousel-btn:hover {
+            background: var(--accent-2);
+            color: #000;
+            transform: translateY(-50%) scale(1.05);
         }
 
-        /* FOOTER */
+        .carousel-btn.prev { left: 16px; }
+        .carousel-btn.next { right: 16px; }
+
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -445,76 +419,12 @@
             margin-top: 8px;
         }
 
-        /* LIGHTBOX MODAL */
-        .modal {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(4, 4, 8, 0.95);
-            backdrop-filter: blur(20px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.active img {
-            transform: scale(1);
-        }
-
-        .close {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 44px;
-            font-weight: 300;
-            color: var(--text-muted);
-            cursor: pointer;
-            z-index: 100000;
-            transition: color 0.2s;
-            user-select: none;
-            background: none;
-            border: none;
-            outline: none;
-        }
-
-        .close:hover,
-        .close:focus-visible {
-            color: #ffffff;
-        }
-
-        /* RESPONSIVE BREAKPOINTS */
         @media(max-width: 850px) {
             .nav-links { display: none; }
         }
 
-        @media(max-width: 960px) {
-            .gallery { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .hero h1 { font-size: 46px; }
-        }
-
         @media(max-width: 640px) {
             body { padding: 12px; }
-            .gallery { grid-template-columns: 1fr; gap: 14px; }
             .hero { padding: 40px 20px; }
             .hero h1 { font-size: 38px; }
         }
@@ -541,8 +451,8 @@
 
                 <ul class="nav-links">
                     <li><a href="index.html" class="nav-link">About</a></li>
-                    <li><a href="ux.html" class="nav-link">UX Design</a></li>
-                    <li><span class="nav-link active-page">Graphic Design</span></li>
+                    <li><span class="nav-link active-page">UX Design</span></li>
+                    <li><a href="graphic.html" class="nav-link">Graphic Design</a></li>
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
                 </ul>
@@ -550,21 +460,16 @@
                 <div class="nav-actions">
                     <!-- THEME TOGGLE BUTTON -->
                     <button id="theme-toggle" class="btn-theme-toggle" aria-label="Toggle Dark and Light Mode" onclick="toggleTheme()">
-                        <!-- Moon Icon (Dark Mode) -->
-                        <svg class="icon-moon" viewBox="0 0 24 24">
-                            <path d="M12.3 2a10 10 0 0 0 9.7 11.5 10 10 0 1 1-11.2-11.4 10 10 0 0 0 1.5-.1z"/>
-                        </svg>
-                        <!-- Sun Icon (Light Mode) -->
+                        <!-- Sun Icon (Shown in Dark Mode) -->
                         <svg class="icon-sun" viewBox="0 0 24 24">
                             <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 19a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zm10-10a1 1 0 0 0-1-1h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zM4 12a1 1 0 0 0-1-1H2a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zm14.071-7.071a1 1 0 0 0-1.414 0l-.707.707a1 1 0 1 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zM6.05 17.95a1 1 0 0 0-1.414 0l-.707.707a1 1 0 0 0 1.414 1.414l.707-.707a1 1 0 0 0 0-1.414zm12.021 12.021a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0zM6.05 6.05a1 1 0 0 0 0-1.414l-.707-.707a1 1 0 0 0-1.414 1.414l.707.707a1 1 0 0 0 1.414 0z"/>
                         </svg>
+                        <!-- Moon Icon (Shown in Light Mode) -->
+                        <svg class="icon-moon" viewBox="0 0 24 24">
+                            <path d="M12.3 2a10 10 0 0 0 9.7 11.5 10 10 0 1 1-11.2-11.4 10 10 0 0 0 1.5-.1z"/>
+                        </svg>
                     </button>
 
-                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
                 </div>
             </nav>
@@ -572,116 +477,36 @@
 
         <!-- HERO SECTION -->
         <section class="hero glass-panel">
-            <div class="badge">✦ Creative Design Portfolio</div>
-            <h1>Graphic <span>Designs</span></h1>
+            <div class="badge">✦ BRANDING • UX • VISUAL IDENTITY</div>
+            <h1>User <span>Experience</span></h1>
             <p>
-                A collection of posters, social media graphics, advertisements, branding visuals, and digital creative works.
+                A deliberate modern collection of visual design solutions, optimizing corporate brand positioning across interfaces and structural assets.
             </p>
+            <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="btn-figma-workspace">
+                View Figma Workspace
+            </a>
         </section>
 
-        <!-- GALLERY SECTION -->
-        <section class="gallery">
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design15.jpg')" onkeydown="handleKeyPress(event, 'design15.jpg')">
-                <img src="design15.jpg" alt="Photo Manipulation Design" loading="lazy">
-                <div class="overlay"><span>Photo Manipulation</span></div>
+        <!-- FIGMA SHOWCASE CAROUSEL -->
+        <section class="glass-panel showcase-wrapper">
+            <button class="carousel-btn prev" onclick="scrollShowcase(-400)" aria-label="Scroll Left">&larr;</button>
+            
+            <div class="showcase-viewport" id="showcase-viewport">
+                <img src="ux-figma-canvas.png" alt="Figma User Flow Canvas" class="figma-frame-img">
             </div>
 
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design13.png')" onkeydown="handleKeyPress(event, 'design13.png')">
-                <img src="design13.png" alt="Digital Art Design" loading="lazy">
-                <div class="overlay"><span>Digital Art</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design14.png')" onkeydown="handleKeyPress(event, 'design14.png')">
-                <img src="design14.png" alt="Finger Painting Artwork" loading="lazy">
-                <div class="overlay"><span>Finger Painting</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design1.jpg')" onkeydown="handleKeyPress(event, 'design1.jpg')">
-                <img src="design1.jpg" alt="Graphic Design Project 1" loading="lazy">
-                <div class="overlay"><span>Graphic Design 1</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design2.jpg')" onkeydown="handleKeyPress(event, 'design2.jpg')">
-                <img src="design2.jpg" alt="Graphic Design Project 2" loading="lazy">
-                <div class="overlay"><span>Graphic Design 2</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design3.jpg')" onkeydown="handleKeyPress(event, 'design3.jpg')">
-                <img src="design3.jpg" alt="Graphic Design Project 3" loading="lazy">
-                <div class="overlay"><span>Graphic Design 3</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design4.jpg')" onkeydown="handleKeyPress(event, 'design4.jpg')">
-                <img src="design4.jpg" alt="Graphic Design Project 4" loading="lazy">
-                <div class="overlay"><span>Graphic Design 4</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design5.jpg')" onkeydown="handleKeyPress(event, 'design5.jpg')">
-                <img src="design5.jpg" alt="Graphic Design Project 5" loading="lazy">
-                <div class="overlay"><span>Graphic Design 5</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design6.jpg')" onkeydown="handleKeyPress(event, 'design6.jpg')">
-                <img src="design6.jpg" alt="Graphic Design Project 6" loading="lazy">
-                <div class="overlay"><span>Graphic Design 6</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design7.png')" onkeydown="handleKeyPress(event, 'design7.png')">
-                <img src="design7.png" alt="Graphic Design Project 7" loading="lazy">
-                <div class="overlay"><span>Graphic Design 7</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design8.png')" onkeydown="handleKeyPress(event, 'design8.png')">
-                <img src="design8.png" alt="Graphic Design Project 8" loading="lazy">
-                <div class="overlay"><span>Graphic Design 8</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design9.png')" onkeydown="handleKeyPress(event, 'design9.png')">
-                <img src="design9.png" alt="Graphic Design Project 9" loading="lazy">
-                <div class="overlay"><span>Graphic Design 9</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design10.jpg')" onkeydown="handleKeyPress(event, 'design10.jpg')">
-                <img src="design10.jpg" alt="Graphic Design Project 10" loading="lazy">
-                <div class="overlay"><span>Graphic Design 10</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design11.jpg')" onkeydown="handleKeyPress(event, 'design11.jpg')">
-                <img src="design11.jpg" alt="Graphic Design Project 11" loading="lazy">
-                <div class="overlay"><span>Graphic Design 11</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design12.jpg')" onkeydown="handleKeyPress(event, 'design12.jpg')">
-                <img src="design12.jpg" alt="Graphic Design Project 12" loading="lazy">
-                <div class="overlay"><span>Graphic Design 12</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design16.jpg')" onkeydown="handleKeyPress(event, 'design16.jpg')">
-                <img src="design16.jpg" alt="Graphic Design Project 13" loading="lazy">
-                <div class="overlay"><span>Graphic Design 13</span></div>
-            </div>
-
-            <div class="photo" role="button" tabindex="0" onclick="openModal('design17.jpg')" onkeydown="handleKeyPress(event, 'design17.jpg')">
-                <img src="design17.jpg" alt="Graphic Design Project 14" loading="lazy">
-                <div class="overlay"><span>Graphic Design 14</span></div>
-            </div>
+            <button class="carousel-btn next" onclick="scrollShowcase(400)" aria-label="Scroll Right">&rarr;</button>
         </section>
 
         <!-- FOOTER -->
         <footer class="footer">
-            © 2026 John Denver Arrojo • Graphic Design
+            © 2026 John Denver Arrojo • UX Design
         </footer>
 
     </div>
 
-    <!-- LIGHTBOX MODAL -->
-    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Image Lightbox" onclick="closeModalOnBackground(event)">
-        <button class="close" onclick="closeModal()" aria-label="Close image lightbox">&times;</button>
-        <img id="modal-img" alt="High Resolution Asset View">
-    </div>
-
+    <!-- SCRIPT -->
     <script>
-        // Light / Dark Theme Toggle Script
         function toggleTheme() {
             const doToggle = () => {
                 const isLight = document.documentElement.classList.toggle('light-mode');
@@ -698,44 +523,10 @@
             });
         }
 
-        // Modal Lightbox Script
-        const modal = document.getElementById("modal");
-        const modalImg = document.getElementById("modal-img");
-
-        function openModal(src) {
-            modalImg.src = src;
-            modal.classList.add("active");
-            document.body.style.overflow = "hidden";
+        function scrollShowcase(offset) {
+            const viewport = document.getElementById('showcase-viewport');
+            viewport.scrollBy({ left: offset, behavior: 'smooth' });
         }
-
-        function closeModal() {
-            modal.classList.remove("active");
-            document.body.style.overflow = "auto";
-            setTimeout(() => {
-                if (!modal.classList.contains("active")) {
-                    modalImg.src = "";
-                }
-            }, 300);
-        }
-
-        function closeModalOnBackground(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        }
-
-        function handleKeyPress(e, src) {
-            if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                openModal(src);
-            }
-        }
-
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") {
-                closeModal();
-            }
-        });
     </script>
 
 </body>
