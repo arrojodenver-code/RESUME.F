@@ -90,7 +90,6 @@ body{
     color:var(--text-main);
     overflow-x:hidden;
     padding:20px 18px 30px 18px;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .art-blob{
@@ -291,7 +290,6 @@ body.light-mode .btn-social-icon:hover {
     box-shadow:0 20px 50px rgba(0,0,0,0.35);
     position:relative;
     overflow:hidden;
-    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-panel::before{
@@ -499,10 +497,6 @@ body.light-mode .hero-card{
     font-size:15px;
     line-height:1.9;
     color:#cbd5e1;
-}
-
-body.light-mode .about-text{
-    color:#334155;
 }
 
 /* INFO */
@@ -721,6 +715,22 @@ body.light-mode .about-text{
     font-size:12px;
     letter-spacing:0.05em;
     text-transform:uppercase;
+}
+
+/* CIRCULAR VIEW TRANSITION STYLES */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999;
 }
 
 /* RESPONSIVE */
@@ -1156,7 +1166,7 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
 
-    themeToggle.addEventListener('click', () => {
+    function toggleTheme() {
         body.classList.toggle('light-mode');
         if (body.classList.contains('light-mode')) {
             // Moon symbol
@@ -1165,6 +1175,48 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
             // Sun symbol
             themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
         }
+    }
+
+    themeToggle.addEventListener('click', (e) => {
+        // Fallback for browsers that don't support View Transitions API
+        if (!document.startViewTransition) {
+            toggleTheme();
+            return;
+        }
+
+        // Get click position
+        const rect = themeToggle.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        // Calculate max radius needed to cover the screen
+        const endRadius = Math.hypot(
+            Math.max(x, innerWidth - x),
+            Math.max(y, innerHeight - y)
+        );
+
+        // Perform the View Transition animation
+        const transition = document.startViewTransition(() => {
+            toggleTheme();
+        });
+
+        transition.ready.then(() => {
+            const clipPath = [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`
+            ];
+            
+            document.documentElement.animate(
+                {
+                    clipPath: clipPath
+                },
+                {
+                    duration: 650,
+                    easing: 'ease-in-out',
+                    pseudoElement: '::view-transition-new(root)'
+                }
+            );
+        });
     });
 </script>
 
