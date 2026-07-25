@@ -192,19 +192,23 @@ body.light-mode .navbar {
     color: var(--text-main);
 }
 
-.brand-logo {
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    color: var(--bg-dark);
-    font-size: 16px;
-}
+/* BRAND LOGO DARK/LIGHT MODE INTEGRATION */
+        .brand-logo-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+            /* Dark Mode default: converts logo to pure white */
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        /* Restores original logo colors for Light Mode */
+        body.light-mode .brand-logo-img,
+        html.light-mode-init .brand-logo-img {
+            filter: none;
+        }
 
 .brand-text {
     font-family: 'Space Grotesk', sans-serif;
@@ -928,15 +932,15 @@ body.light-mode .hero-card{
 <div class="resume-container">
 
     <!-- NAVIGATION BAR -->
-    <div class="navbar-wrapper">
-        <nav class="glass-panel navbar">
-            <a href="JDLOGO.PNG" class="nav-brand">
-                <div class="brand-logo">JD</div>
-                <div class="brand-text">
-                    ARROJO
-                    <span>PORTFOLIO</span>
-                </div>
-            </a>
+        <div class="navbar-wrapper">
+            <nav class="glass-panel navbar">
+                <a href="index.html" class="nav-brand">
+                    <img src="JDLOGO.png" alt="Logo" class="brand-logo-img">
+                    <div class="brand-text">
+                        ARROJO
+                        <span>PORTFOLIO</span>
+                    </div>
+                </a>
 
             <ul class="nav-links">
                 <li><span class="nav-link active-page">About</span></li>
