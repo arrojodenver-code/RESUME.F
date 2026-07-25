@@ -176,21 +176,24 @@
             color: var(--text-main);
         }
 
-        /* BRAND LOGO DARK/LIGHT MODE INTEGRATION */
-        .brand-logo-img {
+        /* BRAND LOGO & UNIVERSAL THEME ADAPTATION */
+        .brand-logo-img,
+        .theme-adapt-img {
             width: 36px;
             height: 36px;
             border-radius: 10px;
             object-fit: cover;
             display: block;
-            /* Dark Mode default: converts logo to pure white */
+            /* Dark Mode default: converts image to pure white */
             filter: brightness(0) invert(1);
             transition: filter 0.3s ease;
         }
 
-        /* Restores original logo colors for Light Mode */
+        /* Restores original image colors for Light Mode */
         body.light-mode .brand-logo-img,
-        html.light-mode-init .brand-logo-img {
+        html.light-mode-init .brand-logo-img,
+        body.light-mode .theme-adapt-img,
+        html.light-mode-init .theme-adapt-img {
             filter: none;
         }
 
@@ -631,6 +634,7 @@
         <div class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
+                    <!-- Class 'brand-logo-img' handles theme-switching filter behavior -->
                     <img src="JDLOGO.png" alt="Logo" class="brand-logo-img">
                     <div class="brand-text">
                         ARROJO
