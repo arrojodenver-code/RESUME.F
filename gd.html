@@ -1,809 +1,1285 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>John Denver Arrojo • Creative Design Showcase</title>
+
     
-    <!-- INSTANT THEME CHECK (Prevents screen flashing light/dark on load) -->
-    <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-mode-init');
-        }
-    </script>
 
     <!-- Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
+
+
     <style>
+
         :root {
+
             --bg-dark: #07070c;
+
             --panel-glass: rgba(13, 13, 25, 0.45);
+
             --border-glass: rgba(255, 255, 255, 0.07);
+
             --accent-1: #d444f1; /* Vivid Amethyst */
+
             --accent-2: #00f5d4; /* Cyber Teal */
+
             --text-main: #f8fafc;
+
             --text-muted: #94a3b8;
+
         }
 
-        /* LIGHT MODE THEME OVERRIDES */
-        body.light-mode {
-            --bg-dark: #f1f5f9;
-            --panel-glass: rgba(255, 255, 255, 0.75);
-            --border-glass: rgba(0, 0, 0, 0.08);
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent-2: #008b7d;
-        }
 
-        body.light-mode .art-blob {
-            opacity: 0.15;
-        }
-
-        body.light-mode .badge {
-            background: rgba(212, 68, 241, 0.1);
-            border: 1px solid rgba(212, 68, 241, 0.2);
-            color: #9333ea;
-        }
-
-        body.light-mode .btn-social-icon {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        body.light-mode .btn-social-icon:hover,
-        body.light-mode .btn-social-icon:focus-visible {
-            background: rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-
-        body.light-mode .photo {
-            background: #e2e8f0;
-            border-color: rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .overlay {
-            background: linear-gradient(to top, rgba(241, 245, 249, 0.95) 0%, rgba(241, 245, 249, 0.4) 50%, transparent 100%);
-        }
 
         * {
+
             margin: 0;
+
             padding: 0;
+
             box-sizing: border-box;
+
         }
+
+
 
         html {
+
             scroll-behavior: smooth;
+
         }
+
+
 
         body {
+
             font-family: 'Plus Jakarta Sans', sans-serif;
+
             background-color: var(--bg-dark);
+
             background-image:
+
                 radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.12) 0px, transparent 50%),
+
                 radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.1) 0px, transparent 50%),
+
                 radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.5) 0px, transparent 80%);
+
             min-height: 100vh;
+
             color: var(--text-main);
+
             overflow-x: hidden;
+
             padding: 20px 18px 30px 18px;
+
         }
+
+
 
         /* BACKGROUND ANIMATED BLOBS */
+
         .art-blob {
+
             position: fixed;
+
             border-radius: 50%;
+
             filter: blur(140px);
+
             z-index: -1;
+
             opacity: 0.25;
+
             mix-blend-mode: screen;
+
             will-change: transform;
+
             animation: float 12s infinite alternate ease-in-out;
+
         }
+
+
 
         .blob-1 {
+
             top: 20%;
+
             left: -10%;
+
             width: 500px;
+
             height: 500px;
+
             background: var(--accent-1);
+
         }
+
+
 
         .blob-2 {
+
             bottom: 10%;
+
             right: -10%;
+
             width: 600px;
+
             height: 600px;
+
             background: var(--accent-2);
+
             animation-delay: -4s;
+
         }
+
+
 
         @keyframes float {
+
             0% { transform: translateY(0px) scale(1) rotate(0deg); }
+
             100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
+
         }
+
+
 
         .container {
+
             width: 100%;
+
             max-width: 1200px;
+
             margin: auto;
+
             display: flex;
+
             flex-direction: column;
+
             gap: 28px;
+
         }
+
+
 
         /* GLASS PANELS */
+
         .glass-panel {
+
             background: var(--panel-glass);
+
             backdrop-filter: blur(20px);
+
             -webkit-backdrop-filter: blur(20px);
+
             border: 1px solid var(--border-glass);
+
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
             position: relative;
+
             overflow: hidden;
+
         }
+
+
 
         /* NAVIGATION BAR */
+
         .navbar-wrapper {
+
             position: sticky;
+
             top: 20px;
+
             z-index: 1000;
+
             margin-bottom: 10px;
+
         }
+
+
 
         .navbar {
+
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
-            padding: 10px 28px;
-            background: rgba(13, 13, 25, 0.2) !important;
-            backdrop-filter: blur(24px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+
+            padding: 14px 28px;
+
         }
 
-        body.light-mode .navbar {
-            background: rgba(255, 255, 255, 0.25) !important;
-            border: 1px solid rgba(255, 255, 255, 0.4) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
-        }
+
 
         .nav-brand {
+
             display: flex;
+
             align-items: center;
-            gap: 14px;
+
+            gap: 12px;
+
             text-decoration: none;
+
             color: var(--text-main);
+
         }
+
+
 
         .brand-logo-img {
-            width: 54px;
-            height: 54px;
-            border-radius: 12px;
+
+            width: 36px;
+
+            height: 36px;
+
+            border-radius: 10px;
+
             object-fit: cover;
+
             display: block;
+
         }
+
+
 
         .brand-text {
+
             font-family: 'Space Grotesk', sans-serif;
+
             font-weight: 700;
-            font-size: 18px;
+
+            font-size: 16px;
+
             letter-spacing: -0.02em;
+
             line-height: 1.1;
+
         }
+
+
 
         .brand-text span {
+
             display: block;
-            font-size: 11px;
+
+            font-size: 10px;
+
             color: var(--text-muted);
+
             font-weight: 500;
+
             letter-spacing: 0.05em;
+
             text-transform: uppercase;
+
         }
+
+
 
         .nav-links {
+
             display: flex;
+
             align-items: center;
+
             gap: 28px;
+
             list-style: none;
+
         }
+
+
 
         .nav-link {
+
             text-decoration: none;
+
             color: var(--text-muted);
+
             font-size: 14px;
+
             font-weight: 500;
+
             transition: color 0.3s ease;
+
             display: flex;
+
             align-items: center;
+
             gap: 4px;
+
         }
+
+
 
         .nav-link:hover,
+
         .nav-link:focus-visible {
+
             color: var(--text-main);
+
             outline: none;
+
         }
+
+
 
         .nav-link.active-page {
+
             color: var(--accent-2);
-            font-weight: 700;
+
             cursor: default;
+
             pointer-events: none;
-            text-shadow: 0 0 12px rgba(0, 245, 212, 0.4), 0 1px 3px rgba(0, 0, 0, 0.6);
+
+            opacity: 0.85;
+
         }
 
-        body.light-mode .nav-link.active-page {
-            color: #00877a;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
-        }
+
 
         /* NAV ACTIONS */
+
         .nav-actions {
+
             display: flex;
+
             align-items: center;
+
             gap: 12px;
+
         }
+
+
 
         .btn-social-icon {
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             width: 38px;
+
             height: 38px;
+
             border-radius: 50%;
+
             background: rgba(255, 255, 255, 0.05);
+
             border: 1px solid var(--border-glass);
+
             color: var(--text-main);
+
             transition: all 0.3s ease;
+
             text-decoration: none;
-            cursor: pointer;
+
         }
+
+
 
         .btn-social-icon svg {
+
             width: 18px;
+
             height: 18px;
+
             fill: currentColor;
+
             transition: fill 0.3s ease;
+
         }
+
+
 
         .btn-social-icon:hover,
+
         .btn-social-icon:focus-visible {
+
             background: rgba(255, 255, 255, 0.12);
+
             transform: translateY(-2px);
+
             border-color: rgba(255, 255, 255, 0.2);
+
             color: var(--accent-2);
+
             outline: none;
+
         }
+
+
 
         .btn-nav-cta {
+
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+
             color: var(--bg-dark);
+
             padding: 10px 20px;
+
             border-radius: 100px;
+
             font-weight: 700;
+
             font-size: 13px;
+
             text-decoration: none;
+
             transition: all 0.3s ease;
+
             box-shadow: 0 4px 15px rgba(0, 245, 212, 0.25);
+
         }
+
+
 
         .btn-nav-cta:hover,
+
         .btn-nav-cta:focus-visible {
+
             transform: translateY(-2px);
+
             box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
+
             filter: brightness(1.1);
+
             outline: none;
+
         }
+
+
 
         /* TYPOGRAPHY */
+
         h1, .overlay span {
+
             font-family: 'Space Grotesk', sans-serif;
+
             letter-spacing: -0.01em;
+
         }
+
+
 
         /* HERO SECTION */
+
         .hero {
+
             padding: 60px;
+
             text-align: center;
+
             display: flex;
+
             flex-direction: column;
+
             align-items: center;
+
             justify-content: center;
+
         }
+
+
 
         .badge {
+
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
+
             padding: 8px 16px;
+
             border-radius: 100px;
+
             background: rgba(212, 68, 241, 0.1);
+
             border: 1px solid rgba(212, 68, 241, 0.25);
+
             font-size: 13px;
+
             font-weight: 600;
+
             letter-spacing: 0.05em;
+
             text-transform: uppercase;
+
             color: #fbcfff;
+
             margin-bottom: 24px;
+
         }
+
+
 
         .hero h1 {
+
             font-size: 62px;
+
             line-height: 1.1;
+
             font-weight: 700;
+
             margin-bottom: 18px;
+
         }
+
+
 
         .hero h1 span {
+
             background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+
             -webkit-background-clip: text;
+
             -webkit-text-fill-color: transparent;
+
         }
+
+
 
         .hero p {
+
             color: var(--text-muted);
+
             line-height: 1.8;
+
             font-size: 17px;
+
             max-width: 650px;
+
             margin: 0 auto;
+
         }
+
+
 
         /* GALLERY GRID */
+
         .gallery {
+
             display: grid;
+
             grid-template-columns: repeat(3, 1fr);
+
             gap: 20px;
+
         }
+
+
 
         .photo {
+
             position: relative;
+
             overflow: hidden;
+
             border-radius: 20px;
+
             background: #000;
+
             border: 1px solid var(--border-glass);
+
             aspect-ratio: 1/1;
+
             cursor: pointer;
+
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
         }
+
+
 
         .photo:focus-visible {
+
             outline: 2px solid var(--accent-2);
+
             outline-offset: 4px;
+
         }
+
+
 
         .photo:hover {
+
             transform: translateY(-6px);
+
             border-color: rgba(255, 255, 255, 0.18);
+
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+
         }
+
+
 
         .photo img {
+
             width: 100%;
+
             height: 100%;
+
             object-fit: cover;
+
             transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s;
+
             display: block;
+
         }
+
+
 
         .photo:hover img {
+
             transform: scale(1.04);
+
             filter: saturate(1.05);
+
         }
+
+
 
         /* HOVER OVERLAY */
+
         .overlay {
+
             position: absolute;
+
             inset: 0;
+
             background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.3) 50%, transparent 100%);
+
             display: flex;
+
             align-items: flex-end;
+
             padding: 24px;
+
             opacity: 0;
+
             transition: opacity 0.35s ease;
+
             pointer-events: none;
+
         }
+
+
 
         .photo:hover .overlay,
+
         .photo:focus-visible .overlay {
+
             opacity: 1;
+
         }
+
+
 
         .overlay span {
+
             font-size: 15px;
+
             color: var(--text-main);
+
             font-weight: 500;
+
             transform: translateY(10px);
+
             transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+
         }
+
+
 
         .photo:hover .overlay span,
+
         .photo:focus-visible .overlay span {
+
             transform: translateY(0);
+
         }
+
+
 
         /* FOOTER */
+
         .footer {
+
             text-align: center;
+
             padding: 20px 0;
+
             color: var(--text-muted);
+
             font-size: 13px;
+
             letter-spacing: 0.05em;
+
             text-transform: uppercase;
+
             border-top: 1px solid var(--border-glass);
+
             margin-top: 8px;
+
         }
+
+
 
         /* LIGHTBOX MODAL */
+
         .modal {
+
             position: fixed;
+
             inset: 0;
+
             width: 100%;
+
             height: 100%;
+
             background: rgba(4, 4, 8, 0.98);
+
             backdrop-filter: blur(20px);
+
             display: none;
+
             justify-content: center;
+
             align-items: center;
+
             z-index: 99999;
+
             opacity: 0;
+
             transition: opacity 0.3s ease;
+
         }
+
+
 
         .modal.active {
+
             display: flex;
+
             opacity: 1;
+
         }
+
+
 
         .modal img {
+
             max-width: 90%;
+
             max-height: 90%;
+
             object-fit: contain;
+
             border-radius: 12px;
+
             border: 1px solid rgba(255, 255, 255, 0.08);
+
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+
             transform: scale(0.95);
+
             transition: transform 0.3s ease;
+
         }
+
+
 
         .modal.active img {
+
             transform: scale(1);
+
         }
+
+
 
         .close {
+
             position: absolute;
+
             top: 30px;
+
             right: 40px;
+
             font-size: 44px;
+
             font-weight: 300;
+
             color: var(--text-muted);
+
             cursor: pointer;
+
             z-index: 100000;
+
             transition: color 0.2s;
+
             user-select: none;
+
             background: none;
+
             border: none;
+
             outline: none;
+
         }
+
+
 
         .close:hover,
+
         .close:focus-visible {
+
             color: #ffffff;
+
         }
 
-        /* CIRCULAR VIEW TRANSITION STYLES */
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-            animation: none;
-            mix-blend-mode: normal;
-        }
 
-        ::view-transition-old(root) {
-            z-index: 1;
-        }
-
-        ::view-transition-new(root) {
-            z-index: 9999;
-        }
 
         /* RESPONSIVE BREAKPOINTS */
+
         @media(max-width: 850px) {
+
             .nav-links {
+
                 display: none;
+
             }
+
         }
+
+
 
         @media(max-width: 960px) {
+
             .gallery { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
             .hero h1 { font-size: 46px; }
+
         }
 
+
+
         @media(max-width: 640px) {
+
             body { padding: 12px; }
+
             .gallery { grid-template-columns: 1fr; gap: 14px; }
+
             .hero { padding: 40px 20px; }
+
             .hero h1 { font-size: 38px; }
+
             .container { padding: 0; }
+
         }
+
     </style>
+
 </head>
+
+
 
 <body>
 
+
+
     <div class="art-blob blob-1"></div>
+
     <div class="art-blob blob-2"></div>
+
+
 
     <div class="container">
 
+
+
         <!-- NAVIGATION BAR -->
+
         <header class="navbar-wrapper">
+
             <nav class="glass-panel navbar">
+
                 <a href="index.html" class="nav-brand">
+
                     <img src="jd.png" alt="John Denver Arrojo Logo" class="brand-logo-img">
+
                     <div class="brand-text">
+
                         ARROJO
+
                         <span>PORTFOLIO</span>
+
                     </div>
+
                 </a>
 
+
+
                 <ul class="nav-links">
+
                     <li><a href="index.html" class="nav-link">About</a></li>
+
                     <li><a href="ux.html" class="nav-link">UX Design</a></li>
+
                     <li><span class="nav-link active-page">Graphic Design</span></li>
+
                     <li><a href="3d.html" class="nav-link">3D Model</a></li>
+
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
+
                 </ul>
 
+
+
                 <div class="nav-actions">
+
                     <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
+
                         <svg viewBox="0 0 24 24">
+
                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+
                         </svg>
+
                     </a>
 
-                    <button id="theme-toggle" class="btn-social-icon" aria-label="Toggle Dark/Light Mode">
-                        <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                    </button>
-
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
+
                 </div>
+
             </nav>
+
         </header>
 
+
+
         <!-- HERO SECTION -->
+
         <section class="hero glass-panel">
+
             <div class="badge">✦ Creative Design Portfolio</div>
+
             <h1>Creative <span>Designs</span></h1>
+
             <p>
+
                 A collection of posters, social media graphics, advertisements, branding visuals, and digital creative works.
+
             </p>
+
         </section>
+
+
 
         <!-- GALLERY SECTION -->
+
         <section class="gallery">
+
             <div class="photo" role="button" tabindex="0" onclick="openModal('design15.jpg')" onkeydown="handleKeyPress(event, 'design15.jpg')">
+
                 <img src="design15.jpg" alt="Photo Manipulation Design" loading="lazy">
+
                 <div class="overlay"><span>Photo Manipulation</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design13.png')" onkeydown="handleKeyPress(event, 'design13.png')">
+
                 <img src="design13.png" alt="Digital Art Design" loading="lazy">
+
                 <div class="overlay"><span>Digital Art</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design14.png')" onkeydown="handleKeyPress(event, 'design14.png')">
+
                 <img src="design14.png" alt="Finger Painting Artwork" loading="lazy">
+
                 <div class="overlay"><span>Finger Painting</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design1.jpg')" onkeydown="handleKeyPress(event, 'design1.jpg')">
+
                 <img src="design1.jpg" alt="Graphic Design Project 1" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 1</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design2.jpg')" onkeydown="handleKeyPress(event, 'design2.jpg')">
+
                 <img src="design2.jpg" alt="Graphic Design Project 2" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 2</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design3.jpg')" onkeydown="handleKeyPress(event, 'design3.jpg')">
+
                 <img src="design3.jpg" alt="Graphic Design Project 3" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 3</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design4.jpg')" onkeydown="handleKeyPress(event, 'design4.jpg')">
+
                 <img src="design4.jpg" alt="Graphic Design Project 4" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 4</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design5.jpg')" onkeydown="handleKeyPress(event, 'design5.jpg')">
+
                 <img src="design5.jpg" alt="Graphic Design Project 5" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 5</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design6.jpg')" onkeydown="handleKeyPress(event, 'design6.jpg')">
+
                 <img src="design6.jpg" alt="Graphic Design Project 6" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 6</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design7.png')" onkeydown="handleKeyPress(event, 'design7.png')">
+
                 <img src="design7.png" alt="Graphic Design Project 7" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 7</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design8.png')" onkeydown="handleKeyPress(event, 'design8.png')">
+
                 <img src="design8.png" alt="Graphic Design Project 8" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 8</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design9.png')" onkeydown="handleKeyPress(event, 'design9.png')">
+
                 <img src="design9.png" alt="Graphic Design Project 9" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 9</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design10.jpg')" onkeydown="handleKeyPress(event, 'design10.jpg')">
+
                 <img src="design10.jpg" alt="Graphic Design Project 10" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 10</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design11.jpg')" onkeydown="handleKeyPress(event, 'design11.jpg')">
+
                 <img src="design11.jpg" alt="Graphic Design Project 11" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 11</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design12.jpg')" onkeydown="handleKeyPress(event, 'design12.jpg')">
+
                 <img src="design12.jpg" alt="Graphic Design Project 12" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 12</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design16.jpg')" onkeydown="handleKeyPress(event, 'design16.jpg')">
+
                 <img src="design16.jpg" alt="Graphic Design Project 13" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 13</span></div>
+
             </div>
+
+
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design17.jpg')" onkeydown="handleKeyPress(event, 'design17.jpg')">
+
                 <img src="design17.jpg" alt="Graphic Design Project 14" loading="lazy">
+
                 <div class="overlay"><span>Graphic Design 14</span></div>
+
             </div>
+
         </section>
 
+
+
         <!-- FOOTER -->
+
         <footer class="footer">
+
             © 2026 John Denver Arrojo • Creative Design 
+
         </footer>
 
+
+
     </div>
+
+
 
     <!-- LIGHTBOX MODAL -->
+
     <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Image Lightbox" onclick="closeModalOnBackground(event)">
+
         <button class="close" onclick="closeModal()" aria-label="Close image lightbox">&times;</button>
+
         <img id="modal-img" alt="High Resolution Asset View">
+
     </div>
 
+
+
     <script>
+
         const modal = document.getElementById("modal");
+
         const modalImg = document.getElementById("modal-img");
 
+
+
         function openModal(src) {
+
             modalImg.src = src;
+
             modal.classList.add("active");
+
             document.body.style.overflow = "hidden";
+
         }
+
+
 
         function closeModal() {
+
             modal.classList.remove("active");
+
             document.body.style.overflow = "auto";
+
             setTimeout(() => {
+
                 if (!modal.classList.contains("active")) {
+
                     modalImg.src = "";
+
                 }
+
             }, 300);
+
         }
+
+
 
         function closeModalOnBackground(e) {
+
             if (e.target === modal) {
+
                 closeModal();
+
             }
+
         }
+
+
 
         function handleKeyPress(e, src) {
+
             if (e.key === "Enter" || e.key === " ") {
+
                 e.preventDefault();
+
                 openModal(src);
+
             }
+
         }
+
+
 
         document.addEventListener("keydown", function(e) {
+
             if (e.key === "Escape") {
+
                 closeModal();
+
             }
+
         });
 
-        /* THEME SYSTEM INTEGRATION */
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const body = document.body;
-
-        const sunSVG = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-        const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-
-        function loadSavedTheme() {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                body.classList.add('light-mode');
-                if (themeIcon) themeIcon.innerHTML = moonSVG;
-            } else {
-                body.classList.remove('light-mode');
-                if (themeIcon) themeIcon.innerHTML = sunSVG;
-            }
-        }
-
-        loadSavedTheme();
-
-        function toggleTheme() {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                themeIcon.innerHTML = moonSVG;
-                localStorage.setItem('theme', 'light');
-            } else {
-                themeIcon.innerHTML = sunSVG;
-                localStorage.setItem('theme', 'dark');
-            }
-        }
-
-        if (themeToggle) {
-            themeToggle.addEventListener('click', (e) => {
-                if (!document.startViewTransition) {
-                    toggleTheme();
-                    return;
-                }
-
-                const rect = themeToggle.getBoundingClientRect();
-                const x = rect.left + rect.width / 2;
-                const y = rect.top + rect.height / 2;
-
-                const endRadius = Math.hypot(
-                    Math.max(x, innerWidth - x),
-                    Math.max(y, innerHeight - y)
-                );
-
-                const transition = document.startViewTransition(() => {
-                    toggleTheme();
-                });
-
-                transition.ready.then(() => {
-                    const clipPath = [
-                        `circle(0px at ${x}px ${y}px)`,
-                        `circle(${endRadius}px at ${x}px ${y}px)`
-                    ];
-                    
-                    document.documentElement.animate(
-                        {
-                            clipPath: clipPath
-                        },
-                        {
-                            duration: 650,
-                            easing: 'ease-in-out',
-                            pseudoElement: '::view-transition-new(root)'
-                        }
-                    );
-                });
-            });
-        }
     </script>
 
+
+
 </body>
+
 </html>
