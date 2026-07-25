@@ -204,10 +204,12 @@ body.light-mode .navbar {
             transition: filter 0.3s ease;
         }
 
-        /* Restores original logo colors for Light Mode */
+         /* Restores original image colors for Light Mode */
         body.light-mode .brand-logo-img,
-        html.light-mode-init .brand-logo-img {
-            filter: none;
+        html.light-mode-init .brand-logo-img,
+        body.light-mode .theme-adapt-img,
+        html.light-mode-init .theme-adapt-img {
+            filter: none !important;
         }
 
 .brand-text {
