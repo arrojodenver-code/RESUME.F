@@ -17,104 +17,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
+        :root {
+            --bg-dark: #07070c;
+            --panel-glass: rgba(13, 13, 25, 0.45);
+            --border-glass: rgba(255, 255, 255, 0.07);
+            --accent-1: #d444f1; /* Vivid Amethyst */
+            --accent-2: #00f5d4; /* Cyber Teal */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
 
-:root{
-    --bg-dark:#07070c;
-    --panel-glass:rgba(13,13,25,0.45);
-    --border-glass:rgba(255,255,255,0.07);
-    --accent-1:#d444f1;
-    --accent-2:#00f5d4;
-    --text-main:#f8fafc;
-    --text-muted:#94a3b8;
-}
+        /* LIGHT MODE THEME OVERRIDES */
+        body.light-mode {
+            --bg-dark: #f1f5f9;
+            --panel-glass: rgba(255, 255, 255, 0.75);
+            --border-glass: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-2: #008b7d;
+        }
 
-body.light-mode{
-    --bg-dark:#f1f5f9;
-    --panel-glass:rgba(255,255,255,0.75);
-    --border-glass:rgba(0,0,0,0.08);
-    --text-main:#0f172a;
-    --text-muted:#64748b;
-    --accent-2:#008b7d;
-}
+        body.light-mode .art-blob {
+            opacity: 0.15;
+        }
 
-body.light-mode .art-blob{
-    opacity:0.15;
-}
+        body.light-mode .badge {
+            background: rgba(212, 68, 241, 0.1);
+            border: 1px solid rgba(212, 68, 241, 0.2);
+            color: #9333ea;
+        }
 
-body.light-mode .hero-badge{
-    background:rgba(212,68,241,0.1);
-    border:1px solid rgba(212,68,241,0.2);
-    color:#9333ea;
-}
+        body.light-mode .slider-wrapper {
+            background: rgba(255, 255, 255, 0.4);
+        }
 
-body.light-mode .card-title{
-    background:linear-gradient(90deg,#0f172a,var(--text-muted));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        body.light-mode .slide-card {
+            background: #e2e8f0;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-body.light-mode .image-placeholder{
-    background:#e2e8f0;
-}
+        body.light-mode .category {
+            background: rgba(0, 139, 125, 0.15);
+            border: 1px solid rgba(0, 139, 125, 0.3);
+            color: #005e54;
+        }
 
-body.light-mode .stat-box,
-body.light-mode .info-card,
-body.light-mode .edu-node{
-    background:rgba(0,0,0,0.02);
-    border:1px solid rgba(0,0,0,0.05);
-}
+        body.light-mode .btn {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #0f172a;
+        }
 
-body.light-mode .about-text{
-    color:#334155;
-}
+        body.light-mode .btn:hover {
+            background: #0f172a;
+            color: #ffffff;
+        }
 
-body.light-mode .skill-track{
-    background:rgba(0,0,0,0.08);
-}
+        body.light-mode .thumb {
+            background: #e2e8f0;
+        }
 
-body.light-mode .node-date{
-    background:rgba(0,0,0,0.04);
-    border:1px solid rgba(0,0,0,0.08);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body.light-mode .card-sub {
-    color: #00877a;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body.light-mode .edu-meta {
-    color: #00877a;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-
-body.light-mode .node-sub {
-    color: #b01cd2;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Plus Jakarta Sans',sans-serif;
-    background-color:var(--bg-dark);
-    background-image:
-        radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
-    min-height:100vh;
-    color:var(--text-main);
-    overflow-x:hidden;
-    padding:20px 18px 30px 18px;
-}
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
+            min-height: 100vh;
+            color: var(--text-main);
+            overflow-x: hidden;
+            padding: 20px 18px 30px 18px;
+        }
 
 .art-blob{
     position:fixed;
