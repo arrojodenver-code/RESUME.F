@@ -20,10 +20,10 @@
     <style>
         :root {
             --bg-dark: #07070c;
-            --panel-glass: rgba(13, 13, 25, 0.75);
-            --border-glass: rgba(255, 255, 255, 0.07);
-            --accent-1: #d444f1; /* Vivid Amethyst */
-            --accent-2: #00f5d4; /* Cyber Teal */
+            --panel-glass: #0d0d19;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --accent-1: #d444f1;
+            --accent-2: #00f5d4;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --badge-bg: rgba(212, 68, 241, 0.1);
@@ -36,7 +36,7 @@
         html.light-mode,
         body.light-mode {
             --bg-dark: #f0f4f8;
-            --panel-glass: rgba(255, 255, 255, 0.85);
+            --panel-glass: #ffffff;
             --border-glass: rgba(0, 0, 0, 0.08);
             --accent-1: #b81bd6;
             --accent-2: #00b39b;
@@ -48,7 +48,7 @@
             --modal-bg: rgba(240, 244, 248, 0.98);
         }
 
-        /* HARDWARE ACCELERATED VIEW TRANSITION ENGINE */
+        /* MAXIMUM PERFORMANCE VIEW TRANSITIONS */
         ::view-transition-group(root) {
             animation: none;
         }
@@ -59,7 +59,7 @@
             mix-blend-mode: normal;
             display: block;
             will-change: clip-path;
-            transform: translateZ(0);
+            contain: paint layout;
         }
 
         ::view-transition-old(root) {
@@ -70,14 +70,17 @@
             z-index: 9999;
         }
 
-        /* DISABLE BACKDROP-FILTER & HEAVY EFFECTS DURING TRANSITION STAGE */
+        /* STRIP ALL EXTRA COMPUTATIONS DURING TRANSITION */
         html.is-transitioning *,
         html.is-transitioning *::before,
         html.is-transitioning *::after {
-            animation-play-state: paused !important;
+            animation: none !important;
+            transition: none !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            filter: none !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
-            box-shadow: none !important;
         }
 
         * {
@@ -93,55 +96,35 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
-            background-image:
-                radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.12) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.5) 0px, transparent 80%);
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
             padding: 20px 18px 30px 18px;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* BACKGROUND ANIMATED BLOBS */
+        /* LIGHTWEIGHT STATIC AMBIENT ACCENTS */
         .art-blob {
             position: fixed;
             border-radius: 50%;
-            filter: blur(140px);
             z-index: -1;
-            opacity: 0.25;
-            mix-blend-mode: screen;
-            will-change: transform;
-            animation: float 12s infinite alternate ease-in-out;
-        }
-
-        body.light-mode .art-blob,
-        html.light-mode .art-blob {
-            mix-blend-mode: multiply;
-            opacity: 0.35;
+            opacity: 0.12;
+            pointer-events: none;
         }
 
         .blob-1 {
-            top: 20%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
             background: var(--accent-1);
         }
 
         .blob-2 {
-            bottom: 10%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
             background: var(--accent-2);
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px) scale(1) rotate(0deg); }
-            100% { transform: translateY(50px) scale(1.05) rotate(15deg); }
         }
 
         .container {
@@ -153,17 +136,13 @@
             gap: 28px;
         }
 
-        /* GLASS PANELS */
+        /* OPTIMIZED PANELS (NO BACKDROP-FILTER BLUR) */
         .glass-panel {
             background: var(--panel-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
-            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         /* NAVIGATION BAR */
@@ -226,7 +205,6 @@
             color: var(--text-muted);
             font-size: 14px;
             font-weight: 500;
-            transition: color 0.3s ease;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -260,40 +238,22 @@
             width: 38px;
             height: 38px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(125, 125, 125, 0.1);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
-            transition: all 0.3s ease;
             cursor: pointer;
             outline: none;
-        }
-
-        body.light-mode .theme-toggle-btn,
-        html.light-mode .theme-toggle-btn {
-            background: rgba(0, 0, 0, 0.05);
         }
 
         .theme-toggle-btn svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
-            transition: fill 0.3s ease, transform 0.3s ease;
         }
 
         .theme-toggle-btn:hover,
         .theme-toggle-btn:focus-visible {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
-        }
-
-        body.light-mode .theme-toggle-btn:hover,
-        body.light-mode .theme-toggle-btn:focus-visible,
-        html.light-mode .theme-toggle-btn:hover,
-        html.light-mode .theme-toggle-btn:focus-visible {
-            background: rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
         }
 
         /* REVERSED ICON VISIBILITY */
@@ -314,22 +274,11 @@
             font-weight: 700;
             font-size: 13px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 245, 212, 0.25);
         }
 
-        /* LIGHT MODE OVERRIDE FOR DOWNLOAD CV BUTTON */
         body.light-mode .btn-nav-cta,
         html.light-mode .btn-nav-cta {
             color: #ffffff;
-        }
-
-        .btn-nav-cta:hover,
-        .btn-nav-cta:focus-visible {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
-            filter: brightness(1.1);
-            outline: none;
         }
 
         /* TYPOGRAPHY */
@@ -390,7 +339,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            contain: layout style;
+            contain: content;
         }
 
         .photo {
@@ -401,10 +350,8 @@
             border: 1px solid var(--border-glass);
             aspect-ratio: 1/1;
             cursor: pointer;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             contain: strict;
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         .photo:focus-visible {
@@ -412,36 +359,24 @@
             outline-offset: 4px;
         }
 
-        .photo:hover {
-            transform: translateY(-6px);
-            border-color: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s;
             display: block;
-            transform: translate3d(0, 0, 0);
-        }
-
-        .photo:hover img {
-            transform: scale(1.04);
-            filter: saturate(1.05);
+            transform: translateZ(0);
         }
 
         /* HOVER OVERLAY */
         .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.3) 50%, transparent 100%);
+            background: rgba(7, 7, 12, 0.8);
             display: flex;
             align-items: flex-end;
             padding: 24px;
             opacity: 0;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.2s ease;
             pointer-events: none;
         }
 
@@ -454,13 +389,6 @@
             font-size: 15px;
             color: #f8fafc;
             font-weight: 500;
-            transform: translateY(10px);
-            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .photo:hover .overlay span,
-        .photo:focus-visible .overlay span {
-            transform: translateY(0);
         }
 
         /* FOOTER */
@@ -482,13 +410,11 @@
             width: 100%;
             height: 100%;
             background: var(--modal-bg);
-            backdrop-filter: blur(20px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 99999;
             opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .modal.active {
@@ -502,13 +428,6 @@
             object-fit: contain;
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-
-        .modal.active img {
-            transform: scale(1);
         }
 
         .close {
@@ -520,8 +439,6 @@
             color: var(--text-muted);
             cursor: pointer;
             z-index: 100000;
-            transition: color 0.2s;
-            user-select: none;
             background: none;
             border: none;
             outline: none;
@@ -610,87 +527,87 @@
         <!-- GALLERY SECTION -->
         <section class="gallery">
             <div class="photo" role="button" tabindex="0" onclick="openModal('design15.jpg')" onkeydown="handleKeyPress(event, 'design15.jpg')">
-                <img src="design15.jpg" alt="Photo Manipulation Design" loading="eager">
+                <img src="design15.jpg" alt="Photo Manipulation Design" decoding="async">
                 <div class="overlay"><span>Photo Manipulation</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design13.png')" onkeydown="handleKeyPress(event, 'design13.png')">
-                <img src="design13.png" alt="Digital Art Design" loading="eager">
+                <img src="design13.png" alt="Digital Art Design" decoding="async">
                 <div class="overlay"><span>Digital Art</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design14.png')" onkeydown="handleKeyPress(event, 'design14.png')">
-                <img src="design14.png" alt="Finger Painting Artwork" loading="eager">
+                <img src="design14.png" alt="Finger Painting Artwork" decoding="async">
                 <div class="overlay"><span>Finger Painting</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design1.jpg')" onkeydown="handleKeyPress(event, 'design1.jpg')">
-                <img src="design1.jpg" alt="Graphic Design Project 1" loading="lazy">
+                <img src="design1.jpg" alt="Graphic Design Project 1" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 1</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design2.jpg')" onkeydown="handleKeyPress(event, 'design2.jpg')">
-                <img src="design2.jpg" alt="Graphic Design Project 2" loading="lazy">
+                <img src="design2.jpg" alt="Graphic Design Project 2" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 2</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design3.jpg')" onkeydown="handleKeyPress(event, 'design3.jpg')">
-                <img src="design3.jpg" alt="Graphic Design Project 3" loading="lazy">
+                <img src="design3.jpg" alt="Graphic Design Project 3" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 3</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design4.jpg')" onkeydown="handleKeyPress(event, 'design4.jpg')">
-                <img src="design4.jpg" alt="Graphic Design Project 4" loading="lazy">
+                <img src="design4.jpg" alt="Graphic Design Project 4" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 4</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design5.jpg')" onkeydown="handleKeyPress(event, 'design5.jpg')">
-                <img src="design5.jpg" alt="Graphic Design Project 5" loading="lazy">
+                <img src="design5.jpg" alt="Graphic Design Project 5" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 5</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design6.jpg')" onkeydown="handleKeyPress(event, 'design6.jpg')">
-                <img src="design6.jpg" alt="Graphic Design Project 6" loading="lazy">
+                <img src="design6.jpg" alt="Graphic Design Project 6" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 6</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design7.png')" onkeydown="handleKeyPress(event, 'design7.png')">
-                <img src="design7.png" alt="Graphic Design Project 7" loading="lazy">
+                <img src="design7.png" alt="Graphic Design Project 7" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 7</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design8.png')" onkeydown="handleKeyPress(event, 'design8.png')">
-                <img src="design8.png" alt="Graphic Design Project 8" loading="lazy">
+                <img src="design8.png" alt="Graphic Design Project 8" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 8</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design9.png')" onkeydown="handleKeyPress(event, 'design9.png')">
-                <img src="design9.png" alt="Graphic Design Project 9" loading="lazy">
+                <img src="design9.png" alt="Graphic Design Project 9" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 9</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design10.jpg')" onkeydown="handleKeyPress(event, 'design10.jpg')">
-                <img src="design10.jpg" alt="Graphic Design Project 10" loading="lazy">
+                <img src="design10.jpg" alt="Graphic Design Project 10" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 10</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design11.jpg')" onkeydown="handleKeyPress(event, 'design11.jpg')">
-                <img src="design11.jpg" alt="Graphic Design Project 11" loading="lazy">
+                <img src="design11.jpg" alt="Graphic Design Project 11" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 11</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design12.jpg')" onkeydown="handleKeyPress(event, 'design12.jpg')">
-                <img src="design12.jpg" alt="Graphic Design Project 12" loading="lazy">
+                <img src="design12.jpg" alt="Graphic Design Project 12" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 12</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design16.jpg')" onkeydown="handleKeyPress(event, 'design16.jpg')">
-                <img src="design16.jpg" alt="Graphic Design Project 13" loading="lazy">
+                <img src="design16.jpg" alt="Graphic Design Project 13" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 13</span></div>
             </div>
 
             <div class="photo" role="button" tabindex="0" onclick="openModal('design17.jpg')" onkeydown="handleKeyPress(event, 'design17.jpg')">
-                <img src="design17.jpg" alt="Graphic Design Project 14" loading="lazy">
+                <img src="design17.jpg" alt="Graphic Design Project 14" loading="lazy" decoding="async">
                 <div class="overlay"><span>Graphic Design 14</span></div>
             </div>
         </section>
@@ -713,7 +630,6 @@
         const modalImg = document.getElementById("modal-img");
         const themeToggleBtn = document.getElementById("theme-toggle");
 
-        // Set theme state initially
         if (localStorage.getItem("theme") === "light") {
             document.body.classList.add("light-mode");
             document.documentElement.classList.add("light-mode");
@@ -726,8 +642,8 @@
             localStorage.setItem("theme", isLight ? "light" : "dark");
         }
 
-        // Ultra-Fast Zero-Lag View Transition Execution
-        themeToggleBtn.addEventListener("click", (e) => {
+        // Instant View Transition
+        themeToggleBtn.addEventListener("click", () => {
             if (!document.startViewTransition) {
                 toggleTheme();
                 return;
@@ -744,33 +660,28 @@
                 Math.max(y, window.innerHeight - y)
             );
 
-            // Double rAF ensures the browser strips expensive filters before taking snapshots
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    const transition = document.startViewTransition(() => {
-                        toggleTheme();
-                    });
+            const transition = document.startViewTransition(() => {
+                toggleTheme();
+            });
 
-                    transition.ready.then(() => {
-                        const anim = document.documentElement.animate(
-                            {
-                                clipPath: [
-                                    `circle(0px at ${x}px ${y}px)`,
-                                    `circle(${endRadius}px at ${x}px ${y}px)`
-                                ]
-                            },
-                            {
-                                duration: 350,
-                                easing: "cubic-bezier(0.2, 0, 0, 1)",
-                                pseudoElement: "::view-transition-new(root)"
-                            }
-                        );
+            transition.ready.then(() => {
+                const anim = document.documentElement.animate(
+                    {
+                        clipPath: [
+                            `circle(0px at ${x}px ${y}px)`,
+                            `circle(${endRadius}px at ${x}px ${y}px)`
+                        ]
+                    },
+                    {
+                        duration: 200,
+                        easing: "linear",
+                        pseudoElement: "::view-transition-new(root)"
+                    }
+                );
 
-                        anim.onfinish = () => {
-                            document.documentElement.classList.remove("is-transitioning");
-                        };
-                    });
-                });
+                anim.onfinish = () => {
+                    document.documentElement.classList.remove("is-transitioning");
+                };
             });
         });
 
@@ -787,7 +698,7 @@
                 if (!modal.classList.contains("active")) {
                     modalImg.src = "";
                 }
-            }, 300);
+            }, 100);
         }
 
         function closeModalOnBackground(e) {
