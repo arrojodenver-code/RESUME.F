@@ -193,24 +193,24 @@ body.light-mode .navbar {
 }
 
 /* BRAND LOGO DARK/LIGHT MODE INTEGRATION */
-        .brand-logo-img {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            object-fit: cover;
-            display: block;
-            /* Dark Mode default: converts logo to pure white */
-            filter: brightness(0) invert(1);
-            transition: filter 0.3s ease;
-        }
+.brand-logo-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    /* Dark Mode default: converts logo to pure white */
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
 
-         /* Restores original image colors for Light Mode */
-        body.light-mode .brand-logo-img,
-        html.light-mode-init .brand-logo-img,
-        body.light-mode .theme-adapt-img,
-        html.light-mode-init .theme-adapt-img {
-            filter: none !important;
-        }
+/* Restores original image colors for Light Mode */
+body.light-mode .brand-logo-img,
+html.light-mode-init .brand-logo-img,
+body.light-mode .theme-adapt-img,
+html.light-mode-init .theme-adapt-img {
+    filter: none !important;
+}
 
 .brand-text {
     font-family: 'Space Grotesk', sans-serif;
@@ -1263,13 +1263,12 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
                     `circle(0px at ${x}px ${y}px)`,
                     `circle(${endRadius}px at ${x}px ${y}px)`
                 ];
-                
                 document.documentElement.animate(
                     {
                         clipPath: clipPath
                     },
                     {
-                        duration: 650,
+                        duration: 500,
                         easing: 'ease-in-out',
                         pseudoElement: '::view-transition-new(root)'
                     }
