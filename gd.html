@@ -48,27 +48,19 @@
             --modal-bg: rgba(240, 244, 248, 0.98);
         }
 
-        /* CIRCULAR REVEAL VIEW TRANSITION STYLES */
+        /* CIRCULAR REVEAL VIEW TRANSITIONS */
         ::view-transition-old(root),
         ::view-transition-new(root) {
             animation: none;
             mix-blend-mode: normal;
         }
 
+        /* Keep new view always on top so it sweeps over the old screen state */
         ::view-transition-old(root) {
             z-index: 1;
         }
-
         ::view-transition-new(root) {
             z-index: 9999;
-        }
-
-        .light-mode::view-transition-old(root) {
-            z-index: 9999;
-        }
-
-        .light-mode::view-transition-new(root) {
-            z-index: 1;
         }
 
         * {
@@ -705,7 +697,6 @@
             document.documentElement.classList.add("light-mode");
         }
 
-        // Toggle function helper
         function toggleTheme() {
             document.body.classList.toggle("light-mode");
             document.documentElement.classList.toggle("light-mode");
@@ -713,40 +704,43 @@
             localStorage.setItem("theme", isLight ? "light" : "dark");
         }
 
-        // Theme Toggle Script with View Transitions API (Circular Ripple)
+        // Circular Reveal Transition using View Transitions API
         themeToggleBtn.addEventListener("click", (e) => {
+            // Fallback for browsers that don't support View Transitions
             if (!document.startViewTransition) {
                 toggleTheme();
                 return;
             }
 
-            const x = e.clientX;
-            const y = e.clientY;
+            // Get exact center of button or click coordinates
+            const rect = themeToggleBtn.getBoundingClientRect();
+            const x = e.clientX || rect.left + rect.width / 2;
+            const y = e.clientY || rect.top + rect.height / 2;
+
+            // Calculate furthest corner radius to cover the viewport
             const endRadius = Math.hypot(
-                Math.max(x, innerWidth - x),
-                Math.max(y, innerHeight - y)
+                Math.max(x, window.innerWidth - x),
+                Math.max(y, window.innerHeight - y)
             );
 
+            // Execute transition snapshot
             const transition = document.startViewTransition(() => {
                 toggleTheme();
             });
 
+            // Animate circular clip-path on incoming layer
             transition.ready.then(() => {
-                const isLight = document.body.classList.contains("light-mode");
-                
-                const clipPath = [
-                    `circle(0px at ${x}px ${y}px)`,
-                    `circle(${endRadius}px at ${x}px ${y}px)`
-                ];
-
                 document.documentElement.animate(
                     {
-                        clipPath: isLight ? clipPath : [...clipPath].reverse()
+                        clipPath: [
+                            `circle(0px at ${x}px ${y}px)`,
+                            `circle(${endRadius}px at ${x}px ${y}px)`
+                        ]
                     },
                     {
                         duration: 600,
                         easing: "ease-in-out",
-                        pseudoElement: isLight ? "::view-transition-new(root)" : "::view-transition-old(root)"
+                        pseudoElement: "::view-transition-new(root)"
                     }
                 );
             });
