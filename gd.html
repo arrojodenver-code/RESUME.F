@@ -20,7 +20,7 @@
     <style>
         :root {
             --bg-dark: #07070c;
-            --panel-glass: rgba(13, 13, 25, 0.45);
+            --panel-glass: rgba(13, 13, 25, 0.75);
             --border-glass: rgba(255, 255, 255, 0.07);
             --accent-1: #d444f1; /* Vivid Amethyst */
             --accent-2: #00f5d4; /* Cyber Teal */
@@ -36,7 +36,7 @@
         html.light-mode,
         body.light-mode {
             --bg-dark: #f0f4f8;
-            --panel-glass: rgba(255, 255, 255, 0.65);
+            --panel-glass: rgba(255, 255, 255, 0.85);
             --border-glass: rgba(0, 0, 0, 0.08);
             --accent-1: #b81bd6;
             --accent-2: #00b39b;
@@ -48,9 +48,9 @@
             --modal-bg: rgba(240, 244, 248, 0.98);
         }
 
-        /* HIGH PERFORMANCE VIEW TRANSITION STYLES */
+        /* PERFORMANCE TRANSITION FIXES */
         ::view-transition-group(root) {
-            animation-duration: 0.5s;
+            animation: none;
         }
 
         ::view-transition-old(root),
@@ -59,7 +59,6 @@
             mix-blend-mode: normal;
             display: block;
             will-change: clip-path;
-            transform: translateZ(0); /* Hardware Acceleration */
         }
 
         ::view-transition-old(root) {
@@ -68,6 +67,15 @@
 
         ::view-transition-new(root) {
             z-index: 9999;
+        }
+
+        /* PAUSE HEAVY EFFECTS DURING TRANSITION FOR 60FPS SMOOTHNESS */
+        html.is-transitioning *,
+        html.is-transitioning *::before,
+        html.is-transitioning *::after {
+            animation-play-state: paused !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
         }
 
         * {
@@ -91,7 +99,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             padding: 20px 18px 30px 18px;
-            transition: background-color 0.4s ease, color 0.4s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* BACKGROUND ANIMATED BLOBS */
@@ -153,7 +161,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
-            transition: background 0.4s ease, border-color 0.4s ease;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         /* NAVIGATION BAR */
@@ -711,32 +719,31 @@
             localStorage.setItem("theme", isLight ? "light" : "dark");
         }
 
-        // Ultra-Smooth View Transitions API circular reveal
+        // Optimized 60fps View Transition
         themeToggleBtn.addEventListener("click", (e) => {
             if (!document.startViewTransition) {
                 toggleTheme();
                 return;
             }
 
-            // Fetch exact button coordinates
+            // Disable heavy blurs while capturing snapshots
+            document.documentElement.classList.add("is-transitioning");
+
             const rect = themeToggleBtn.getBoundingClientRect();
             const x = rect.left + rect.width / 2;
             const y = rect.top + rect.height / 2;
 
-            // Maximum radius required to cover the screen entirely
             const endRadius = Math.hypot(
                 Math.max(x, window.innerWidth - x),
                 Math.max(y, window.innerHeight - y)
             );
 
-            // Execute DOM mutation callback inside View Transition
             const transition = document.startViewTransition(() => {
                 toggleTheme();
             });
 
-            // Smooth hardware accelerated Web Animations API sequence
             transition.ready.then(() => {
-                document.documentElement.animate(
+                const anim = document.documentElement.animate(
                     {
                         clipPath: [
                             `circle(0px at ${x}px ${y}px)`,
@@ -744,11 +751,15 @@
                         ]
                     },
                     {
-                        duration: 550,
-                        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+                        duration: 450,
+                        easing: "ease-out",
                         pseudoElement: "::view-transition-new(root)"
                     }
                 );
+
+                anim.onfinish = () => {
+                    document.documentElement.classList.remove("is-transitioning");
+                };
             });
         });
 
