@@ -48,17 +48,24 @@
             --modal-bg: rgba(240, 244, 248, 0.98);
         }
 
-        /* CIRCULAR REVEAL VIEW TRANSITIONS */
+        /* HIGH PERFORMANCE VIEW TRANSITION STYLES */
+        ::view-transition-group(root) {
+            animation-duration: 0.5s;
+        }
+
         ::view-transition-old(root),
         ::view-transition-new(root) {
             animation: none;
             mix-blend-mode: normal;
+            display: block;
+            will-change: clip-path;
+            transform: translateZ(0); /* Hardware Acceleration */
         }
 
-        /* Keep new view always on top so it sweeps over the old screen state */
         ::view-transition-old(root) {
             z-index: 1;
         }
+
         ::view-transition-new(root) {
             z-index: 9999;
         }
@@ -704,31 +711,30 @@
             localStorage.setItem("theme", isLight ? "light" : "dark");
         }
 
-        // Circular Reveal Transition using View Transitions API
+        // Ultra-Smooth View Transitions API circular reveal
         themeToggleBtn.addEventListener("click", (e) => {
-            // Fallback for browsers that don't support View Transitions
             if (!document.startViewTransition) {
                 toggleTheme();
                 return;
             }
 
-            // Get exact center of button or click coordinates
+            // Fetch exact button coordinates
             const rect = themeToggleBtn.getBoundingClientRect();
-            const x = e.clientX || rect.left + rect.width / 2;
-            const y = e.clientY || rect.top + rect.height / 2;
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
 
-            // Calculate furthest corner radius to cover the viewport
+            // Maximum radius required to cover the screen entirely
             const endRadius = Math.hypot(
                 Math.max(x, window.innerWidth - x),
                 Math.max(y, window.innerHeight - y)
             );
 
-            // Execute transition snapshot
+            // Execute DOM mutation callback inside View Transition
             const transition = document.startViewTransition(() => {
                 toggleTheme();
             });
 
-            // Animate circular clip-path on incoming layer
+            // Smooth hardware accelerated Web Animations API sequence
             transition.ready.then(() => {
                 document.documentElement.animate(
                     {
@@ -738,8 +744,8 @@
                         ]
                     },
                     {
-                        duration: 600,
-                        easing: "ease-in-out",
+                        duration: 550,
+                        easing: "cubic-bezier(0.4, 0, 0.2, 1)",
                         pseudoElement: "::view-transition-new(root)"
                     }
                 );
