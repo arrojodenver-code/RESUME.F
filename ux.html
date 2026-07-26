@@ -302,7 +302,7 @@
         /* Dark Mode default: Hide Moon, Show Sun */
         .theme-icon-animated .moon-path {
             opacity: 0;
-            transform: scale(0.2) rotate(0deg);
+            transform: scale(0.2) rotate(-45deg);
         }
 
         .theme-icon-animated .sun-core,
@@ -311,7 +311,7 @@
             transform: scale(1) rotate(0deg);
         }
 
-        /* Light Mode State: Rotation, scaling, and tilt to match target image */
+        /* Light Mode State: Exactly matched tilt & optical center */
         body.light-mode .theme-icon-animated {
             transform: rotate(0deg);
         }
@@ -328,7 +328,7 @@
 
         body.light-mode .theme-icon-animated .moon-path {
             opacity: 1;
-            transform: translate(-1px, 1px) rotate(-110deg) scale(0.9);
+            transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px);
         }
 
         .btn-nav-cta {
