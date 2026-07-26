@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Denver Arrojo • 3D Models Showcase</title>
-
-    <!-- INSTANT THEME CHECK (Prevents screen flashing dark to light on load) -->
-    <script>
-        if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-mode-init', 'light-mode');
-        }
-    </script>
-
+    <title>John Denver Arrojo • 3D Modeling Showcase</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
@@ -27,34 +19,27 @@
             --text-muted: #94a3b8;
         }
 
-        /* LIGHT MODE THEME OVERRIDES */
-        body.light-mode,
-        html.light-mode {
+        /* LIGHT MODE OVERRIDES */
+        body.light-mode {
             --bg-dark: #f1f5f9;
-            --panel-glass: rgba(255, 255, 255, 0.75);
+            --panel-glass: rgba(255, 255, 255, 0.65);
             --border-glass: rgba(0, 0, 0, 0.08);
             --text-main: #0f172a;
-            --text-muted: #64748b;
-            --accent-2: #008b7d;
+            --text-muted: #475569;
+            background-color: #f1f5f9 !important;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(226, 232, 240, 0.8) 0px, transparent 80%) !important;
         }
 
-        body.light-mode .art-blob,
-        html.light-mode .art-blob {
-            opacity: 0.15;
+        body.light-mode .art-blob {
+            opacity: 0.35;
+            mix-blend-mode: multiply;
         }
 
-        body.light-mode .badge,
-        html.light-mode .badge {
-            background: rgba(212, 68, 241, 0.1);
-            border: 1px solid rgba(212, 68, 241, 0.2);
-            color: #9333ea;
-        }
-
-        body.light-mode .model-card,
-        html.light-mode .model-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        body.light-mode .glass-panel {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
         }
 
         * {
@@ -71,16 +56,16 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             background-image:
-                radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
+                radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.12) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.5) 0px, transparent 80%);
             min-height: 100vh;
             color: var(--text-main);
             overflow-x: hidden;
             padding: 20px 18px 30px 18px;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Ambient Fluid Shaders */
         .art-blob {
             position: fixed;
             border-radius: 50%;
@@ -116,13 +101,25 @@
         .container {
             width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: auto;
             display: flex;
             flex-direction: column;
             gap: 28px;
         }
 
-        /* NAVIGATION BAR STYLES */
+        /* GLASS PANEL */
+        .glass-panel {
+            background: var(--panel-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* NAVBAR SIZING & STYLES */
         .navbar-wrapper {
             position: sticky;
             top: 20px;
@@ -135,19 +132,6 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 28px;
-            background: rgba(13, 13, 25, 0.2) !important;
-            backdrop-filter: blur(24px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        /* LIGHT MODE NAVBAR MATCHING UX.HTML EXACTLY */
-        body.light-mode .navbar,
-        html.light-mode .navbar {
-            background: rgba(255, 255, 255, 0.25) !important;
-            border: 1px solid rgba(255, 255, 255, 0.4) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
         }
 
         .nav-brand {
@@ -158,8 +142,7 @@
             color: var(--text-main);
         }
 
-        .brand-logo-img,
-        .theme-adapt-img {
+        .brand-logo-img {
             width: 36px;
             height: 36px;
             border-radius: 10px;
@@ -170,11 +153,7 @@
         }
 
         body.light-mode .brand-logo-img,
-        html.light-mode-init .brand-logo-img,
-        html.light-mode .brand-logo-img,
-        body.light-mode .theme-adapt-img,
-        html.light-mode-init .theme-adapt-img,
-        html.light-mode .theme-adapt-img {
+        html.light-mode-init .brand-logo-img {
             filter: none !important;
         }
 
@@ -193,6 +172,11 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+        }
+
+        body.light-mode .brand-text span {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links {
@@ -222,11 +206,10 @@
             font-weight: 700;
             cursor: default;
             pointer-events: none;
-            text-shadow: 0 0 12px rgba(0, 245, 212, 0.4), 0 1px 3px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 0 12px rgba(0, 245, 212, 0.5), 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
-        body.light-mode .nav-link.active-page,
-        html.light-mode .nav-link.active-page {
+        body.light-mode .nav-link.active-page {
             color: #00877a;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
         }
@@ -237,83 +220,64 @@
             gap: 12px;
         }
 
-        .btn-social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
+        .theme-toggle {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
-            transition: 0.3s ease;
-            text-decoration: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        body.light-mode .btn-social-icon,
-        html.light-mode .btn-social-icon {
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        .btn-social-icon:hover {
+        .theme-toggle:hover {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
         }
 
-        body.light-mode .btn-social-icon:hover,
-        html.light-mode .btn-social-icon:hover {
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .theme-toggle:hover {
             background: rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
         }
 
-        /* ANIMATED THEME TOGGLE ICON STYLES */
-        .theme-icon-animated {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .theme-icon-animated .sun-core,
-        .theme-icon-animated .sun-rays,
-        .theme-icon-animated .moon-path {
-            transform-origin: center;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-        }
-
-        .theme-icon-animated .moon-path {
-            opacity: 0;
-            transform: scale(0.2) rotate(-45deg);
-        }
-
-        .theme-icon-animated .sun-core,
-        .theme-icon-animated .sun-rays {
-            opacity: 1;
+        .theme-toggle .sun-icon {
             transform: scale(1) rotate(0deg);
         }
 
-        body.light-mode .theme-icon-animated,
-        html.light-mode .theme-icon-animated {
-            transform: rotate(0deg);
+        .theme-toggle .moon-icon {
+            position: absolute;
+            transform: scale(0) rotate(90deg);
         }
 
-        body.light-mode .theme-icon-animated .sun-core,
-        html.light-mode .theme-icon-animated .sun-core {
-            opacity: 0;
-            transform: scale(0);
+        body.light-mode .theme-toggle .sun-icon {
+            transform: scale(0) rotate(-90deg);
         }
 
-        body.light-mode .theme-icon-animated .sun-rays,
-        html.light-mode .theme-icon-animated .sun-rays {
-            opacity: 0;
-            transform: scale(0.2) rotate(45deg);
-        }
-
-        body.light-mode .theme-icon-animated .moon-path,
-        html.light-mode .theme-icon-animated .moon-path {
-            opacity: 1;
-            transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px);
+        body.light-mode .theme-toggle .moon-icon {
+            transform: scale(1) rotate(0deg);
         }
 
         .btn-nav-cta {
@@ -334,23 +298,26 @@
             filter: brightness(1.1);
         }
 
-        .glass-panel {
-            background: var(--panel-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-            position: relative;
-            overflow: hidden;
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation: none;
+            mix-blend-mode: normal;
         }
 
-        h1 {
+        ::view-transition-old(root) {
+            z-index: 1;
+        }
+
+        ::view-transition-new(root) {
+            z-index: 9999;
+        }
+
+        /* HERO */
+        h1, .category {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
         }
 
-        /* HERO MODULE */
         .hero {
             padding: 60px;
             text-align: center;
@@ -370,10 +337,16 @@
             border: 1px solid rgba(212, 68, 241, 0.25);
             font-size: 13px;
             font-weight: 600;
-            letter-spacing: 0.05em;
+            letter-spacing: .05em;
             text-transform: uppercase;
             color: #fbcfff;
             margin-bottom: 24px;
+        }
+
+        body.light-mode .badge {
+            background: rgba(212, 68, 241, 0.15);
+            color: #9d17be;
+            border-color: rgba(212, 68, 241, 0.3);
         }
 
         .hero h1 {
@@ -397,47 +370,84 @@
             margin: 0 auto;
         }
 
-        /* 3D MODELS GRID CONTAINER */
-        .models-grid {
+        /* GALLERY */
+        .gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            width: 100%;
         }
 
-        .model-card {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
+        .photo-card {
+            position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 22px;
+            background: #000;
             cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .model-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
         }
 
-        .model-card img {
+        .photo-card img {
             width: 100%;
-            height: 280px;
+            height: 100%;
+            aspect-ratio: 1/1;
             object-fit: cover;
             display: block;
+            transition: transform .8s cubic-bezier(0.165, 0.84, 0.44, 1), filter .5s;
         }
 
+        .photo-card:hover img {
+            transform: scale(1.05);
+            filter: saturate(1.08);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.4) 45%, transparent 100%);
+            opacity: 0;
+            transition: opacity .35s ease;
+        }
+
+        .photo-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay span {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #f8fafc;
+            transform: translateY(14px);
+            transition: transform .35s ease;
+        }
+
+        .photo-card:hover .overlay span {
+            transform: translateY(0);
+        }
+
+        /* FOOTER */
         .footer {
             text-align: center;
             padding: 20px 0;
             color: var(--text-muted);
             font-size: 13px;
-            letter-spacing: 0.05em;
+            letter-spacing: .05em;
             text-transform: uppercase;
             border-top: 1px solid var(--border-glass);
             margin-top: 8px;
         }
 
-        /* MODAL PREVIEW */
+        /* MODAL */
         .modal {
             position: fixed;
             inset: 0;
@@ -466,49 +476,36 @@
             color: var(--text-muted);
             cursor: pointer;
             z-index: 100000;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .close:hover {
             color: white;
         }
 
-        /* CIRCULAR VIEW TRANSITION STYLES */
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-            animation: none;
-            mix-blend-mode: normal;
-        }
-
-        ::view-transition-old(root) {
-            z-index: 1;
-        }
-
-        ::view-transition-new(root) {
-            z-index: 9999;
-        }
-
-        @media(max-width: 900px) {
-            .models-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
+        /* RESPONSIVE */
         @media(max-width: 850px) {
-            .nav-links {
-                display: none;
-            }
+            .nav-links { display: none; }
         }
 
-        @media(max-width: 600px) {
-            .models-grid {
-                grid-template-columns: 1fr;
-            }
-            body { padding: 0 12px 18px 12px; }
+        @media(max-width: 960px) {
+            .gallery { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 48px; }
+        }
+
+        @media(max-width: 640px) {
+            body { padding: 12px; }
+            .gallery { grid-template-columns: 1fr; }
             .hero { padding: 40px 20px; }
-            .hero h1 { font-size: 42px; }
+            .hero h1 { font-size: 38px; }
         }
     </style>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode-init');
+        }
+    </script>
 </head>
 
 <body>
@@ -538,20 +535,20 @@
                 </ul>
 
                 <div class="nav-actions">
-                    <button id="theme-toggle" class="btn-social-icon" aria-label="Toggle Dark/Light Mode">
-                        <svg id="theme-icon" class="theme-icon-animated" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle class="sun-core" cx="12" cy="12" r="5"></circle>
-                            <g class="sun-rays">
-                                <line x1="12" y1="1" x2="12" y2="3"></line>
-                                <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                            </g>
-                            <path class="moon-path" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
@@ -559,120 +556,117 @@
             </nav>
         </div>
 
-        <!-- HERO COMPONENT -->
+        <!-- HERO SECTION -->
         <section class="hero glass-panel">
-            <div class="badge">✦ 3D • HARD SURFACE • PRODUCT MODELING</div>
-            <h1>3D <span>Models</span></h1>
+            <div class="badge">
+                ✦ 3D • Hard Surface • Product Modeling
+            </div>
+            <h1>
+                3D <span>Models</span>
+            </h1>
             <p>
-                A high fidelity collection of hard-surface engineering models, motorcycle component renders, precision mechanical assets, and production-grade visualization systems.
+                A high fidelity collection of hard-surface engineering models,
+                motorcycle component renders, precision mechanical assets,
+                and production-grade visualization systems.
             </p>
         </section>
 
-        <!-- 3D MODEL GALLERY GRID -->
-        <section class="models-grid">
-            <div class="model-card" onclick="openModal('3d1.png')">
-                <img src="3d1.png" alt="Adelin Caliper 3D Model">
+        <!-- GALLERY SECTION -->
+        <section class="gallery">
+
+            <!-- MODEL 1 -->
+            <div class="photo-card" onclick="window.location.href='viewer.html'">
+                <img src="Caliper.png" alt="Adelin Caliper Model">
+                <div class="overlay">
+                    <span>Adelin Caliper Model</span>
+                </div>
             </div>
-            <div class="model-card" onclick="openModal('3d2.png')">
-                <img src="3d2.png" alt="Kamui Swingarm 3D Model">
+
+            <!-- MODEL 2 -->
+            <div class="photo-card" onclick="window.location.href='viewer2.html'">
+                <img src="SA.png" alt="Kamui Swingarm Model">
+                <div class="overlay">
+                    <span>Kamui Swingarm Model</span>
+                </div>
             </div>
-            <div class="model-card" onclick="openModal('3d3.png')">
-                <img src="3d3.png" alt="TWPO Swingarm 3D Model">
+
+            <!-- MODEL 3 -->
+            <div class="photo-card" onclick="window.location.href='viewer3.html'">
+                <img src="SA2.png" alt="TWPO Swingarm Model">
+                <div class="overlay">
+                    <span>TWPO Swingarm Model</span>
+                </div>
             </div>
-            <div class="model-card" onclick="openModal('3d4.png')">
-                <img src="3d4.png" alt="Ohlins Shock 3D Model">
+
+            <!-- MODEL 4 -->
+            <div class="photo-card" onclick="window.location.href='viewer4.html'">
+                <img src="Shock.png" alt="Ohlins Shock Model">
+                <div class="overlay">
+                    <span>Ohlins Shock Model</span>
+                </div>
             </div>
-            <div class="model-card" onclick="openModal('3d5.png')">
-                <img src="3d5.png" alt="Black Diamond Disc Brake 3D Model">
+
+            <!-- MODEL 5 -->
+            <div class="photo-card" onclick="window.location.href='viewer5.html'">
+                <img src="bd.png" alt="Black Diamond Disc Brake">
+                <div class="overlay">
+                    <span>Black Diamond Disc Brake</span>
+                </div>
             </div>
-            <div class="model-card" onclick="openModal('3d6.png')">
-                <img src="3d6.png" alt="Kamui Disc Brake 3D Model">
+
+            <!-- MODEL 6 -->
+            <div class="photo-card" onclick="window.location.href='viewer6.html'">
+                <img src="kd.png" alt="Kamui Disc Brake">
+                <div class="overlay">
+                    <span>Kamui Disc Brake</span>
+                </div>
             </div>
+
         </section>
 
-        <!-- FOOTER BAR -->
+        <!-- FOOTER -->
         <footer class="footer">
-            © 2026 John Denver Arrojo • 3D Space Portfolio
+            © 2026 John Denver Arrojo • 3D Showcase
         </footer>
 
     </div>
 
-    <!-- MODAL PREVIEW LAYER -->
-    <div class="modal" id="modal">
+    <!-- MODAL -->
+    <div class="modal" id="modal" onclick="closeModalOnBackground(event)">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img id="modalImg" alt="High Resolution Content Preview">
+        <img id="modal-img" alt="Modal View">
     </div>
 
     <script>
-    function openModal(src){
-        const modal = document.getElementById("modal");
-        const modalImg = document.getElementById("modalImg");
-
-        modal.style.display = "flex";
-        modalImg.src = src;
-
-        if(modal.requestFullscreen){
-            modal.requestFullscreen();
+        const themeToggleBtn = document.getElementById("themeToggle");
+        
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
         }
-    }
+        document.documentElement.classList.remove("light-mode-init");
 
-    function closeModal(){
-        const modal = document.getElementById("modal");
-        modal.style.display = "none";
+        themeToggleBtn.addEventListener("click", (e) => {
+            const toggleTheme = () => {
+                document.body.classList.toggle("light-mode");
+                if (document.body.classList.contains("light-mode")) {
+                    localStorage.setItem("theme", "light");
+                } else {
+                    localStorage.setItem("theme", "dark");
+                }
+            };
 
-        if(document.fullscreenElement){
-            document.exitFullscreen();
-        }
-    }
-
-    document.addEventListener("keydown", function(e){
-        if(e.key === "Escape"){
-            closeModal();
-        }
-    });
-
-    /* THEME SYSTEM INTEGRATION */
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    function loadSavedTheme() {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.add('light-mode');
-            document.documentElement.classList.add('light-mode');
-        } else {
-            body.classList.remove('light-mode');
-            document.documentElement.classList.remove('light-mode');
-        }
-        document.documentElement.classList.remove('light-mode-init');
-    }
-
-    loadSavedTheme();
-
-    function toggleTheme() {
-        body.classList.toggle('light-mode');
-        document.documentElement.classList.toggle('light-mode');
-        if (body.classList.contains('light-mode')) {
-            localStorage.setItem('theme', 'light');
-        } else {
-            localStorage.setItem('theme', 'dark');
-        }
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', (e) => {
             if (!document.startViewTransition) {
                 toggleTheme();
                 return;
             }
 
-            const rect = themeToggle.getBoundingClientRect();
-            const x = rect.left + rect.width / 2;
-            const y = rect.top + rect.height / 2;
-
+            const rect = themeToggleBtn.getBoundingClientRect();
+            const x = e.clientX || (rect.left + rect.width / 2);
+            const y = e.clientY || (rect.top + rect.height / 2);
+            
             const endRadius = Math.hypot(
-                Math.max(x, innerWidth - x),
-                Math.max(y, innerHeight - y)
+                Math.max(x, window.innerWidth - x),
+                Math.max(y, window.innerHeight - y)
             );
 
             const transition = document.startViewTransition(() => {
@@ -691,13 +685,40 @@
                     },
                     {
                         duration: 650,
-                        easing: 'ease-in-out',
+                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
                         pseudoElement: '::view-transition-new(root)'
                     }
                 );
             });
         });
-    }
+
+        // Modal Functions
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+
+        function openModal(src) {
+            modal.style.display = "flex";
+            modalImg.src = src;
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            modalImg.src = "";
+            document.body.style.overflow = "auto";
+        }
+
+        function closeModalOnBackground(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        }
+
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
+                closeModal();
+            }
+        });
     </script>
 
 </body>
