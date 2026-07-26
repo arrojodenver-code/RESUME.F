@@ -232,70 +232,64 @@
             gap: 12px;
         }
 
-       .theme-toggle-btn:hover,
-        .theme-toggle-btn:focus-visible {
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle:hover {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
             border-color: rgba(255, 255, 255, 0.2);
             color: var(--accent-2);
         }
 
-        body.light-mode .theme-toggle-btn:hover,
-        body.light-mode .theme-toggle-btn:focus-visible,
-        html.light-mode .theme-toggle-btn:hover,
-        html.light-mode .theme-toggle-btn:focus-visible {
-            background: rgba(0, 0, 0, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
+        body.light-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
 
-        .theme-icon-animated {
+        .theme-toggle svg {
             width: 18px;
             height: 18px;
-            fill: none !important;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .theme-icon-animated .sun-core,
-        .theme-icon-animated .sun-rays,
-        .theme-icon-animated .moon-path {
-            transform-origin: center;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-        }
-
-        /* Dark Mode default: show sun, hide moon */
-        .theme-icon-animated .moon-path {
-            opacity: 0;
-            transform: scale(0.2) rotate(-45deg);
-        }
-
-        .theme-icon-animated .sun-core,
-        .theme-icon-animated .sun-rays {
-            opacity: 1;
+        .theme-toggle .sun-icon {
             transform: scale(1) rotate(0deg);
         }
 
-        body.light-mode .theme-icon-animated,
-        html.light-mode .theme-icon-animated {
-            transform: rotate(0deg);
+        .theme-toggle .moon-icon {
+            position: absolute;
+            transform: scale(0) rotate(90deg);
         }
 
-        body.light-mode .theme-icon-animated .sun-core,
-        html.light-mode .theme-icon-animated .sun-core {
-            opacity: 0;
-            transform: scale(0);
+        body.light-mode .theme-toggle .sun-icon {
+            transform: scale(0) rotate(-90deg);
         }
 
-        body.light-mode .theme-icon-animated .sun-rays,
-        html.light-mode .theme-icon-animated .sun-rays {
-            opacity: 0;
-            transform: scale(0.2) rotate(45deg);
-        }
-
-        body.light-mode .theme-icon-animated .moon-path,
-        html.light-mode .theme-icon-animated .moon-path {
-            opacity: 1;
-            transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px);
+        body.light-mode .theme-toggle .moon-icon {
+            transform: scale(1) rotate(0deg);
         }
 
         .btn-nav-cta {
@@ -552,35 +546,27 @@
                     <li><a href="app.html" class="nav-link">Mobile App Samples</a></li>
                 </ul>
 
-               <div class="nav-actions">
-                    <!-- DARK / LIGHT MODE TOGGLE BUTTON -->
-                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-                        <svg class="theme-icon-animated" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <!-- Sun Core / Moon Disk -->
-                            <circle class="sun-core" cx="12" cy="12" r="5"></circle>
-
-                            <!-- Sun Rays -->
-                            <g class="sun-rays">
-                                <line x1="12" y1="1" x2="12" y2="3"></line>
-                                <line x1="12" y1="21" x2="12" y2="23"></line>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                <line x1="1" y1="12" x2="3" y2="12"></line>
-                                <line x1="21" y1="12" x2="23" y2="12"></line>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                            </g>
-
-                            <!-- Moon Crescent Path -->
-                            <path class="moon-path" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
-                    
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
                 </div>
             </nav>
-        </header>
-
+        </div>
 
         <!-- HERO SECTION -->
         <section class="hero glass-panel">
