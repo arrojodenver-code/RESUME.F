@@ -19,10 +19,34 @@
             --text-muted: #94a3b8;
         }
 
+        /* LIGHT MODE OVERRIDES */
+        body.light-mode {
+            --bg-dark: #f1f5f9;
+            --panel-glass: rgba(255, 255, 255, 0.65);
+            --border-glass: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            background-color: #f1f5f9 !important;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(212, 68, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 245, 212, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(226, 232, 240, 0.8) 0px, transparent 80%) !important;
+        }
+
+        body.light-mode .art-blob {
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+        }
+
+        body.light-mode .glass-panel {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
         }
 
         html {
@@ -108,6 +132,17 @@
             align-items: center;
             justify-content: space-between;
             padding: 14px 28px;
+            background: rgba(13, 13, 25, 0.2) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        body.light-mode .navbar {
+            background: rgba(255, 255, 255, 0.25) !important;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
         }
 
         .nav-brand {
@@ -118,12 +153,22 @@
             color: var(--text-main);
         }
 
-        .brand-logo-img {
+        .brand-logo-img,
+        .theme-adapt-img {
             width: 36px;
             height: 36px;
             border-radius: 10px;
             object-fit: cover;
             display: block;
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        body.light-mode .brand-logo-img,
+        html.light-mode-init .brand-logo-img,
+        body.light-mode .theme-adapt-img,
+        html.light-mode-init .theme-adapt-img {
+            filter: none !important;
         }
 
         .brand-text {
@@ -165,51 +210,89 @@
             color: var(--text-main);
         }
 
+        /* ACTIVE PAGE TEXT GLOW & SPAN SHADOW */
         .nav-link.active-page {
             color: var(--accent-2);
+            font-weight: 700;
             cursor: default;
             pointer-events: none;
-            opacity: 0.8;
+            text-shadow: 0 0 12px rgba(0, 245, 212, 0.4), 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
-        /* Nav Actions (Social & CTA) */
+        body.light-mode .nav-link.active-page {
+            color: #00877a;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
+        }
+
+        /* NAV ACTIONS & THEME TOGGLE BUTTON */
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .btn-social-icon {
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
-            transition: 0.3s ease;
-            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-social-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            transition: 0.3s ease;
-        }
-
-        .btn-social-icon:hover {
-            background: rgba(255, 255, 255, 0.12);
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.18);
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: var(--accent-2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .theme-toggle .sun-icon {
+            position: absolute;
+            transform: scale(0) rotate(-90deg);
+        }
+
+        .theme-toggle .moon-icon {
+            transform: scale(1) rotate(0deg);
+        }
+
+        body.light-mode .theme-toggle .sun-icon {
+            transform: scale(1) rotate(0deg);
+        }
+
+        body.light-mode .theme-toggle .moon-icon {
+            transform: scale(0) rotate(90deg);
         }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: var(--bg-dark);
+            color: #07070c;
             padding: 10px 20px;
             border-radius: 100px;
             font-weight: 700;
@@ -254,6 +337,12 @@
             text-transform: uppercase;
             color: #fbcfff;
             margin-bottom: 24px;
+        }
+
+        body.light-mode .badge {
+            background: rgba(212, 68, 241, 0.15);
+            color: #9d17be;
+            border-color: rgba(212, 68, 241, 0.3);
         }
 
         .hero h1 {
@@ -334,6 +423,7 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 18px;
             font-weight: 700;
+            color: #f8fafc;
             transform: translateY(14px);
             transition: transform .35s ease;
         }
@@ -407,6 +497,13 @@
             .hero h1 { font-size: 38px; }
         }
     </style>
+    
+    <script>
+        // Apply saved theme synchronously before DOM renders to prevent logo/theme flash
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode-init');
+        }
+    </script>
 </head>
 
 <body>
@@ -437,11 +534,24 @@
                 </ul>
 
                 <div class="nav-actions">
-                    <a href="https://www.facebook.com/dnvrarrj/" target="_blank" rel="noopener noreferrer" class="btn-social-icon" aria-label="Facebook Profile">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                        <!-- Sun Icon -->
+                        <svg class="sun-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
-                    </a>
+                        <!-- Moon Icon -->
+                        <svg class="moon-icon" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
                 </div>
             </nav>
@@ -529,6 +639,25 @@
     </div>
 
     <script>
+        // Dark / Light Mode Toggle Script
+        const themeToggleBtn = document.getElementById("themeToggle");
+        
+        // Synchronize on load
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
+        }
+        document.documentElement.classList.remove("light-mode-init");
+
+        themeToggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            if (document.body.classList.contains("light-mode")) {
+                localStorage.setItem("theme", "light");
+            } else {
+                localStorage.setItem("theme", "dark");
+            }
+        });
+
+        // Modal Functions
         const modal = document.getElementById("modal");
         const modalImg = document.getElementById("modal-img");
 
