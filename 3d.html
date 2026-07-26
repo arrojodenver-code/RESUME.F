@@ -119,7 +119,7 @@
             overflow: hidden;
         }
 
-        /* ORIGINAL NAVBAR SIZING & STYLES */
+        /* NAVBAR SIZING & STYLES */
         .navbar-wrapper {
             position: sticky;
             top: 20px;
@@ -131,7 +131,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 28px; /* Original sizing maintained */
+            padding: 14px 28px;
         }
 
         .nav-brand {
@@ -215,7 +215,7 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
         }
 
-        /* NAV ACTIONS & REVERSED TOGGLE BUTTON */
+        /* NAV ACTIONS & TOGGLE BUTTON ANIMATION */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -233,7 +233,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -262,27 +262,29 @@
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: absolute;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
         }
 
-        /* REVERSED ICON VISIBILITY:
-           Dark mode -> Sun Icon visible
-           Light mode -> Moon Icon visible */
+        /* ICON TRANSITION: SUN <-> MOON ROTATION AND SCALE */
         .theme-toggle .sun-icon {
             transform: scale(1) rotate(0deg);
+            opacity: 1;
         }
 
         .theme-toggle .moon-icon {
-            position: absolute;
-            transform: scale(0) rotate(90deg);
+            transform: scale(0) rotate(-90deg);
+            opacity: 0;
         }
 
         body.light-mode .theme-toggle .sun-icon {
-            transform: scale(0) rotate(-90deg);
+            transform: scale(0) rotate(90deg);
+            opacity: 0;
         }
 
         body.light-mode .theme-toggle .moon-icon {
             transform: scale(1) rotate(0deg);
+            opacity: 1;
         }
 
         .btn-nav-cta {
@@ -301,21 +303,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
             filter: brightness(1.1);
-        }
-
-        /* CIRCULAR WIPE VIEW TRANSITION ANIMATION */
-        ::view-transition-old(root),
-        ::view-transition-new(root) {
-            animation: none;
-            mix-blend-mode: normal;
-        }
-
-        ::view-transition-old(root) {
-            z-index: 1;
-        }
-
-        ::view-transition-new(root) {
-            z-index: 9999;
         }
 
         /* HERO */
@@ -649,7 +636,7 @@
     </div>
 
     <script>
-        // Dark / Light Mode Toggle Script with Circular Wipe View Transition Effect
+        // Dark / Light Mode Toggle Script
         const themeToggleBtn = document.getElementById("themeToggle");
         
         if (localStorage.getItem("theme") === "light") {
@@ -657,52 +644,13 @@
         }
         document.documentElement.classList.remove("light-mode-init");
 
-        themeToggleBtn.addEventListener("click", (e) => {
-            const toggleTheme = () => {
-                document.body.classList.toggle("light-mode");
-                if (document.body.classList.contains("light-mode")) {
-                    localStorage.setItem("theme", "light");
-                } else {
-                    localStorage.setItem("theme", "dark");
-                }
-            };
-
-            // Use Circular Clip-Path Transition API if supported
-            if (!document.startViewTransition) {
-                toggleTheme();
-                return;
+        themeToggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            if (document.body.classList.contains("light-mode")) {
+                localStorage.setItem("theme", "light");
+            } else {
+                localStorage.setItem("theme", "dark");
             }
-
-            const rect = themeToggleBtn.getBoundingClientRect();
-            const x = e.clientX || (rect.left + rect.width / 2);
-            const y = e.clientY || (rect.top + rect.height / 2);
-            
-            const endRadius = Math.hypot(
-                Math.max(x, window.innerWidth - x),
-                Math.max(y, window.innerHeight - y)
-            );
-
-            const transition = document.startViewTransition(() => {
-                toggleTheme();
-            });
-
-            transition.ready.then(() => {
-                const clipPath = [
-                    `circle(0px at ${x}px ${y}px)`,
-                    `circle(${endRadius}px at ${x}px ${y}px)`
-                ];
-                
-                document.documentElement.animate(
-                    {
-                        clipPath: clipPath
-                    },
-                    {
-                        duration: 650,
-                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                        pseudoElement: '::view-transition-new(root)'
-                    }
-                );
-            });
         });
 
         // Modal Functions
