@@ -70,23 +70,7 @@
             z-index: 9999;
         }
 
-        /* DISABLE BACKDROP-FILTER & HEAVY EFFECTS DURING TRANSITION STAGE */
-        html.is-transitioning *,
-        html.is-transitioning *::before,
-        html.is-transitioning *::after {
-            animation-play-state: paused !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            box-shadow: none !important;
-            transition: none !important;
-        }
-
-        /* Keep the blob blur intact (just freeze it) so it doesn't flash as a sharp circle */
-        html.is-transitioning *:not(.art-blob) {
-            filter: none !important;
-        }
-
-        /* Prevent rapid double-clicks from stacking transitions */
+        /* Prevent rapid double-clicks from stacking transitions (no visual effect otherwise) */
         html.is-transitioning .theme-toggle-btn {
             pointer-events: none;
         }
