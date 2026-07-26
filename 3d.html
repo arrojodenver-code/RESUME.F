@@ -46,7 +46,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
         }
 
         html {
@@ -64,6 +63,7 @@
             color: var(--text-main);
             overflow-x: hidden;
             padding: 20px 18px 30px 18px;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         .art-blob {
@@ -119,7 +119,7 @@
             overflow: hidden;
         }
 
-        /* NAVIGATION BAR STYLES */
+        /* ORIGINAL NAVBAR SIZING & STYLES */
         .navbar-wrapper {
             position: sticky;
             top: 20px;
@@ -131,18 +131,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 28px;
-            background: rgba(13, 13, 25, 0.2) !important;
-            backdrop-filter: blur(24px) saturate(180%) !important;
-            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-        }
-
-        body.light-mode .navbar {
-            background: rgba(255, 255, 255, 0.25) !important;
-            border: 1px solid rgba(255, 255, 255, 0.4) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+            padding: 14px 28px; /* Original sizing maintained */
         }
 
         .nav-brand {
@@ -153,8 +142,7 @@
             color: var(--text-main);
         }
 
-        .brand-logo-img,
-        .theme-adapt-img {
+        .brand-logo-img {
             width: 36px;
             height: 36px;
             border-radius: 10px;
@@ -165,9 +153,7 @@
         }
 
         body.light-mode .brand-logo-img,
-        html.light-mode-init .brand-logo-img,
-        body.light-mode .theme-adapt-img,
-        html.light-mode-init .theme-adapt-img {
+        html.light-mode-init .brand-logo-img {
             filter: none !important;
         }
 
@@ -186,6 +172,11 @@
             font-weight: 500;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+        }
+
+        body.light-mode .brand-text span {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links {
@@ -216,7 +207,7 @@
             font-weight: 700;
             cursor: default;
             pointer-events: none;
-            text-shadow: 0 0 12px rgba(0, 245, 212, 0.4), 0 1px 3px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 0 12px rgba(0, 245, 212, 0.5), 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
         body.light-mode .nav-link.active-page {
@@ -224,7 +215,7 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
         }
 
-        /* NAV ACTIONS & THEME TOGGLE BUTTON */
+        /* NAV ACTIONS & REVERSED TOGGLE BUTTON */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -232,11 +223,11 @@
         }
 
         .theme-toggle {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
             color: var(--text-main);
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -248,9 +239,10 @@
         }
 
         .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: var(--accent-2);
         }
 
         body.light-mode .theme-toggle {
@@ -263,8 +255,8 @@
         }
 
         .theme-toggle svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             fill: none;
             stroke: currentColor;
             stroke-width: 2;
@@ -273,26 +265,29 @@
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
+        /* REVERSED ICON VISIBILITY:
+           Dark mode -> Sun Icon visible
+           Light mode -> Moon Icon visible */
         .theme-toggle .sun-icon {
-            position: absolute;
-            transform: scale(0) rotate(-90deg);
+            transform: scale(1) rotate(0deg);
         }
 
         .theme-toggle .moon-icon {
-            transform: scale(1) rotate(0deg);
+            position: absolute;
+            transform: scale(0) rotate(90deg);
         }
 
         body.light-mode .theme-toggle .sun-icon {
-            transform: scale(1) rotate(0deg);
+            transform: scale(0) rotate(-90deg);
         }
 
         body.light-mode .theme-toggle .moon-icon {
-            transform: scale(0) rotate(90deg);
+            transform: scale(1) rotate(0deg);
         }
 
         .btn-nav-cta {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: #07070c;
+            color: var(--bg-dark);
             padding: 10px 20px;
             border-radius: 100px;
             font-weight: 700;
@@ -306,6 +301,21 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 245, 212, 0.45);
             filter: brightness(1.1);
+        }
+
+        /* CIRCULAR WIPE VIEW TRANSITION ANIMATION */
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation: none;
+            mix-blend-mode: normal;
+        }
+
+        ::view-transition-old(root) {
+            z-index: 1;
+        }
+
+        ::view-transition-new(root) {
+            z-index: 9999;
         }
 
         /* HERO */
@@ -499,7 +509,7 @@
     </style>
     
     <script>
-        // Apply saved theme synchronously before DOM renders to prevent logo/theme flash
+        // Apply saved theme synchronously before DOM renders to prevent theme flash
         if (localStorage.getItem('theme') === 'light') {
             document.documentElement.classList.add('light-mode-init');
         }
@@ -535,7 +545,7 @@
 
                 <div class="nav-actions">
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-                        <!-- Sun Icon -->
+                        <!-- Sun Icon (Visible in Dark Mode) -->
                         <svg class="sun-icon" viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -547,7 +557,7 @@
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
-                        <!-- Moon Icon -->
+                        <!-- Moon Icon (Visible in Light Mode) -->
                         <svg class="moon-icon" viewBox="0 0 24 24">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
@@ -639,22 +649,60 @@
     </div>
 
     <script>
-        // Dark / Light Mode Toggle Script
+        // Dark / Light Mode Toggle Script with Circular Wipe View Transition Effect
         const themeToggleBtn = document.getElementById("themeToggle");
         
-        // Synchronize on load
         if (localStorage.getItem("theme") === "light") {
             document.body.classList.add("light-mode");
         }
         document.documentElement.classList.remove("light-mode-init");
 
-        themeToggleBtn.addEventListener("click", () => {
-            document.body.classList.toggle("light-mode");
-            if (document.body.classList.contains("light-mode")) {
-                localStorage.setItem("theme", "light");
-            } else {
-                localStorage.setItem("theme", "dark");
+        themeToggleBtn.addEventListener("click", (e) => {
+            const toggleTheme = () => {
+                document.body.classList.toggle("light-mode");
+                if (document.body.classList.contains("light-mode")) {
+                    localStorage.setItem("theme", "light");
+                } else {
+                    localStorage.setItem("theme", "dark");
+                }
+            };
+
+            // Use Circular Clip-Path Transition API if supported
+            if (!document.startViewTransition) {
+                toggleTheme();
+                return;
             }
+
+            const rect = themeToggleBtn.getBoundingClientRect();
+            const x = e.clientX || (rect.left + rect.width / 2);
+            const y = e.clientY || (rect.top + rect.height / 2);
+            
+            const endRadius = Math.hypot(
+                Math.max(x, window.innerWidth - x),
+                Math.max(y, window.innerHeight - y)
+            );
+
+            const transition = document.startViewTransition(() => {
+                toggleTheme();
+            });
+
+            transition.ready.then(() => {
+                const clipPath = [
+                    `circle(0px at ${x}px ${y}px)`,
+                    `circle(${endRadius}px at ${x}px ${y}px)`
+                ];
+                
+                document.documentElement.animate(
+                    {
+                        clipPath: clipPath
+                    },
+                    {
+                        duration: 650,
+                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
+                        pseudoElement: '::view-transition-new(root)'
+                    }
+                );
+            });
         });
 
         // Modal Functions
