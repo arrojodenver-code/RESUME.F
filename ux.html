@@ -275,13 +275,6 @@
             background: rgba(0, 0, 0, 0.05);
         }
 
-        .btn-social-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-            transition: 0.3s ease;
-        }
-
         .btn-social-icon:hover {
             background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
@@ -292,6 +285,50 @@
         body.light-mode .btn-social-icon:hover {
             background: rgba(0, 0, 0, 0.1);
             border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* ANIMATED THEME TOGGLE ICON STYLES */
+        .theme-icon-animated {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .theme-icon-animated .sun-core,
+        .theme-icon-animated .sun-rays,
+        .theme-icon-animated .moon-path {
+            transform-origin: center;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Dark Mode default: Display Sun */
+        .theme-icon-animated .moon-path {
+            opacity: 0;
+            transform: scale(0.3) rotate(-45deg);
+        }
+
+        .theme-icon-animated .sun-core,
+        .theme-icon-animated .sun-rays {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Light Mode State Transitions */
+        body.light-mode .theme-icon-animated {
+            transform: rotate(90deg);
+        }
+
+        body.light-mode .theme-icon-animated .sun-core {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        body.light-mode .theme-icon-animated .sun-rays {
+            opacity: 0;
+            transform: scale(0.2) rotate(45deg);
+        }
+
+        body.light-mode .theme-icon-animated .moon-path {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
         }
 
         .btn-nav-cta {
@@ -652,16 +689,24 @@
 
                 <div class="nav-actions">
                     <button id="theme-toggle" class="btn-social-icon" aria-label="Toggle Dark/Light Mode">
-                        <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        <svg id="theme-icon" class="theme-icon-animated" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <!-- Sun Core / Moon Disk -->
+                            <circle class="sun-core" cx="12" cy="12" r="5"></circle>
+                            
+                            <!-- Sun Rays -->
+                            <g class="sun-rays">
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </g>
+                            
+                            <!-- Moon Crescent Path -->
+                            <path class="moon-path" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
                     <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
@@ -790,20 +835,14 @@
 
     /* THEME SYSTEM INTEGRATION */
     const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
-
-    const sunSVG = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-    const moonSVG = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
 
     function loadSavedTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             body.classList.add('light-mode');
-            if (themeIcon) themeIcon.innerHTML = moonSVG;
         } else {
             body.classList.remove('light-mode');
-            if (themeIcon) themeIcon.innerHTML = sunSVG;
         }
         document.documentElement.classList.remove('light-mode-init');
     }
@@ -813,10 +852,8 @@
     function toggleTheme() {
         body.classList.toggle('light-mode');
         if (body.classList.contains('light-mode')) {
-            themeIcon.innerHTML = moonSVG;
             localStorage.setItem('theme', 'light');
         } else {
-            themeIcon.innerHTML = sunSVG;
             localStorage.setItem('theme', 'dark');
         }
     }
