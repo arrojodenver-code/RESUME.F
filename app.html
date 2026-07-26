@@ -27,17 +27,24 @@
 
     --text-main:#f8fafc;
     --text-muted:#94a3b8;
+    
+    --nav-bg: rgba(13, 13, 25, 0.2);
+    --nav-border: rgba(255, 255, 255, 0.12);
+    --nav-shadow: rgba(0, 0, 0, 0.15);
 }
 
 /* Light Mode Variables */
-html.light-mode,
-body.light-mode {
+:root.light-mode {
     --bg-dark: #f0f4f8;
     --panel-glass: rgba(255, 255, 255, 0.45);
     --border-glass: rgba(0, 0, 0, 0.08);
     --text-main: #0f172a;
     --text-muted: #475569;
     --accent-2: #00b39b; 
+    
+    --nav-bg: rgba(255, 255, 255, 0.25);
+    --nav-border: rgba(255, 255, 255, 0.4);
+    --nav-shadow: rgba(0, 0, 0, 0.05);
 }
 
 /* Circular View Transition Engine */
@@ -61,20 +68,21 @@ html.is-transitioning .theme-toggle-btn { pointer-events: none; }
 
 html{
     scroll-behavior:smooth;
+    /* Moved background to html for perfect view transitions */
+    background-color:var(--bg-dark);
+    color:var(--text-main);
 }
 
 body{
     font-family:'Plus Jakarta Sans',sans-serif;
-    background-color:var(--bg-dark);
     background-image:
         radial-gradient(at 0% 0%, rgba(212,68,241,0.12) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(0,245,212,0.1) 0px, transparent 50%),
         radial-gradient(at 50% 50%, rgba(30,41,59,0.5) 0px, transparent 80%);
     min-height:100vh;
-    color:var(--text-main);
     overflow-x:hidden;
     padding:20px 18px 30px 18px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    /* CRITICAL FIX: Removed background transition to allow View Transition API to capture properly */
 }
 
 .art-blob{
@@ -147,18 +155,12 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 14px 28px;
-    background: rgba(13, 13, 25, 0.2) !important;
+    background: var(--nav-bg) !important;
     backdrop-filter: blur(24px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid var(--nav-border) !important;
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-}
-
-body.light-mode .navbar {
-    background: rgba(255, 255, 255, 0.25) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 10px 30px var(--nav-shadow) !important;
 }
 
 .nav-brand {
@@ -175,14 +177,11 @@ body.light-mode .navbar {
     border-radius: 10px;
     object-fit: cover;
     display: block;
-    /* Logo Inversion Styling */
-    filter: brightness(0) invert(1);
-    transition: filter 0.3s ease;
+    filter: brightness(0) invert(1); /* Invert logo by default */
 }
 
-body.light-mode .brand-logo-img,
-html.light-mode-init .brand-logo-img {
-    filter: none !important;
+:root.light-mode .brand-logo-img {
+    filter: none; /* Return logo to original color in light mode */
 }
 
 .brand-text {
@@ -234,7 +233,7 @@ html.light-mode-init .brand-logo-img {
     text-shadow: 0 0 12px rgba(0, 245, 212, 0.4), 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-body.light-mode .nav-link.active-page {
+:root.light-mode .nav-link.active-page {
     color: #00877a;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
 }
@@ -267,7 +266,7 @@ body.light-mode .nav-link.active-page {
     color: var(--accent-2);
 }
 
-body.light-mode .theme-toggle-btn {
+:root.light-mode .theme-toggle-btn {
     background: rgba(0, 0, 0, 0.05);
 }
 
@@ -294,9 +293,9 @@ body.light-mode .theme-toggle-btn {
     transform: scale(1) rotate(0deg);
 }
 
-body.light-mode .theme-icon-animated .sun-core { opacity: 0; transform: scale(0); }
-body.light-mode .theme-icon-animated .sun-rays { opacity: 0; transform: scale(0.2) rotate(45deg); }
-body.light-mode .theme-icon-animated .moon-path {
+:root.light-mode .theme-icon-animated .sun-core { opacity: 0; transform: scale(0); }
+:root.light-mode .theme-icon-animated .sun-rays { opacity: 0; transform: scale(0.2) rotate(45deg); }
+:root.light-mode .theme-icon-animated .moon-path {
     opacity: 1;
     transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px);
 }
@@ -518,7 +517,7 @@ body.light-mode .theme-icon-animated .moon-path {
     <div class="navbar-wrapper">
         <nav class="glass-panel navbar">
             <a href="index.html" class="nav-brand">
-                <img src="JDLOGO.png" alt="Logo" class="brand-logo-img">
+                <img src="jd.png" alt="Logo" class="brand-logo-img">
                 <div class="brand-text">
                     ARROJO
                     <span>PORTFOLIO</span>
@@ -631,9 +630,8 @@ body.light-mode .theme-icon-animated .moon-path {
 
     // Basic Toggle Function
     function toggleTheme() {
-        document.body.classList.toggle("light-mode");
         document.documentElement.classList.toggle("light-mode");
-        const isLight = document.body.classList.contains("light-mode");
+        const isLight = document.documentElement.classList.contains("light-mode");
         localStorage.setItem("theme", isLight ? "light" : "dark");
     }
 
@@ -674,7 +672,7 @@ body.light-mode .theme-icon-animated .moon-path {
                             ]
                         },
                         {
-                            duration: 350,
+                            duration: 450, // Slightly extended duration for a smoother reveal
                             easing: "cubic-bezier(0.2, 0, 0, 1)",
                             pseudoElement: "::view-transition-new(root)"
                         }
