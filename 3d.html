@@ -50,40 +50,11 @@
             color: #9333ea;
         }
 
-        body.light-mode .slider-wrapper,
-        html.light-mode .slider-wrapper {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        body.light-mode .slide-card,
-        html.light-mode .slide-card {
-            background: #e2e8f0;
+        body.light-mode .model-card,
+        html.light-mode .model-card {
+            background: #ffffff;
             border: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        body.light-mode .category,
-        html.light-mode .category {
-            background: rgba(0, 139, 125, 0.15);
-            border: 1px solid rgba(0, 139, 125, 0.3);
-            color: #005e54;
-        }
-
-        body.light-mode .btn,
-        html.light-mode .btn {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #0f172a;
-        }
-
-        body.light-mode .btn:hover,
-        html.light-mode .btn:hover {
-            background: #0f172a;
-            color: #ffffff;
-        }
-
-        body.light-mode .thumb,
-        html.light-mode .thumb {
-            background: #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -187,7 +158,6 @@
             color: var(--text-main);
         }
 
-        /* BRAND LOGO & UNIVERSAL THEME ADAPTATION */
         .brand-logo-img,
         .theme-adapt-img {
             width: 36px;
@@ -195,12 +165,10 @@
             border-radius: 10px;
             object-fit: cover;
             display: block;
-            /* Dark Mode default: converts image to pure white */
             filter: brightness(0) invert(1);
             transition: filter 0.3s ease;
         }
 
-        /* Restores original image colors for Light Mode */
         body.light-mode .brand-logo-img,
         html.light-mode-init .brand-logo-img,
         html.light-mode .brand-logo-img,
@@ -263,7 +231,6 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
         }
 
-        /* Nav Actions (Social & CTA) */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -315,7 +282,6 @@
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
         }
 
-        /* Dark Mode default: Hide Moon, Show Sun */
         .theme-icon-animated .moon-path {
             opacity: 0;
             transform: scale(0.2) rotate(-45deg);
@@ -327,7 +293,6 @@
             transform: scale(1) rotate(0deg);
         }
 
-        /* Light Mode State */
         body.light-mode .theme-icon-animated,
         html.light-mode .theme-icon-animated {
             transform: rotate(0deg);
@@ -369,7 +334,6 @@
             filter: brightness(1.1);
         }
 
-        /* Glass Foundations */
         .glass-panel {
             background: var(--panel-glass);
             backdrop-filter: blur(20px);
@@ -381,8 +345,7 @@
             overflow: hidden;
         }
 
-        /* Structural Heading Profiles */
-        h1, .slide-card .category {
+        h1 {
             font-family: 'Space Grotesk', sans-serif;
             letter-spacing: -0.01em;
         }
@@ -434,146 +397,35 @@
             margin: 0 auto;
         }
 
-        /* CAROUSEL CONTROLLER DECK */
-        .slider-wrapper {
-            padding: 24px;
-            background: rgba(10, 10, 18, 0.6);
-        }
-
-        .slider {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .slide {
-            min-width: 100%;
-            padding: 6px;
-        }
-
-        /* PORTFOLIO PIECE ITEM CARD */
-        .slide-card {
-            border-radius: 18px;
-            overflow: hidden;
-            position: relative;
-            background: #000;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .slide-card img {
+        /* 3D MODELS GRID CONTAINER */
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             width: 100%;
-            height: 600px;
-            object-fit: cover;
-            cursor: pointer;
-            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.5s;
-            display: block;
         }
 
-        .slide-card:hover img {
-            transform: scale(1.02);
-            filter: saturate(1.05);
-        }
-
-        /* TEXT INSIDE PREVIEW DISPLAY */
-        .overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 40px;
-            background: linear-gradient(to top, rgba(7, 7, 12, 0.95) 0%, rgba(7, 7, 12, 0.4) 40%, transparent 100%);
-            pointer-events: none;
-        }
-
-        body.light-mode .overlay,
-        html.light-mode .overlay {
-            background: linear-gradient(to top, rgba(241, 245, 249, 0.95) 0%, rgba(241, 245, 249, 0.4) 40%, transparent 100%);
-        }
-
-        .category {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 6px 16px;
-            border-radius: 100px;
-            background: rgba(0, 245, 212, 0.15);
-            border: 1px solid rgba(0, 245, 212, 0.3);
-            color: #bffff6;
-            width: fit-content;
-        }
-
-        /* DIRECTION INDICATOR ACTION NODES */
-        .btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            background: rgba(13, 13, 25, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: white;
-            font-size: 18px;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            border-color: var(--text-main);
-            scale: 1.05;
-        }
-
-        .prev { left: 40px; }
-        .next { right: 40px; }
-
-        /* PAGINATION NAILS TRACKER */
-        .thumbnails {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-            justify-content: center;
-        }
-
-        .thumb {
-            width: 90px;
-            height: 60px;
-            border-radius: 10px;
+        .model-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
             overflow: hidden;
-            opacity: .4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            background: #000;
         }
 
-        .thumb:hover {
-            opacity: .8;
+        .model-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .thumb.active {
-            opacity: 1;
-            border-color: var(--accent-2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 245, 212, 0.2);
-        }
-
-        .thumb img {
+        .model-card img {
             width: 100%;
-            height: 100%;
+            height: 280px;
             object-fit: cover;
             display: block;
         }
 
-        /* FOOTER STRUCTURE */
         .footer {
             text-align: center;
             padding: 20px 0;
@@ -585,7 +437,7 @@
             margin-top: 8px;
         }
 
-        /* ISOLATED THEATRE MODAL SYSTEM */
+        /* MODAL PREVIEW */
         .modal {
             position: fixed;
             inset: 0;
@@ -636,29 +488,31 @@
             z-index: 9999;
         }
 
-        /* SMART RESPONSIVE SCALING RULES */
+        @media(max-width: 900px) {
+            .models-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media(max-width: 850px) {
             .nav-links {
                 display: none;
             }
         }
 
-        @media(max-width: 768px) {
+        @media(max-width: 600px) {
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
             body { padding: 0 12px 18px 12px; }
             .hero { padding: 40px 20px; }
             .hero h1 { font-size: 42px; }
-            .slide-card img { height: 400px; }
-            .btn { width: 44px; height: 44px; font-size: 14px; }
-            .prev { left: 20px; }
-            .next { right: 20px; }
-            .thumb { width: 70px; height: 48px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Space Background Shaders -->
     <div class="art-blob blob-1"></div>
     <div class="art-blob blob-2"></div>
 
@@ -668,7 +522,6 @@
         <div class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
-                    <!-- Class 'brand-logo-img' handles theme-switching filter behavior -->
                     <img src="JDLOGO.png" alt="Logo" class="brand-logo-img">
                     <div class="brand-text">
                         ARROJO
@@ -687,10 +540,7 @@
                 <div class="nav-actions">
                     <button id="theme-toggle" class="btn-social-icon" aria-label="Toggle Dark/Light Mode">
                         <svg id="theme-icon" class="theme-icon-animated" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <!-- Sun Core / Moon Disk -->
                             <circle class="sun-core" cx="12" cy="12" r="5"></circle>
-                            
-                            <!-- Sun Rays -->
                             <g class="sun-rays">
                                 <line x1="12" y1="1" x2="12" y2="3"></line>
                                 <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -701,8 +551,6 @@
                                 <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                             </g>
-                            
-                            <!-- Moon Crescent Path -->
                             <path class="moon-path" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
@@ -713,53 +561,33 @@
 
         <!-- HERO COMPONENT -->
         <section class="hero glass-panel">
-            <div class="badge">✦ Modeling • Texturing • Visualization</div>
+            <div class="badge">✦ 3D • HARD SURFACE • PRODUCT MODELING</div>
             <h1>3D <span>Models</span></h1>
             <p>
-                A high-fidelity showroom displaying three-dimensional assets, custom environment props, and spatial architectural concepts.
+                A high fidelity collection of hard-surface engineering models, motorcycle component renders, precision mechanical assets, and production-grade visualization systems.
             </p>
         </section>
 
-        <!-- CAROUSEL ELEMENT PANELS -->
-        <section class="slider-wrapper glass-panel">
-
-            <button class="btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">❮</button>
-            <button class="btn next" onclick="moveSlide(1)" aria-label="Next Slide">❯</button>
-
-            <div class="slider" id="slider">
-
-                <!-- SLIDE 1 -->
-                <div class="slide">
-                    <div class="slide-card">
-                        <img src="3d1.png" alt="3D Model Render 1" onclick="openModal(this.src)">
-                        <div class="overlay">
-                            <div class="category">Environment Render</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLIDE 2 -->
-                <div class="slide">
-                    <div class="slide-card">
-                        <img src="3d2.png" alt="3D Model Render 2" onclick="openModal(this.src)">
-                        <div class="overlay">
-                            <div class="category">Asset Showcase</div>
-                        </div>
-                    </div>
-                </div>
-
+        <!-- 3D MODEL GALLERY GRID -->
+        <section class="models-grid">
+            <div class="model-card" onclick="openModal('3d1.png')">
+                <img src="3d1.png" alt="Adelin Caliper 3D Model">
             </div>
-
-            <!-- INDEX PIECE SELECTORS -->
-            <div class="thumbnails">
-                <div class="thumb active" onclick="showSlide(0)">
-                    <img src="3d1.png" alt="Thumbnail Select 1">
-                </div>
-                <div class="thumb" onclick="showSlide(1)">
-                    <img src="3d2.png" alt="Thumbnail Select 2">
-                </div>
+            <div class="model-card" onclick="openModal('3d2.png')">
+                <img src="3d2.png" alt="Kamui Swingarm 3D Model">
             </div>
-
+            <div class="model-card" onclick="openModal('3d3.png')">
+                <img src="3d3.png" alt="TWPO Swingarm 3D Model">
+            </div>
+            <div class="model-card" onclick="openModal('3d4.png')">
+                <img src="3d4.png" alt="Ohlins Shock 3D Model">
+            </div>
+            <div class="model-card" onclick="openModal('3d5.png')">
+                <img src="3d5.png" alt="Black Diamond Disc Brake 3D Model">
+            </div>
+            <div class="model-card" onclick="openModal('3d6.png')">
+                <img src="3d6.png" alt="Kamui Disc Brake 3D Model">
+            </div>
         </section>
 
         <!-- FOOTER BAR -->
@@ -769,35 +597,13 @@
 
     </div>
 
-    <!-- PRESENTATION COMPOSITE LAYER -->
+    <!-- MODAL PREVIEW LAYER -->
     <div class="modal" id="modal">
         <span class="close" onclick="closeModal()">&times;</span>
         <img id="modalImg" alt="High Resolution Content Preview">
     </div>
 
     <script>
-    let index = 0;
-    const slider = document.getElementById("slider");
-    const slides = document.querySelectorAll(".slide");
-    const thumbs = document.querySelectorAll(".thumb");
-
-    function showSlide(i){
-        index = (i + slides.length) % slides.length;
-        slider.style.transform = `translateX(-${index * 100}%)`;
-        thumbs.forEach(thumb => thumb.classList.remove("active"));
-        thumbs[index].classList.add("active");
-    }
-
-    function moveSlide(step){
-        showSlide(index + step);
-    }
-
-    /* CAROUSEL LOOP INTERVAL */
-    setInterval(() => {
-        moveSlide(1);
-    }, 5000);
-
-    /* FULL THEATRE ACTIVATION */
     function openModal(src){
         const modal = document.getElementById("modal");
         const modalImg = document.getElementById("modalImg");
@@ -810,7 +616,6 @@
         }
     }
 
-    /* DISMISS SCREEN VIEW LAYER */
     function closeModal(){
         const modal = document.getElementById("modal");
         modal.style.display = "none";
@@ -820,7 +625,6 @@
         }
     }
 
-    /* KEYBOARD DISMISS TRACKER */
     document.addEventListener("keydown", function(e){
         if(e.key === "Escape"){
             closeModal();
