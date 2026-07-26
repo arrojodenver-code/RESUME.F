@@ -287,7 +287,7 @@
             border-color: rgba(0, 0, 0, 0.2);
         }
 
-        /* ANIMATED THEME TOGGLE ICON STYLES (FIXED) */
+        /* ANIMATED THEME TOGGLE ICON STYLES */
         .theme-icon-animated {
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -302,7 +302,7 @@
         /* Dark Mode default: Hide Moon, Show Sun */
         .theme-icon-animated .moon-path {
             opacity: 0;
-            transform: scale(0.2) rotate(-45deg);
+            transform: scale(0.2) rotate(0deg);
         }
 
         .theme-icon-animated .sun-core,
@@ -311,9 +311,9 @@
             transform: scale(1) rotate(0deg);
         }
 
-        /* Light Mode State Transitions: Completely Hide Sun Core & Rays, Reveal Moon */
+        /* Light Mode State: Rotation, scaling, and tilt to match target image */
         body.light-mode .theme-icon-animated {
-            transform: rotate(90deg);
+            transform: rotate(0deg);
         }
 
         body.light-mode .theme-icon-animated .sun-core {
@@ -328,7 +328,7 @@
 
         body.light-mode .theme-icon-animated .moon-path {
             opacity: 1;
-            transform: scale(1) rotate(0deg);
+            transform: translate(-1px, 1px) rotate(-110deg) scale(0.9);
         }
 
         .btn-nav-cta {
