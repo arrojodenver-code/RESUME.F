@@ -20,7 +20,7 @@
         }
 
         /* LIGHT MODE OVERRIDES (COPIED FROM UX.HTML) */
-        body.light-mode {
+        :root.light-mode {
             --bg-dark: #f1f5f9;
             --panel-glass: rgba(255, 255, 255, 0.65);
             --border-glass: rgba(0, 0, 0, 0.08);
@@ -28,12 +28,12 @@
             --text-muted: #475569;
         }
 
-        body.light-mode .art-blob {
+        :root.light-mode .art-blob {
             opacity: 0.15;
         }
 
         /* LIGHT MODE ACTIVE NAV LINK RULE FROM UX.HTML */
-        body.light-mode .nav-link.active-page {
+        :root.light-mode .nav-link.active-page {
             color: #007f6e;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
         }
@@ -135,7 +135,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
         }
 
-        body.light-mode .navbar {
+        :root.light-mode .navbar {
             background: rgba(255, 255, 255, 0.25) !important;
             border: 1px solid rgba(255, 255, 255, 0.4) !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
@@ -159,8 +159,7 @@
             transition: filter 0.3s ease;
         }
 
-        body.light-mode .brand-logo-img,
-        html.light-mode-init .brand-logo-img {
+        :root.light-mode .brand-logo-img {
             filter: none !important;
         }
 
@@ -182,7 +181,7 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
         }
 
-        body.light-mode .brand-text span {
+        :root.light-mode .brand-text span {
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
@@ -245,12 +244,12 @@
             color: var(--accent-2);
         }
 
-        body.light-mode .theme-toggle {
+        :root.light-mode .theme-toggle {
             background: rgba(0, 0, 0, 0.05);
             border-color: rgba(0, 0, 0, 0.1);
         }
 
-        body.light-mode .theme-toggle:hover {
+        :root.light-mode .theme-toggle:hover {
             background: rgba(0, 0, 0, 0.1);
         }
 
@@ -274,11 +273,11 @@
             transform: scale(0) rotate(90deg);
         }
 
-        body.light-mode .theme-toggle .sun-icon {
+        :root.light-mode .theme-toggle .sun-icon {
             transform: scale(0) rotate(-90deg);
         }
 
-        body.light-mode .theme-toggle .moon-icon {
+        :root.light-mode .theme-toggle .moon-icon {
             transform: scale(1) rotate(0deg);
         }
 
@@ -345,7 +344,7 @@
             margin-bottom: 24px;
         }
 
-        body.light-mode .badge {
+        :root.light-mode .badge {
             background: rgba(212, 68, 241, 0.15);
             color: #9d17be;
             border-color: rgba(212, 68, 241, 0.3);
@@ -505,7 +504,7 @@
     
     <script>
         if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.add('light-mode-init');
+            document.documentElement.classList.add('light-mode');
         }
     </script>
 </head>
@@ -641,16 +640,11 @@
 
     <script>
         const themeToggleBtn = document.getElementById("themeToggle");
-        
-        if (localStorage.getItem("theme") === "light") {
-            document.body.classList.add("light-mode");
-        }
-        document.documentElement.classList.remove("light-mode-init");
 
         themeToggleBtn.addEventListener("click", (e) => {
             const toggleTheme = () => {
-                document.body.classList.toggle("light-mode");
-                if (document.body.classList.contains("light-mode")) {
+                document.documentElement.classList.toggle("light-mode");
+                if (document.documentElement.classList.contains("light-mode")) {
                     localStorage.setItem("theme", "light");
                 } else {
                     localStorage.setItem("theme", "dark");
