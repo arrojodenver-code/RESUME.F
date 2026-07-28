@@ -116,6 +116,37 @@ body{
     padding:20px 18px 30px 18px;
 }
 
+/* CURSOR FX: glow in dark mode, soft shadow in light mode */
+#cursor-fx{
+    position:fixed;
+    top:0;
+    left:0;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:99999;
+    background:radial-gradient(circle, var(--accent-2) 0%, transparent 70%);
+    opacity:0.6;
+    box-shadow:
+        0 0 20px 6px rgba(0,245,212,0.4),
+        0 0 45px 16px rgba(212,68,241,0.2);
+    transition:opacity 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    will-change:transform;
+}
+
+body.light-mode #cursor-fx{
+    background:rgba(15,23,42,0.08);
+    opacity:1;
+    box-shadow:
+        0 10px 20px rgba(15,23,42,0.18),
+        0 2px 6px rgba(15,23,42,0.12);
+}
+
+@media (pointer:coarse), (hover:none){
+    #cursor-fx{ display:none; }
+}
+
 .art-blob{
     position:fixed;
     border-radius:50%;
@@ -1378,6 +1409,33 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
 <script>
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+
+    /* CURSOR FX: smooth glow (dark mode) / shadow (light mode) that trails the mouse */
+    (function () {
+        if (!window.matchMedia('(pointer: fine)').matches) return;
+
+        const cursorFx = document.createElement('div');
+        cursorFx.id = 'cursor-fx';
+        document.body.appendChild(cursorFx);
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let fxX = mouseX;
+        let fxY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursorFx() {
+            fxX += (mouseX - fxX) * 0.18;
+            fxY += (mouseY - fxY) * 0.18;
+            cursorFx.style.transform = `translate3d(${fxX - 8}px, ${fxY - 8}px, 0)`;
+            requestAnimationFrame(animateCursorFx);
+        }
+        animateCursorFx();
+    })();
 
     /* MOBILE MENU TOGGLE */
     const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
