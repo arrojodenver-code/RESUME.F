@@ -309,6 +309,84 @@ body.light-mode .btn-social-icon:hover {
     border-color: rgba(0, 0, 0, 0.2);
 }
 
+/* MOBILE MENU BUTTON (hidden on desktop) */
+.mobile-menu-btn {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 0 16px;
+    height: 38px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+body.light-mode .mobile-menu-btn {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--accent-2);
+}
+
+body.light-mode .mobile-menu-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.chevron-icon {
+    fill: none !important;
+    width: 14px;
+    height: 14px;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-btn.open .chevron-icon {
+    transform: rotate(180deg);
+}
+
+/* MOBILE DROPDOWN NAV PANEL (hidden on desktop, shown <=850px) */
+.mobile-nav-panel {
+    display: none;
+}
+
+.mobile-nav-link {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 14px;
+    transition: 0.2s ease;
+}
+
+.mobile-nav-link:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.light-mode .mobile-nav-link:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.mobile-nav-link.active-page {
+    color: var(--accent-2);
+    font-weight: 700;
+}
+
+body.light-mode .mobile-nav-link.active-page {
+    color: #00877a;
+}
+
 /* ANIMATED THEME TOGGLE ICON STYLES */
 .theme-icon-animated {
     fill: none !important;
@@ -852,6 +930,29 @@ body.light-mode .hero-card{
     .nav-links {
         display: none;
     }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .mobile-nav-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0 10px;
+        margin-top: 0;
+        transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.3s ease, padding 0.3s ease;
+    }
+
+    .mobile-nav-panel.open {
+        max-height: 400px;
+        opacity: 1;
+        margin-top: 10px;
+        padding: 10px;
+    }
 }
 
 @media(max-width:768px){
@@ -999,6 +1100,12 @@ body.light-mode .hero-card{
             </ul>
 
             <div class="nav-actions">
+                <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle project menu" aria-expanded="false">
+                    <span>Projects</span>
+                    <svg class="chevron-icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
                 <button id="theme-toggle" class="btn-social-icon" aria-label="Toggle Dark/Light Mode">
                     <svg id="theme-icon" class="theme-icon-animated" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <!-- Sun Core / Moon Disk -->
@@ -1023,6 +1130,15 @@ body.light-mode .hero-card{
                 <a href="Arrojo_Resume.pdf" download class="btn-nav-cta">Download CV</a>
             </div>
         </nav>
+
+        <!-- MOBILE DROPDOWN NAV PANEL -->
+        <div class="mobile-nav-panel glass-panel" id="mobile-nav-panel">
+            <span class="mobile-nav-link active-page">About</span>
+            <a href="ux.html" class="mobile-nav-link">UX Design</a>
+            <a href="gd.html" class="mobile-nav-link">Graphic Design</a>
+            <a href="3d.html" class="mobile-nav-link">3D Model</a>
+            <a href="app.html" class="mobile-nav-link">Mobile App Samples</a>
+        </div>
     </div>
 
     <!-- HERO SECTION -->
@@ -1262,6 +1378,28 @@ Motivated to contribute, grow professionally, and make a meaningful impact in ev
 <script>
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
+
+    /* MOBILE MENU TOGGLE */
+    const mobileMenuBtn = document.getElementById('mobile-menu-toggle');
+    const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+    function closeMobileMenu() {
+        mobileMenuBtn.classList.remove('open');
+        mobileNavPanel.classList.remove('open');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    if (mobileMenuBtn && mobileNavPanel) {
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = mobileNavPanel.classList.toggle('open');
+            mobileMenuBtn.classList.toggle('open', isOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 850) closeMobileMenu();
+        });
+    }
 
     function loadSavedTheme() {
         const savedTheme = localStorage.getItem('theme');
