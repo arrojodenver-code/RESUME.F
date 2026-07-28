@@ -179,7 +179,7 @@
             color: var(--text-main);
         }
 
-        /* BRAND LOGO & THEME ADAPTATION */
+        /* BRAND LOGO & UNIVERSAL THEME ADAPTATION */
         .brand-logo-img,
         .theme-adapt-img {
             width: 36px;
@@ -187,17 +187,17 @@
             border-radius: 10px;
             object-fit: cover;
             display: block;
-            /* DARK MODE DEFAULT: Forces the logo image to pure WHITE */
+            /* Dark Mode default: converts image to pure white */
             filter: brightness(0) invert(1);
             transition: filter 0.3s ease;
         }
 
-        /* LIGHT MODE STATE: Forces the logo image to pure BLACK */
+        /* Restores original image colors for Light Mode */
         body.light-mode .brand-logo-img,
         html.light-mode-init .brand-logo-img,
         body.light-mode .theme-adapt-img,
         html.light-mode-init .theme-adapt-img {
-            filter: brightness(0) !important;
+            filter: none !important;
         }
 
         .brand-text {
@@ -317,7 +317,7 @@
             transform: scale(1) rotate(0deg);
         }
 
-        /* Light Mode State */
+        /* Light Mode State: Exactly matched tilt & optical center */
         body.light-mode .theme-icon-animated {
             transform: rotate(0deg);
         }
@@ -325,19 +325,19 @@
         body.light-mode .theme-icon-animated .sun-core,
         html.light-mode .theme-icon-animated .sun-core {
             opacity: 0;
-            transform: scale(0);
+            transform: scale(0); /* Sun core shrinks to 0% */
         }
 
         body.light-mode .theme-icon-animated .sun-rays,
         html.light-mode .theme-icon-animated .sun-rays {
             opacity: 0;
-            transform: scale(0.2) rotate(45deg);
+            transform: scale(0.2) rotate(45deg); /* Sun rays shrink to 20% */
         }
 
         body.light-mode .theme-icon-animated .moon-path,
         html.light-mode .theme-icon-animated .moon-path {
             opacity: 1;
-            transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px);
+            transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px); /* Moon scales to 92% */
         }
 
         .btn-nav-cta {
@@ -680,6 +680,7 @@
         <div class="navbar-wrapper">
             <nav class="glass-panel navbar">
                 <a href="index.html" class="nav-brand">
+                    <!-- Class 'brand-logo-img' handles theme-switching filter behavior -->
                     <img src="JDLOGO.png" alt="Logo" class="brand-logo-img">
                     <div class="brand-text">
                         ARROJO
