@@ -38,7 +38,7 @@
 /* Light Mode Variables */
 :root.light-mode {
     --bg-dark: #f1f5f9;
-    --panel-glass: rgba(255, 255, 255, 0.82); /* Kept bright white panel background */
+    --panel-glass: rgba(255, 255, 255, 0.82);
     --border-glass: rgba(255, 255, 255, 0.6);
     --text-main: #0f172a;
     --text-muted: #475569;
@@ -46,7 +46,7 @@
     
     --nav-bg: rgba(255, 255, 255, 0.25);
     --nav-border: rgba(255, 255, 255, 0.4);
-    --nav-shadow: rgba(0, 0, 0, 0.05);
+    --nav-shadow: rgba(0, 0, 0, 0.08);
 }
 
 /* Circular View Transition Engine */
@@ -146,8 +146,9 @@ body{
     overflow:hidden;
 }
 
+/* Restored drop shadow for light mode glass panels */
 :root.light-mode .glass-panel {
-    box-shadow:0 15px 35px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
 /* NAVIGATION BAR STYLES */
@@ -407,7 +408,7 @@ body{
 
 :root.light-mode .app-card:hover {
     background: rgba(255, 255, 255, 0.95);
-    box-shadow:0 15px 30px rgba(0, 0, 0, 0.08);
+    box-shadow:0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .app-icon{
