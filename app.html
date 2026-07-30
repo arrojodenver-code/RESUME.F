@@ -38,7 +38,7 @@
 /* Light Mode Variables */
 :root.light-mode {
     --bg-dark: #f1f5f9;
-    --panel-glass: rgba(255, 255, 255, 0.82); /* Kept bright white panel background */
+    --panel-glass: rgba(255, 255, 255, 0.82); 
     --border-glass: rgba(255, 255, 255, 0.6);
     --text-main: #0f172a;
     --text-muted: #475569;
@@ -146,8 +146,9 @@ body{
     overflow:hidden;
 }
 
+/* Restored shadow to match reference image elevation */
 :root.light-mode .glass-panel {
-    box-shadow:0 15px 35px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.16), 0 12px 24px -8px rgba(0, 0, 0, 0.08);
 }
 
 /* NAVIGATION BAR STYLES */
@@ -407,7 +408,7 @@ body{
 
 :root.light-mode .app-card:hover {
     background: rgba(255, 255, 255, 0.95);
-    box-shadow:0 15px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.2);
 }
 
 .app-icon{
@@ -464,12 +465,14 @@ body{
     margin-bottom:2px;
 }
 
+/* Subheader Styling */
 .app-subheader {
     font-size: 13px;
     font-weight: 600;
     color: var(--accent-2);
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-top: -4px;
     margin-bottom: 10px;
 }
 
@@ -805,7 +808,7 @@ body{
             <!-- Tool 4: Photoshop -->
             <div class="tool-item">
                 <div class="tool-square">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop">
+                    <img src="image_afa7be.png" alt="Photoshop">
                 </div>
                 <div class="tool-meta">
                     <span class="tool-name">Photoshop</span>
