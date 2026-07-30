@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" href="JDLOGowhite.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- Prevents white flash on load for light mode -->
 <script>
@@ -70,7 +70,6 @@ html.is-transitioning .theme-toggle-btn { pointer-events: none; }
 
 html{
     scroll-behavior:smooth;
-    /* Moved background to html for perfect view transitions */
     background-color:var(--bg-dark);
     color:var(--text-main);
 }
@@ -84,7 +83,6 @@ body{
     min-height:100vh;
     overflow-x:hidden;
     padding:20px 18px 30px 18px;
-    /* CRITICAL FIX: Removed background transition to allow View Transition API to capture properly */
 }
 
 .art-blob{
@@ -187,11 +185,11 @@ body{
     border-radius: 10px;
     object-fit: cover;
     display: block;
-    filter: brightness(0) invert(1); /* Invert logo by default */
+    filter: brightness(0) invert(1);
 }
 
 :root.light-mode .brand-logo-img {
-    filter: none; /* Return logo to original color in light mode */
+    filter: none;
 }
 
 .brand-text {
@@ -202,7 +200,6 @@ body{
     line-height: 1.1;
 }
 
-/* Text Effect on Nav Bar Span */
 .brand-text span {
     display: block;
     font-size: 10px;
@@ -234,7 +231,6 @@ body{
     color: var(--text-main);
 }
 
-/* Active Text Effect */
 .nav-link.active-page {
     color: var(--accent-2);
     font-weight: 700;
@@ -254,7 +250,6 @@ body{
     gap: 12px;
 }
 
-/* Theme Toggle Button Styles */
 .theme-toggle-btn {
     display: flex;
     align-items: center;
@@ -393,7 +388,6 @@ body{
     gap:24px;
 }
 
-/* APP CARD */
 .app-card{
     display:flex;
     align-items:center;
@@ -416,7 +410,6 @@ body{
     box-shadow:0 15px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* APP ICON */
 .app-icon{
     width:84px;
     height:84px;
@@ -433,7 +426,6 @@ body{
     object-fit:cover;
 }
 
-/* CONTENT */
 .app-content{
     flex:1;
 }
@@ -497,7 +489,6 @@ body{
     font-size:14px;
 }
 
-/* BUTTON */
 .install-btn{
     padding:12px 22px;
     border-radius:12px;
@@ -522,6 +513,102 @@ body{
     color:var(--bg-dark);
     transform:scale(1.03);
     box-shadow: 0 4px 15px rgba(0, 245, 212, 0.3);
+}
+
+/* TOOLS & TECH SECTION (INSPIRED BY REFERENCE) */
+.tools-section {
+    padding: 32px 36px;
+}
+
+.tools-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.tools-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.tool-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(0, 245, 212, 0.2);
+    transform: translateY(-2px);
+}
+
+:root.light-mode .tool-item {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
+:root.light-mode .tool-item:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.tool-square {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+:root.light-mode .tool-square {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.tool-square img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+}
+
+.tool-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+.tool-role {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 3px;
 }
 
 /* FOOTER */
@@ -559,6 +646,9 @@ body{
     }
     .install-btn{
         width:100%;
+    }
+    .tools-grid {
+        grid-template-columns: 1fr;
     }
 }
 </style>
@@ -640,8 +730,7 @@ body{
             <div class="app-content">
                 <div class="app-tags">
                     <div class="app-category">3D Customization App</div>
-                    <!-- PUT YOUR POSITION HERE -->
-                    <div class="role-badge">Role: Front/Backend | UI/UX | 3D Model </div>
+                    <div class="role-badge">Role: Lead UI/UX & 3D Artist</div>
                 </div>
                 <h3>Modifikasi</h3>
                 <p>
@@ -663,8 +752,7 @@ body{
             <div class="app-content">
                 <div class="app-tags">
                     <div class="app-category">Underwater Cleanup Game</div>
-                    <!-- PUT YOUR POSITION HERE -->
-                    <div class="role-badge">Role: UI/UX | FrontEnd</div>
+                    <div class="role-badge">Role: UI Designer & Developer</div>
                 </div>
                 <h3>Trash Grabber</h3>
                 <p>
@@ -676,6 +764,59 @@ body{
             </button>
         </a>
 
+    </section>
+
+    <!-- TOOLS USED SECTION -->
+    <section class="glass-panel tools-section">
+        <div class="tools-header">
+            <span class="tools-tag">01 — tools & tech used</span>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Tool 1 -->
+            <div class="tool-item">
+                <div class="tool-square">
+                    <img src="figma.png" alt="Figma">
+                </div>
+                <div class="tool-meta">
+                    <span class="tool-name">Figma</span>
+                    <span class="tool-role">UI/UX Design</span>
+                </div>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="tool-item">
+                <div class="tool-square">
+                    <img src="unity.png" alt="Unity">
+                </div>
+                <div class="tool-meta">
+                    <span class="tool-name">Unity Engine</span>
+                    <span class="tool-role">Game Engine</span>
+                </div>
+            </div>
+
+            <!-- Tool 3 -->
+            <div class="tool-item">
+                <div class="tool-square">
+                    <img src="blender.png" alt="Blender">
+                </div>
+                <div class="tool-meta">
+                    <span class="tool-name">Blender 3D</span>
+                    <span class="tool-role">3D Modeling</span>
+                </div>
+            </div>
+
+            <!-- Tool 4 -->
+            <div class="tool-item">
+                <div class="tool-square">
+                    <img src="photoshop.png" alt="Photoshop">
+                </div>
+                <div class="tool-meta">
+                    <span class="tool-name">Photoshop</span>
+                    <span class="tool-role">Graphics</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
@@ -701,7 +842,6 @@ body{
     themeToggleBtn.addEventListener("click", (e) => {
         if (themeTransitionInProgress) return;
 
-        // Fallback if browser doesn't support View Transitions
         if (!document.startViewTransition) {
             toggleTheme();
             return;
@@ -710,7 +850,6 @@ body{
         themeTransitionInProgress = true;
         document.documentElement.classList.add("is-transitioning");
 
-        // Calculate click coordinates for the circle origin
         const rect = themeToggleBtn.getBoundingClientRect();
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
@@ -734,7 +873,7 @@ body{
                             ]
                         },
                         {
-                            duration: 450, // Slightly extended duration for a smoother reveal
+                            duration: 450,
                             easing: "cubic-bezier(0.2, 0, 0, 1)",
                             pseudoElement: "::view-transition-new(root)"
                         }
