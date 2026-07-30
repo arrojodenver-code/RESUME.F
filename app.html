@@ -46,7 +46,7 @@
     
     --nav-bg: rgba(255, 255, 255, 0.25);
     --nav-border: rgba(255, 255, 255, 0.4);
-    --nav-shadow: rgba(0, 0, 0, 0.08);
+    --nav-shadow: rgba(0, 0, 0, 0.05);
 }
 
 /* Circular View Transition Engine */
@@ -134,7 +134,7 @@ body{
     gap:28px;
 }
 
-/* GLASS */
+/* GLASS PANEL - Panel Drop Shadow */
 .glass-panel{
     background:var(--panel-glass);
     backdrop-filter:blur(20px);
@@ -146,7 +146,6 @@ body{
     overflow:hidden;
 }
 
-/* Restored drop shadow for light mode glass panels */
 :root.light-mode .glass-panel {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
@@ -159,6 +158,7 @@ body{
     margin-bottom: 10px;
 }
 
+/* NAVBAR - Drop Shadow */
 .navbar {
     display: flex;
     align-items: center;
@@ -232,6 +232,7 @@ body{
     color: var(--text-main);
 }
 
+/* ACTIVE NAV LINK - Text Shadow / Glow Effect */
 .nav-link.active-page {
     color: var(--accent-2);
     font-weight: 700;
@@ -306,6 +307,7 @@ body{
     transform: rotate(-12deg) scale(0.92) translate(-0.5px, -0.5px);
 }
 
+/* CTA BUTTON - Glow Box Shadow */
 .btn-nav-cta {
     background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
     color: var(--bg-dark);
@@ -364,7 +366,6 @@ body{
     margin-bottom:18px;
 }
 
-/* Updated gradient to match Cyber Teal -> Vivid Amethyst from 3D page */
 .hero h1 span{
     background:linear-gradient(
         135deg,
@@ -400,6 +401,7 @@ body{
     transition:all .4s cubic-bezier(0.165,0.84,0.44,1);
 }
 
+/* APP CARD - Hover Drop Shadow */
 .app-card:hover{
     transform:translateY(-6px);
     background:rgba(255,255,255,0.03);
@@ -412,6 +414,7 @@ body{
     box-shadow:0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* APP ICON - Elevation Drop Shadow */
 .app-icon{
     width:84px;
     height:84px;
@@ -503,6 +506,7 @@ body{
     border-color: rgba(0, 0, 0, 0.08);
 }
 
+/* INSTALL BUTTON - Hover Glow Shadow */
 .app-card:hover .install-btn{
     background:linear-gradient(135deg, var(--accent-1), var(--accent-2));
     border-color:transparent;
