@@ -435,20 +435,7 @@ body{
     align-items:center;
     gap:8px;
     flex-wrap:wrap;
-    margin-bottom:12px;
-}
-
-.app-category{
-    display:inline-block;
-    padding:5px 12px;
-    border-radius:100px;
-    background:rgba(0, 245, 212, 0.06);
-    border:1px solid rgba(0, 245, 212, 0.2);
-    color:var(--accent-2);
-    font-size:11px;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:.06em;
+    margin-bottom:8px;
 }
 
 .role-badge{
@@ -464,12 +451,6 @@ body{
     letter-spacing:.06em;
 }
 
-:root.light-mode .app-category {
-    background: rgba(0, 179, 155, 0.12);
-    border-color: rgba(0, 179, 155, 0.3);
-    color: #00877a;
-}
-
 :root.light-mode .role-badge {
     background: rgba(212, 68, 241, 0.15);
     border-color: rgba(212, 68, 241, 0.3);
@@ -480,7 +461,20 @@ body{
     font-family:'Space Grotesk',sans-serif;
     font-size:26px;
     color:var(--text-main);
-    margin-bottom:8px;
+    margin-bottom:2px;
+}
+
+.app-subheader {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+}
+
+:root.light-mode .app-subheader {
+    color: #00877a;
 }
 
 .app-content p{
@@ -527,7 +521,6 @@ body{
     margin-bottom: 24px;
 }
 
-/* UPDATED FONT STYLE TO MATCH MAIN BODY FONT */
 .tools-tag {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 12px;
@@ -732,10 +725,10 @@ body{
             </div>
             <div class="app-content">
                 <div class="app-tags">
-                    <div class="app-category">3D Customization App</div>
                     <div class="role-badge">Role: Lead UI/UX & 3D Artist</div>
                 </div>
                 <h3>Modifikasi</h3>
+                <div class="app-subheader">3D Customization App</div>
                 <p>
                     A 3D motorcycle customization app for Yamaha Nmax and Aerox V2 that lets users visualize aftermarket parts in real time and explore detailed 3D upgrade models.
                 </p>
@@ -754,10 +747,10 @@ body{
             </div>
             <div class="app-content">
                 <div class="app-tags">
-                    <div class="app-category">Underwater Cleanup Game</div>
                     <div class="role-badge">Role: UI Designer & Developer</div>
                 </div>
                 <h3>Trash Grabber</h3>
+                <div class="app-subheader">Underwater Cleanup Game</div>
                 <p>
                     A fast-paced underwater cleanup game where players collect trash across multiple difficulty levels while avoiding fishes and sea creatures.
                 </p>
@@ -776,10 +769,10 @@ body{
         </div>
         
         <div class="tools-grid">
-            <!-- Tool 1 -->
+            <!-- Tool 1: Figma -->
             <div class="tool-item">
                 <div class="tool-square">
-                    <img src="figma.png" alt="Figma">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
                 </div>
                 <div class="tool-meta">
                     <span class="tool-name">Figma</span>
@@ -787,10 +780,10 @@ body{
                 </div>
             </div>
 
-            <!-- Tool 2 -->
+            <!-- Tool 2: Unity Engine -->
             <div class="tool-item">
                 <div class="tool-square">
-                    <img src="unity.png" alt="Unity">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity Engine">
                 </div>
                 <div class="tool-meta">
                     <span class="tool-name">Unity Engine</span>
@@ -798,10 +791,10 @@ body{
                 </div>
             </div>
 
-            <!-- Tool 3 -->
+            <!-- Tool 3: Blender 3D -->
             <div class="tool-item">
                 <div class="tool-square">
-                    <img src="blender.png" alt="Blender">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender 3D">
                 </div>
                 <div class="tool-meta">
                     <span class="tool-name">Blender 3D</span>
@@ -809,10 +802,10 @@ body{
                 </div>
             </div>
 
-            <!-- Tool 4 -->
+            <!-- Tool 4: Photoshop -->
             <div class="tool-item">
                 <div class="tool-square">
-                    <img src="photoshop.png" alt="Photoshop">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop">
                 </div>
                 <div class="tool-meta">
                     <span class="tool-name">Photoshop</span>
@@ -820,10 +813,10 @@ body{
                 </div>
             </div>
 
-            <!-- Tool 5 -->
+            <!-- Tool 5: Visual Studio -->
             <div class="tool-item">
                 <div class="tool-square">
-                    <img src="illustrator.png" alt="Illustrator">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio">
                 </div>
                 <div class="tool-meta">
                     <span class="tool-name">Visual Studio</span>
