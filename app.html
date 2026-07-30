@@ -438,6 +438,14 @@ body{
     flex:1;
 }
 
+.app-tags{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+}
+
 .app-category{
     display:inline-block;
     padding:5px 12px;
@@ -449,13 +457,31 @@ body{
     font-weight:600;
     text-transform:uppercase;
     letter-spacing:.06em;
-    margin-bottom:12px;
+}
+
+.role-badge{
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:100px;
+    background:rgba(212, 68, 241, 0.1);
+    border:1px solid rgba(212, 68, 241, 0.25);
+    color:#fbcfff;
+    font-size:11px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.06em;
 }
 
 :root.light-mode .app-category {
     background: rgba(0, 179, 155, 0.12);
     border-color: rgba(0, 179, 155, 0.3);
     color: #00877a;
+}
+
+:root.light-mode .role-badge {
+    background: rgba(212, 68, 241, 0.15);
+    border-color: rgba(212, 68, 241, 0.3);
+    color: #9d17be;
 }
 
 .app-content h3{
@@ -612,8 +638,10 @@ body{
                 <img src="MODIFIKASI.png" alt="Modifikasi App Icon">
             </div>
             <div class="app-content">
-                <div class="app-category">
-                    3D Customization App
+                <div class="app-tags">
+                    <div class="app-category">3D Customization App</div>
+                    <!-- PUT YOUR POSITION HERE -->
+                    <div class="role-badge">Role: Lead UI/UX & 3D Artist</div>
                 </div>
                 <h3>Modifikasi</h3>
                 <p>
@@ -633,8 +661,10 @@ body{
                 <img src="TG.png" alt="Trash Grabber App Icon">
             </div>
             <div class="app-content">
-                <div class="app-category">
-                    Underwater Cleanup Game
+                <div class="app-tags">
+                    <div class="app-category">Underwater Cleanup Game</div>
+                    <!-- PUT YOUR POSITION HERE -->
+                    <div class="role-badge">Role: UI Designer & Developer</div>
                 </div>
                 <h3>Trash Grabber</h3>
                 <p>
