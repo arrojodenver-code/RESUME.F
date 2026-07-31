@@ -50,15 +50,15 @@
 
         }
 
-        /* LIGHT MODE THEME OVERRIDES */
+        /* LIGHT MODE THEME OVERRIDES (Matched precisely to Mobile App Samples) */
 
         body.light-mode {
 
             --bg-dark: #f1f5f9;
 
-            --panel-glass: rgba(255, 255, 255, 0.75);
+            --panel-glass: rgba(255, 255, 255, 0.85);
 
-            --border-glass: rgba(0, 0, 0, 0.08);
+            --border-glass: rgba(255, 255, 255, 0.6);
 
             --text-main: #0f172a;
 
@@ -76,9 +76,9 @@
 
         body.light-mode .badge {
 
-            background: rgba(212, 68, 241, 0.1);
+            background: rgba(212, 68, 241, 0.08);
 
-            border: 1px solid rgba(212, 68, 241, 0.2);
+            border: 1px solid rgba(212, 68, 241, 0.25);
 
             color: #9333ea;
 
@@ -86,7 +86,7 @@
 
         body.light-mode .slider-wrapper {
 
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.85);
 
         }
 
@@ -242,7 +242,7 @@
 
             flex-direction: column;
 
-            gap: 20px;
+            gap: 16px;
 
         }
 
@@ -256,7 +256,7 @@
 
             z-index: 1000;
 
-            margin-bottom: 4px;
+            margin-bottom: 0px;
 
         }
 
@@ -278,17 +278,19 @@
 
             border: 1px solid rgba(255, 255, 255, 0.12) !important;
 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+
+            border-radius: 20px;
 
         }
 
         body.light-mode .navbar {
 
-            background: rgba(255, 255, 255, 0.25) !important;
+            background: rgba(255, 255, 255, 0.85) !important;
 
-            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03) !important;
 
         }
 
@@ -426,7 +428,7 @@
 
             color: #00877a;
 
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 8px rgba(0, 150, 136, 0.25);
+            text-shadow: none;
 
         }
 
@@ -470,7 +472,9 @@
 
         body.light-mode .btn-social-icon {
 
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(0, 0, 0, 0.03);
+
+            border-color: rgba(0, 0, 0, 0.08);
 
         }
 
@@ -488,9 +492,9 @@
 
         body.light-mode .btn-social-icon:hover {
 
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.08);
 
-            border-color: rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 0, 0, 0.15);
 
         }
 
@@ -606,7 +610,7 @@
 
         }
 
-        /* Glass Foundations */
+        /* Glass Foundations (Fixed Elevation & Box Radius to match Mobile App Samples) */
 
         .glass-panel {
 
@@ -618,9 +622,9 @@
 
             border: 1px solid var(--border-glass);
 
-            border-radius: 24px;
+            border-radius: 20px;
 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 
             position: relative;
 
@@ -638,11 +642,11 @@
 
         }
 
-        /* HERO MODULE (Matched precisely to Mobile App Samples scale) */
+        /* HERO MODULE (Identical box height, text size, and elevation to Mobile App Samples) */
 
         .hero {
 
-            padding: 32px 32px;
+            padding: 40px 24px;
 
             text-align: center;
 
@@ -674,27 +678,29 @@
 
             font-size: 11px;
 
-            font-weight: 600;
+            font-weight: 700;
 
             letter-spacing: 0.05em;
 
             text-transform: uppercase;
 
-            color: #fbcfff;
+            color: #d444f1;
 
-            margin-bottom: 12px;
+            margin-bottom: 16px;
 
         }
 
         .hero h1 {
 
-            font-size: 42px;
+            font-size: 46px;
 
-            line-height: 1.2;
+            line-height: 1.15;
 
             font-weight: 700;
 
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+
+            color: var(--text-main);
 
         }
 
@@ -712,11 +718,11 @@
 
             color: var(--text-muted);
 
-            line-height: 1.6;
+            line-height: 1.5;
 
             font-size: 14px;
 
-            max-width: 640px;
+            max-width: 600px;
 
             margin: 0 auto;
 
@@ -726,7 +732,7 @@
 
         .tools-panel {
 
-            padding: 20px 28px;
+            padding: 20px 24px;
 
             display: flex;
 
@@ -784,13 +790,13 @@
 
             gap: 14px;
 
-            padding: 12px 22px;
+            padding: 10px 20px;
 
             background: rgba(255, 255, 255, 0.04);
 
             border: 1px solid var(--border-glass);
 
-            border-radius: 16px;
+            border-radius: 14px;
 
             transition: all 0.3s ease;
 
@@ -799,6 +805,8 @@
         body.light-mode .tool-card {
 
             background: rgba(0, 0, 0, 0.04);
+
+            border-color: rgba(0, 0, 0, 0.06);
 
         }
 
@@ -812,9 +820,9 @@
 
         .tool-icon {
 
-            width: 26px;
+            width: 24px;
 
-            height: 38px;
+            height: 36px;
 
             display: block;
 
@@ -832,7 +840,7 @@
 
             font-weight: 700;
 
-            font-size: 15px;
+            font-size: 14px;
 
             color: var(--text-main);
 
@@ -864,7 +872,7 @@
 
             gap: 8px;
 
-            padding: 12px 24px;
+            padding: 10px 22px;
 
             border-radius: 100px;
 
@@ -902,8 +910,6 @@
 
             padding: 24px;
 
-            background: rgba(10, 10, 18, 0.6);
-
         }
 
         .slider {
@@ -918,7 +924,7 @@
 
             min-width: 100%;
 
-            padding: 6px;
+            padding: 0px;
 
         }
 
@@ -926,7 +932,7 @@
 
         .slide-card {
 
-            border-radius: 18px;
+            border-radius: 16px;
 
             overflow: hidden;
 
@@ -1264,9 +1270,9 @@
 
             body { padding: 0 12px 18px 12px; }
 
-            .hero { padding: 24px 16px; }
+            .hero { padding: 28px 16px; }
 
-            .hero h1 { font-size: 32px; }
+            .hero h1 { font-size: 34px; }
 
             .tools-container {
 
@@ -1390,7 +1396,7 @@
 
         <section class="hero glass-panel">
 
-            <div class="badge">✦ Branding • UX • Visual Identity</div>
+            <div class="badge">✦ BRANDING • UX • VISUAL IDENTITY</div>
 
             <h1>User <span>Experience</span></h1>
 
@@ -1416,7 +1422,7 @@
 
                         <svg class="tool-icon" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-                            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 0 28.5Z" fill="#1ABCFE"/>
 
                             <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
 
