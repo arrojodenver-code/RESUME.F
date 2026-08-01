@@ -380,20 +380,18 @@ body{
     margin:0 auto;
 }
 
-/* TOOLS & TECH SECTION - Updated to Stock Height */
+/* TOOLS & TECH SECTION */
 .tools-section {
-    padding: 32px; 
+    padding: 28px 32px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 148px;
+    flex-direction: column;
+    gap: 18px;
 }
 
 .tools-header {
     display: flex;
-    flex-direction: column;
-    gap: 16px; 
+    align-items: center;
+    justify-content: space-between;
 }
 
 .tools-tag {
@@ -406,35 +404,35 @@ body{
 }
 
 .tools-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
 }
 
 .tool-item {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 10px 24px 10px 10px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    gap: 16px;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-glass);
     transition: all 0.3s ease;
-    height: 64px; 
 }
 
 .tool-item:hover {
     transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     border-color: rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 :root.light-mode .tool-item {
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(0, 0, 0, 0.02);
 }
 
 :root.light-mode .tool-item:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.04);
     border-color: rgba(0, 0, 0, 0.12);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
